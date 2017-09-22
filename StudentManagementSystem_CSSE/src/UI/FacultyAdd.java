@@ -8,6 +8,8 @@ package UI;
 import DBConnection.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -18,14 +20,35 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
     
     Connection conn=null;
     PreparedStatement pst=null;
+    ResultSet rs=null;
     
     public FacultyAdd() {
         initComponents();
         
         //connect to DB
         conn=DBConnect.connect();
+        
+        LoadFacultyTable(); //load faculty table
     }
-
+        
+    public void LoadFacultyTable()
+    {
+        try 
+        {
+            String q="SELECT FacultyID,Name FROM Faculty";
+            pst=conn.prepareStatement(q);
+            rs=pst.executeQuery();
+            
+            
+            jFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,18 +62,12 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jFacultyIDlabel = new javax.swing.JLabel();
         jFacultyNametxt = new javax.swing.JTextField();
         jAddFaculty = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jFacultyTable = new javax.swing.JTable();
 
         jLabel1.setText("Faculty Name");
-
-        jLabel2.setText("Faculty ID");
-
-        jFacultyIDlabel.setText("ID");
 
         jAddFaculty.setText("ADD");
         jAddFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +76,7 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jFacultyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -70,7 +87,7 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
                 "FacultyID", "Faculty Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jFacultyTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -80,13 +97,9 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                        .addComponent(jLabel1)
                         .addGap(59, 59, 59)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jFacultyNametxt)
-                            .addComponent(jFacultyIDlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
+                        .addComponent(jFacultyNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jAddFaculty)))
@@ -100,10 +113,7 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jFacultyIDlabel))
-                        .addGap(43, 43, 43)
+                        .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jFacultyNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,6 +180,8 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
             String q="INSERT INTO Faculty(Name) VALUES ('"+facultyName+"')";
             pst=conn.prepareStatement(q);
             pst.execute();
+            
+            LoadFacultyTable();
         }
         catch (Exception e)
         {
@@ -182,13 +194,11 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddFaculty;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jFacultyIDlabel;
     private javax.swing.JTextField jFacultyNametxt;
+    private javax.swing.JTable jFacultyTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
