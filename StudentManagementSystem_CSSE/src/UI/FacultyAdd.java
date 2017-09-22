@@ -6,6 +6,7 @@
 package UI;
 
 import DBConnection.DBConnect;
+import Validation.Validation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,8 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
     PreparedStatement pst=null;
     ResultSet rs=null;
     
+    Validation v=new Validation();
+    
     public FacultyAdd() {
         initComponents();
         
@@ -29,6 +32,8 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
         conn=DBConnect.connect();
         
         LoadFacultyTable(); //load faculty table
+        
+        
     }
         
     public void LoadFacultyTable()
@@ -68,6 +73,12 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
         jFacultyTable = new javax.swing.JTable();
 
         jLabel1.setText("Faculty Name");
+
+        jFacultyNametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFacultyNametxtKeyTyped(evt);
+            }
+        });
 
         jAddFaculty.setText("ADD");
         jAddFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -175,20 +186,40 @@ public class FacultyAdd extends javax.swing.JInternalFrame {
         //String facultyID=jFacultyIDlabel.getText();
         String facultyName=jFacultyNametxt.getText();
         
-        try 
+        boolean isEmpty= v.isEmpty(facultyName);
+        
+        if(!isEmpty)
         {
-            String q="INSERT INTO Faculty(Name) VALUES ('"+facultyName+"')";
-            pst=conn.prepareStatement(q);
-            pst.execute();
-            
-            LoadFacultyTable();
+            try 
+            {
+                String q="INSERT INTO Faculty(Name) VALUES ('"+facultyName+"')";
+                pst=conn.prepareStatement(q);
+                pst.execute();
+
+                LoadFacultyTable();
+            }
+            catch (Exception e)
+            {
+                System.out.println(e);
+            }
         }
-        catch (Exception e)
+        else
         {
-            System.out.println(e);
+            //jAddFaculty.disable();
         }
         
+        
     }//GEN-LAST:event_jAddFacultyActionPerformed
+
+    private void jFacultyNametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFacultyNametxtKeyTyped
+       char c=evt.getKeyChar();
+       
+       if(!Character.isLetter(c))
+       {
+           getToolkit().beep();
+           evt.consume();
+       }
+    }//GEN-LAST:event_jFacultyNametxtKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
