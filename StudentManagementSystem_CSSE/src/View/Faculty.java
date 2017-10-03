@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
+import Controller.Validation;
 /**
  *
  * @author Rishni
@@ -195,19 +196,24 @@ public class Faculty extends javax.swing.JFrame {
         String facultyname=jFacultynametxt.getText();
         String facultydean=jFacultydeantxt.getText();
         
-        FacultyModel facultymodel=new FacultyModel(facultyname,facultydean);
+        Boolean isempty=Validation.isEmpty(facultyname,facultydean);
+        if(isempty)
+        {
+            FacultyModel facultymodel=new FacultyModel(facultyname,facultydean);
         
-        try
-        {
-            int addFaculty=FacultyController.AddFaculty(facultymodel);
-            
-            ResultSet rs=FacultyController.loadFacultytable();
-            jFacultyTableAdd.setModel(DbUtils.resultSetToTableModel(rs));
+            try
+            {
+                int addFaculty=FacultyController.AddFaculty(facultymodel);
+
+                ResultSet rs=FacultyController.loadFacultytable();
+                jFacultyTableAdd.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
