@@ -12,12 +12,13 @@ import javax.swing.JOptionPane;
  * @author Rishni
  */
 public class Validation {
-    public Boolean isEmpty(String textfield)
+    public static Boolean isEmpty(String textfield1,String textfield2)
     {
-        String TextValue=textfield;
-        if(TextValue.isEmpty())
+        String TextValue1=textfield1;
+        String Textvalue2=textfield2;
+        if(TextValue1.isEmpty()||Textvalue2.isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Enter Faculty Name");
+            JOptionPane.showMessageDialog(null, "Cant leave fields empty");
             return true;
         }
         else

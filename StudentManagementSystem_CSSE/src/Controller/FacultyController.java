@@ -36,13 +36,13 @@ public class FacultyController {
     {
         conn=DBConnect.connect();
         
-                String q="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
+        String q="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
 
-                Statement stm = conn.createStatement();
+        Statement stm = conn.createStatement();
 
-                int executeUpdate = stm.executeUpdate(q);
+        int executeUpdate = stm.executeUpdate(q);
 
-                return executeUpdate;
+        return executeUpdate;
       
     }
     public static ResultSet loadFacultytable() throws SQLException{
