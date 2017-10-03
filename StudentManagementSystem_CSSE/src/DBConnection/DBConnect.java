@@ -21,7 +21,7 @@ public class DBConnect {
         {
             Class.forName("com.mysql.jdbc.Driver");//driver
             
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12195356?","sql12195356","Ljn1tyi73K"); //getconnection to db (url,username,pwd)
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12197150?","sql12197150","UL3LGS1Lgn"); //getconnection to db (url,username,pwd)
         }
         catch (Exception e)
         {
