@@ -8,6 +8,9 @@ package View;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -134,8 +137,14 @@ public class Main extends javax.swing.JFrame {
     private void jFacultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacultyButtonActionPerformed
         // tm.start();
         this.dispose();
-        Faculty faculty = new Faculty();
-        faculty.setVisible(true);
+        Faculty faculty;
+        try {
+            faculty = new Faculty();
+            faculty.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jFacultyButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
