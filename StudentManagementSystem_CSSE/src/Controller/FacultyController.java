@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import Model.FacultyModel;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Rishni
@@ -54,6 +55,22 @@ public class FacultyController {
         rs=pst.executeQuery();
         
         return rs;
+    }
+    
+    public static void UpdateFaculty(FacultyModel faculty) throws SQLException
+    {
+        conn=DBConnect.connect();
+        
+        String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
+        pst=conn.prepareStatement(q);
+        pst.execute();
+        JOptionPane.showMessageDialog(null, "Updated successfully");
+//        Statement stm = conn.createStatement();
+//
+//        int executeUpdate = stm.execute(q);
+//
+//        return executeUpdate;
+      
     }
    
 }
