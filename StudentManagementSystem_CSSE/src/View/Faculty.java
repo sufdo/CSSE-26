@@ -293,7 +293,7 @@ public class Faculty extends javax.swing.JFrame {
         String facultydean=jFacultydeantxt.getText();
         
         Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-        if(isempty)
+        if(!isempty)
         {
             FacultyModel facultymodel=new FacultyModel(facultyname,facultydean);
         
@@ -322,9 +322,9 @@ public class Faculty extends javax.swing.JFrame {
         String facultyname=jUpdateFacultyNametxt.getText();
         String facultydean=jUpdateFacultyDeantxt.getText();
         
-        //Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-        //if(isempty)
-        //{
+        Boolean isempty=Validation.isEmpty(facultyname,facultydean);
+        if(!isempty)
+        {
             FacultyModel facultymodel=new FacultyModel(facultyid,facultyname,facultydean);
         
             try
@@ -338,7 +338,7 @@ public class Faculty extends javax.swing.JFrame {
             {
                 e.printStackTrace();
             }
-        //}
+        }
     }//GEN-LAST:event_jUpdateFacultyActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
