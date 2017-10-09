@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author codeParane
+ * @author sewmi
  */
 public class Model_Student {
     public String FName, LName , Nic, Course, Department;

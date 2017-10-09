@@ -9,7 +9,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author codeParane
+ * @author sewmi
  */
 public class Controller_Student {
      static Connection conn=null;
