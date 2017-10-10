@@ -31,7 +31,7 @@ public class Controller_Student {
     }
     public static void UpdateStudent(Model_Student Student) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="UPDATE Students SET fName = '',lName='', nic='', phone='',course='', department='';";
+        String query="UPDATE Students SET fName = '',lName='', nic='', phone='',course='', department='' where sid=" + "vari" + ";";
                // + Student.getFname() +"','"+ Student.getLname() + "','"+ Student.getNic() +"',"
                // + Student.getPhone() +",'"+ Student.getCourse() + "','"+ Student.getDepartment() +"');" ;       
         Statement stmt = dbConn.createStatement();
@@ -48,7 +48,7 @@ public class Controller_Student {
     
     static PreparedStatement preSt=null;
     static ResultSet resSet=null;
-    public static ResultSet loadFacultytable() throws SQLException{
+    public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
     
         String query="SELECT * FROM Faculty";
