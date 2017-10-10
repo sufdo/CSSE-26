@@ -46,16 +46,16 @@ public class Controller_Student {
         dbConn.close();
     }
     
-    static PreparedStatement pst=null;
-    static ResultSet rs=null;
+    static PreparedStatement preSt=null;
+    static ResultSet resSet=null;
     public static ResultSet loadFacultytable() throws SQLException{
         dbConn=DBConnect.connect();
     
         String query="SELECT * FROM Faculty";
-        pst=dbConn.prepareStatement(query);
-        rs=pst.executeQuery();
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery();
       
-        return rs;
+        return resSet;
     }
   
      
