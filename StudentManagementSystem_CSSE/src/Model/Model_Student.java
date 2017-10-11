@@ -5,8 +5,7 @@
  */
 package Model;
 
-/**
- *
+/*
  * @author sewmi
  */
 public class Model_Student {
@@ -14,12 +13,7 @@ public class Model_Student {
     public int Phone;
     
     public Model_Student(String fName,String lName ,String nic,String course,String department, int phone) {
-        FName = fName;
-        LName = lName;
-        Nic = nic;
-        Course = course;
-        Department = department;
-        Phone = phone;
+        FName = fName;LName = lName;Nic = nic;Course = course;Department = department;Phone = phone;
     };
       
     public void StoreFname(String fName){

@@ -1,15 +1,29 @@
 package View;
-/**
- *
+/*
  * @author sewmi
  */
+import Controller.Controller_Student;
+import DBConnection.DBConnect;
+import java.sql.Connection;
+import Model.Model_Student;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Student extends javax.swing.JFrame {
 
     /** Creates new form Student */
-    public Student() {
+    public Student() throws SQLException{
         initComponents();
+     
+        ResultSet resSet=Controller_Student.FillStuDataTable();
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet));      
     }
-
+ static Connection dbConn=null;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -20,10 +34,27 @@ public class Student extends javax.swing.JFrame {
         cmb_FilterType = new javax.swing.JComboBox();
         tf_Search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        dt_Search = new javax.swing.JTable();
         btn_Search = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        btn_Edit1 = new javax.swing.JButton();
+        tf_Ed_Search1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        tf_phone1 = new javax.swing.JTextField();
+        tf_nic1 = new javax.swing.JTextField();
+        tf_lName1 = new javax.swing.JTextField();
+        tf_fName1 = new javax.swing.JTextField();
+        tf_sid1 = new javax.swing.JTextField();
+        btn_Dt_Delete = new javax.swing.JButton();
+        tf_Dt_Department = new javax.swing.JTextField();
+        tf_Dt_Course = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,10 +71,40 @@ public class Student extends javax.swing.JFrame {
         cmb_course = new javax.swing.JComboBox();
         cmb_department = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
+        btn_Ad_Save = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        tf_Ed_Search = new javax.swing.JTextField();
+        btn_Edit = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        cmb_Ed_department = new javax.swing.JComboBox();
+        cmb_Ed_course = new javax.swing.JComboBox();
+        tf_Ed_phone = new javax.swing.JTextField();
+        tf_Ed_nic = new javax.swing.JTextField();
+        tf_Ed_lName = new javax.swing.JTextField();
+        tf_Ed_Name = new javax.swing.JTextField();
+        tf_Ed_Sid = new javax.swing.JTextField();
+        btn_Ed_Save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jTabbedPane6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane6FocusGained(evt);
+            }
+        });
+        jTabbedPane6.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTabbedPane6ComponentShown(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Filter By");
@@ -54,8 +115,8 @@ public class Student extends javax.swing.JFrame {
 
         tf_Search.setName("tf_FilterValues"); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dt_Search.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        dt_Search.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,7 +127,7 @@ public class Student extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(dt_Search);
 
         btn_Search.setText("Search");
         btn_Search.setName("btn_Search"); // NOI18N
@@ -89,7 +150,7 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(btn_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,33 +166,145 @@ public class Student extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Search))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Search", jPanel1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
+        jPanel4.setEnabled(false);
 
-        jTabbedPane6.addTab("Edit Details", jPanel3);
+        btn_Edit1.setText("Find");
+        btn_Edit1.setName("btn_Search"); // NOI18N
+        btn_Edit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Edit1ActionPerformed(evt);
+            }
+        });
+
+        tf_Ed_Search1.setName("tf_FilterValues"); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel18.setText("Student id");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel19.setText("Student Id");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel20.setText("First Name");
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel21.setText("Last Name");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel22.setText("NIC");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel23.setText("Phone");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel24.setText("Course");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel25.setText("Department");
+
+        tf_phone1.setEnabled(false);
+
+        tf_nic1.setEnabled(false);
+
+        tf_lName1.setEnabled(false);
+
+        tf_fName1.setEnabled(false);
+
+        tf_sid1.setEditable(false);
+
+        btn_Dt_Delete.setText("Delete");
+        btn_Dt_Delete.setName("btn_Search"); // NOI18N
+        btn_Dt_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Dt_DeleteActionPerformed(evt);
+            }
+        });
+
+        tf_Dt_Department.setEnabled(false);
+
+        tf_Dt_Course.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Edit1)
+                        .addGap(422, 422, 422))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Dt_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel24))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_sid1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(tf_fName1)
+                                    .addComponent(tf_lName1)
+                                    .addComponent(tf_nic1)
+                                    .addComponent(tf_phone1)
+                                    .addComponent(tf_Dt_Course)
+                                    .addComponent(tf_Dt_Department))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Edit1))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(tf_sid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_fName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_lName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_nic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_phone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(tf_Dt_Course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(tf_Dt_Department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_Dt_Delete)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Delete Details", jPanel4);
@@ -166,6 +339,14 @@ public class Student extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel11.setText("Department");
 
+        btn_Ad_Save.setText("Save");
+        btn_Ad_Save.setName("btn_Search"); // NOI18N
+        btn_Ad_Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Ad_SaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -174,25 +355,27 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmb_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tf_sid)
-                            .addComponent(tf_fName)
-                            .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(cmb_department, 0, 129, Short.MAX_VALUE))))
-                .addContainerGap(483, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btn_Ad_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel10))
+                            .addGap(32, 32, 32)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_sid)
+                                .addComponent(tf_fName)
+                                .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                .addComponent(cmb_department, 0, 129, Short.MAX_VALUE)))))
+                .addContainerGap(422, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,10 +410,138 @@ public class Student extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_Ad_Save)
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Add Details", jPanel2);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel4.setText("Student id");
+
+        tf_Ed_Search.setName("tf_FilterValues"); // NOI18N
+
+        btn_Edit.setText("Edit");
+        btn_Edit.setName("btn_Search"); // NOI18N
+        btn_Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel5.setText("Student Id");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel12.setText("First Name");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel13.setText("Last Name");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel14.setText("NIC");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel15.setText("Phone");
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel16.setText("Course");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel17.setText("Department");
+
+        cmb_Ed_department.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmb_Ed_course.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        tf_Ed_Sid.setEditable(false);
+
+        btn_Ed_Save.setText("Save");
+        btn_Ed_Save.setName("btn_Search"); // NOI18N
+        btn_Ed_Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Ed_SaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tf_Ed_Search)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_Edit))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel17)
+                                .addComponent(jLabel16))
+                            .addGap(32, 32, 32)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_Ed_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_Ed_Sid)
+                                .addComponent(tf_Ed_Name)
+                                .addComponent(tf_Ed_lName)
+                                .addComponent(tf_Ed_nic)
+                                .addComponent(tf_Ed_phone)
+                                .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(422, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Edit))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tf_Ed_Sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_Ed_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_Ed_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_Ed_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_Ed_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmb_Ed_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Ed_Save)
+                .addContainerGap(228, Short.MAX_VALUE))
+        );
+
+        jTabbedPane6.addTab("Edit Details", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,14 +549,15 @@ public class Student extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane6)
+                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane6))
+                .addComponent(jTabbedPane6)
+                .addContainerGap())
         );
 
         pack();
@@ -258,11 +570,48 @@ public class Student extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_SearchActionPerformed
+ static PreparedStatement preSt=null;
+    static ResultSet resSet=null;
+    
+    private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
+    dbConn=DBConnect.connect();
+    /*
+        String query="SELECT * FROM Students";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery();
+        dbConn.close();
+   
+*/
+    }//GEN-LAST:event_jTabbedPane6FocusGained
+
+    private void jTabbedPane6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane6ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane6ComponentShown
+
+    private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_EditActionPerformed
+
+    private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ed_SaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Ed_SaveActionPerformed
+
+    private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Ad_SaveActionPerformed
+
+    private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Edit1ActionPerformed
+
+    private void btn_Dt_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Dt_DeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Dt_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])throws SQLException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -289,21 +638,51 @@ public class Student extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try{
                 new Student().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+        
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Ad_Save;
+    private javax.swing.JButton btn_Dt_Delete;
+    private javax.swing.JButton btn_Ed_Save;
+    private javax.swing.JButton btn_Edit;
+    private javax.swing.JButton btn_Edit1;
     private javax.swing.JButton btn_Search;
+    private javax.swing.JComboBox cmb_Ed_course;
+    private javax.swing.JComboBox cmb_Ed_department;
     private javax.swing.JComboBox cmb_FilterType;
     private javax.swing.JComboBox cmb_course;
     private javax.swing.JComboBox cmb_department;
+    private javax.swing.JTable dt_Search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -314,13 +693,26 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField tf_Dt_Course;
+    private javax.swing.JTextField tf_Dt_Department;
+    private javax.swing.JTextField tf_Ed_Name;
+    private javax.swing.JTextField tf_Ed_Search;
+    private javax.swing.JTextField tf_Ed_Search1;
+    private javax.swing.JTextField tf_Ed_Sid;
+    private javax.swing.JTextField tf_Ed_lName;
+    private javax.swing.JTextField tf_Ed_nic;
+    private javax.swing.JTextField tf_Ed_phone;
     private javax.swing.JTextField tf_Search;
     private javax.swing.JTextField tf_fName;
+    private javax.swing.JTextField tf_fName1;
     private javax.swing.JTextField tf_lName;
+    private javax.swing.JTextField tf_lName1;
     private javax.swing.JTextField tf_nic;
+    private javax.swing.JTextField tf_nic1;
     private javax.swing.JTextField tf_phone;
+    private javax.swing.JTextField tf_phone1;
     private javax.swing.JTextField tf_sid;
+    private javax.swing.JTextField tf_sid1;
     // End of variables declaration//GEN-END:variables
 
 }

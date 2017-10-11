@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 import DBConnection.DBConnect;
 import java.sql.Connection;
@@ -51,7 +46,7 @@ public class Controller_Student {
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
     
-        String query="SELECT * FROM Faculty";
+        String query="SELECT * FROM Students";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
       
