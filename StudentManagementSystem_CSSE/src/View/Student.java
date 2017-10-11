@@ -40,21 +40,9 @@ public class Student extends javax.swing.JFrame {
         btn_Edit1 = new javax.swing.JButton();
         tf_Ed_Search1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        tf_phone1 = new javax.swing.JTextField();
-        tf_nic1 = new javax.swing.JTextField();
-        tf_lName1 = new javax.swing.JTextField();
-        tf_fName1 = new javax.swing.JTextField();
-        tf_sid1 = new javax.swing.JTextField();
         btn_Dt_Delete = new javax.swing.JButton();
-        tf_Dt_Department = new javax.swing.JTextField();
-        tf_Dt_Course = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dt_delete = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -150,7 +138,7 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(btn_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,37 +174,6 @@ public class Student extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel18.setText("Student id");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel19.setText("Student Id");
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel20.setText("First Name");
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel21.setText("Last Name");
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel22.setText("NIC");
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel23.setText("Phone");
-
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel24.setText("Course");
-
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel25.setText("Department");
-
-        tf_phone1.setEnabled(false);
-
-        tf_nic1.setEnabled(false);
-
-        tf_lName1.setEnabled(false);
-
-        tf_fName1.setEnabled(false);
-
-        tf_sid1.setEditable(false);
-
         btn_Dt_Delete.setText("Delete");
         btn_Dt_Delete.setName("btn_Search"); // NOI18N
         btn_Dt_Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -225,9 +182,19 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        tf_Dt_Department.setEnabled(false);
-
-        tf_Dt_Course.setEnabled(false);
+        dt_delete.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        dt_delete.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(dt_delete);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -239,32 +206,15 @@ public class Student extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                        .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Edit1)
                         .addGap(422, 422, 422))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_Dt_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel24))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_sid1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                    .addComponent(tf_fName1)
-                                    .addComponent(tf_lName1)
-                                    .addComponent(tf_nic1)
-                                    .addComponent(tf_phone1)
-                                    .addComponent(tf_Dt_Course)
-                                    .addComponent(tf_Dt_Department))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Dt_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,37 +224,11 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Edit1))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(tf_sid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_fName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_lName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_nic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_phone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(tf_Dt_Course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(tf_Dt_Department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Dt_Delete)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Delete Details", jPanel4);
@@ -375,7 +299,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(cmb_department, 0, 129, Short.MAX_VALUE)))))
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +422,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(tf_Ed_phone)
                                 .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,11 +525,21 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
 
     private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
-        // TODO add your handling code here:
+      try{
+        ResultSet resSet=Controller_Student.FillStuDt_del("1");
+        dt_delete.setModel(DbUtils.resultSetToTableModel(resSet)); 
+        } catch (SQLException ex) {
+                   
+                }
     }//GEN-LAST:event_btn_Edit1ActionPerformed
 
     private void btn_Dt_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Dt_DeleteActionPerformed
-        // TODO add your handling code here:
+        String Sid = tf_Ed_Search1.getText();
+        try{
+            Controller_Student.DeleteStudent(Sid);
+        } catch (SQLException ex) {
+                   
+        }
     }//GEN-LAST:event_btn_Dt_DeleteActionPerformed
 
     /**
@@ -641,7 +575,7 @@ public class Student extends javax.swing.JFrame {
                 try{
                 new Student().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
+                   
                 }
             }
         });
@@ -662,6 +596,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JComboBox cmb_course;
     private javax.swing.JComboBox cmb_department;
     private javax.swing.JTable dt_Search;
+    private javax.swing.JTable dt_delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -672,14 +607,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -692,9 +620,8 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTextField tf_Dt_Course;
-    private javax.swing.JTextField tf_Dt_Department;
     private javax.swing.JTextField tf_Ed_Name;
     private javax.swing.JTextField tf_Ed_Search;
     private javax.swing.JTextField tf_Ed_Search1;
@@ -704,15 +631,10 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Ed_phone;
     private javax.swing.JTextField tf_Search;
     private javax.swing.JTextField tf_fName;
-    private javax.swing.JTextField tf_fName1;
     private javax.swing.JTextField tf_lName;
-    private javax.swing.JTextField tf_lName1;
     private javax.swing.JTextField tf_nic;
-    private javax.swing.JTextField tf_nic1;
     private javax.swing.JTextField tf_phone;
-    private javax.swing.JTextField tf_phone1;
     private javax.swing.JTextField tf_sid;
-    private javax.swing.JTextField tf_sid1;
     // End of variables declaration//GEN-END:variables
 
 }

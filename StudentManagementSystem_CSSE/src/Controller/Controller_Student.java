@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.ResultSet;
 
 /*
  * @author sewmi
@@ -35,7 +34,7 @@ public class Controller_Student {
     }
     public static void DeleteStudent(String stuId) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="DELETE FROM Students WHERE id="+ stuId +";";
+        String query="DELETE FROM Students WHERE sid="+ stuId +";";
         Statement stmt = dbConn.createStatement();
         stmt.executeQuery(query);   
         dbConn.close();
@@ -47,6 +46,15 @@ public class Controller_Student {
         dbConn=DBConnect.connect();
     
         String query="SELECT * FROM Students";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery();
+      
+        return resSet;
+    }
+    public static ResultSet FillStuDt_del(String SId) throws SQLException{
+        dbConn=DBConnect.connect();
+    
+        String query="SELECT * FROM Students where sid="+ SId +";";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
       
