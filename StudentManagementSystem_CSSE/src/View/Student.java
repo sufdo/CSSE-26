@@ -2,14 +2,20 @@ package View;
 /*
  * @author sewmi
  */
-import Controller.Controller_Student;
-import DBConnection.DBConnect;
-import java.sql.Connection;
+//Model and Controller
 import Model.Model_Student;
+import Controller.Controller_Student;
+import Controller.FacultyController;
+import Controller.Validation;
+//Other Utilities 
+import DBConnection.DBConnect;
+import Model.FacultyModel;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import net.proteanit.sql.DbUtils;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 public class Student extends javax.swing.JFrame {
@@ -17,7 +23,7 @@ public class Student extends javax.swing.JFrame {
     /** Creates new form Student */
     public Student() throws SQLException{
         initComponents();
-     
+        //Load the Data Table in Main Form Search For Default
         ResultSet resSet=Controller_Student.FillStuDataTable();
         dt_Search.setModel(DbUtils.resultSetToTableModel(resSet));      
     }
@@ -96,7 +102,7 @@ public class Student extends javax.swing.JFrame {
         jLabel2.setText("Filter By");
 
         cmb_FilterType.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        cmb_FilterType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SId", "Name", "Nic", "Department", " " }));
+        cmb_FilterType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SId", "First Name", "Last Name", "Nic", "Phone", "Department", "Course" }));
         cmb_FilterType.setName("cmb_FilterType"); // NOI18N
 
         tf_Search.setName("tf_FilterValues"); // NOI18N
@@ -134,9 +140,9 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(cmb_FilterType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tf_Search)
                     .addComponent(btn_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,8 +157,8 @@ public class Student extends javax.swing.JFrame {
                         .addComponent(tf_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Search))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(395, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("Search", jPanel1);
@@ -484,17 +490,20 @@ public class Student extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Form Search 
     private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
         String filterType = (String)cmb_FilterType.getSelectedItem();
-        String filterValue = tf_Search.getText();
-        
-        
-        
+        String filterValue = tf_Search.getText();  
+        try{
+        ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
+        } catch (SQLException ex) {
+                   
+        }
     }//GEN-LAST:event_btn_SearchActionPerformed
- static PreparedStatement preSt=null;
+    static PreparedStatement preSt=null;
     static ResultSet resSet=null;
-    
+    //Load The Departments and Course to combo box in Add Form
     private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
     dbConn=DBConnect.connect();
     /*
@@ -503,7 +512,7 @@ public class Student extends javax.swing.JFrame {
         resSet=preSt.executeQuery();
         dbConn.close();
    
-*/
+    */
     }//GEN-LAST:event_jTabbedPane6FocusGained
 
     private void jTabbedPane6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane6ComponentShown
@@ -519,9 +528,28 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Ed_SaveActionPerformed
 
     private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
-        // TODO add your handling code here:
+        String fName = tf_fName.getText();
+        String lName = tf_lName.getText();
+        String Nic = tf_nic.getText();
+        int Phone =  Integer.parseInt(tf_phone.getText());
+        String course = cmb_course.getSelectedItem().toString();
+        String Department = cmb_department.getSelectedItem().toString();
+        
+        
+        if(!fName.isEmpty() && !lName.isEmpty() && !Nic.isEmpty() && !course.isEmpty() && Department.isEmpty())
+        {
+            Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
+            try
+            {
+                Controller_Student.AddStudent(Student);
+                JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
-
+//Form Edit - Button Edit - For Find the Details and Fill the 
     private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
        String Sid = tf_Ed_Search.getText();
         try{
