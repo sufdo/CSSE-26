@@ -10,9 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import net.proteanit.sql.DbUtils;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Student extends javax.swing.JFrame {
 
@@ -106,13 +104,13 @@ public class Student extends javax.swing.JFrame {
         dt_Search.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         dt_Search.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(dt_Search);
@@ -185,13 +183,13 @@ public class Student extends javax.swing.JFrame {
         dt_delete.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         dt_delete.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(dt_delete);
@@ -525,8 +523,9 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
 
     private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
-      try{
-        ResultSet resSet=Controller_Student.FillStuDt_del("1");
+       String Sid = tf_Ed_Search.getText();
+        try{
+        ResultSet resSet=Controller_Student.FillStuDt_del(Sid);
         dt_delete.setModel(DbUtils.resultSetToTableModel(resSet)); 
         } catch (SQLException ex) {
                    
