@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 
 public class Student extends javax.swing.JFrame {
-
+ static Connection dbConn=null;
     /** Creates new form Student */
     public Student(){
         initComponents();
@@ -28,7 +28,7 @@ public class Student extends javax.swing.JFrame {
                    
         }
     }
- static Connection dbConn=null;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,6 +93,11 @@ public class Student extends javax.swing.JFrame {
                 jTabbedPane6FocusGained(evt);
             }
         });
+        jTabbedPane6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane6MouseClicked(evt);
+            }
+        });
         jTabbedPane6.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jTabbedPane6ComponentShown(evt);
@@ -103,7 +108,7 @@ public class Student extends javax.swing.JFrame {
         jLabel2.setText("Filter By");
 
         cmb_FilterType.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        cmb_FilterType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SId", "First Name", "Last Name", "Nic", "Phone", "Department", "Course" }));
+        cmb_FilterType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "StudentID", "FirstName", "LastName", "Nic", "Phone", "Department", "Course" }));
         cmb_FilterType.setName("cmb_FilterType"); // NOI18N
 
         tf_Search.setName("tf_FilterValues"); // NOI18N
@@ -491,11 +496,14 @@ public class Student extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     //Form Search 
     private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
-        String filterType = (String)cmb_FilterType.getSelectedItem();
-        String filterValue = tf_Search.getText();  
+        String filterType = "";
+        filterType = (String)cmb_FilterType.getSelectedItem();
+        String filterValue = ""; 
+        filterValue = tf_Search.getText();  
+        
         try{
-        ResultSet resSet2=Controller_Student.FillStuDt_Ser(filterType,filterValue );
-        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet2)); 
+        ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
         } catch (SQLException ex) {
                    
         }
@@ -504,27 +512,12 @@ public class Student extends javax.swing.JFrame {
     static ResultSet resSet=null;
     //Load The Departments and Course to combo box in Add Form
     private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
-    dbConn=DBConnect.connect();
-    cmb_course_add.removeAllItems();
-   // cmb_course_add.addItem("asd");
-    
-    
-    try{
-        String query="SELECT fname FROM students ";//need to write the sql query
-        preSt=dbConn.prepareStatement(query);
-        resSet=preSt.executeQuery(query);
-        //dbConn.close();
-        
-         while (resSet.next()) {
-            String pat = resSet.getString("fname");
-            cmb_course_add.addItem(pat);
-        }
-   
-    }catch(Exception e){}
+
     }//GEN-LAST:event_jTabbedPane6FocusGained
 
     private void jTabbedPane6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane6ComponentShown
         // TODO add your handling code here:
+         
     }//GEN-LAST:event_jTabbedPane6ComponentShown
 
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
@@ -559,10 +552,10 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
 //Form Edit - Button Edit - For Find the Details and Fill the 
     private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
-       String Sid = tf_Ed_Search.getText();
+       String Sid = tf_Ed_Search1.getText();
         try{
-        ResultSet resSet3=Controller_Student.FillStuDt_del(Sid);
-        dt_delete.setModel(DbUtils.resultSetToTableModel(resSet3)); 
+            ResultSet resSet3=Controller_Student.FillStuDt_del(Sid);
+            dt_delete.setModel(DbUtils.resultSetToTableModel(resSet3)); 
         } catch (SQLException ex) {
                    
                 }
@@ -570,12 +563,32 @@ public class Student extends javax.swing.JFrame {
 
     private void btn_Dt_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Dt_DeleteActionPerformed
         String Sid = tf_Ed_Search1.getText();
-        try{
+         JOptionPane.showMessageDialog(null, " Sid"+ Sid+"Student Details Deleted Successfully.");
+       try{
             Controller_Student.DeleteStudent(Sid);
+            ResultSet resSet7=Controller_Student.FillStuDt_del(Sid);
+            dt_delete.setModel(DbUtils.resultSetToTableModel(resSet7)); 
+            JOptionPane.showMessageDialog(null, "Student Details Deleted Successfully.");
         } catch (SQLException ex) {
                    
         }
     }//GEN-LAST:event_btn_Dt_DeleteActionPerformed
+
+    private void jTabbedPane6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane6MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
+        dbConn=DBConnect.connect();
+        cmb_course_add.removeAllItems();
+        try{
+           String query="SELECT fname FROM students ";//need to write the sql query
+            preSt=dbConn.prepareStatement(query);
+            resSet=preSt.executeQuery(query);
+            while (resSet.next()) {
+                String pat = resSet.getString("fname");
+                cmb_course_add.addItem(pat);
+            }
+       }catch(Exception e){}
+    }//GEN-LAST:event_jTabbedPane6MouseClicked
 
     /**
      * @param args the command line arguments

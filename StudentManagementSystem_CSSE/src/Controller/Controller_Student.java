@@ -30,7 +30,7 @@ public class Controller_Student {
                 "', nic='"+ Student.getNic() +"', phone='" + Student.getPhone() + "',course='"+ Student.getCourse() +
                 "', department='" + Student.getDepartment() + "' where sid=" + sid + ";";      
         Statement stmt = dbConn.createStatement();
-        stmt.executeQuery(query);   
+        stmt.executeUpdate(query);   
         dbConn.close();
     }
     //delete function
@@ -38,8 +38,7 @@ public class Controller_Student {
         dbConn=DBConnect.connect();     
         String query="DELETE FROM Students WHERE sid="+ stuId +";";
         Statement stmt = dbConn.createStatement();
-        stmt.executeQuery(query);   
-        dbConn.close();
+        stmt.executeUpdate(query); 
     }
     
     static PreparedStatement preSt=null;
@@ -47,7 +46,7 @@ public class Controller_Student {
     //fill the Default data table 
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
-        String query="SELECT fname as 'First Name' FROM Students";
+        String query="SELECT lname as 'First Name' FROM Students";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         return resSet;
@@ -63,38 +62,33 @@ public class Controller_Student {
     //for search the results according to the types and values
     public static ResultSet FillStuDt_Ser(String typ, String valu) throws SQLException{
         dbConn=DBConnect.connect(); 
-        if(typ=="SId"){
+        if(typ=="StudentID"){
             String query="SELECT * FROM Students where sid="+ valu +";";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
-        }else if(typ=="First Name"){
-            String query="SELECT * FROM Students where fName like "+ valu +";";
+        }else if(typ=="FirstName"){
+            String query="SELECT * FROM Students where fName like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
-        }else if(typ=="Last Name"){
-            String query="SELECT * FROM Students where lName like "+ valu +";";
+        }else if(typ=="LastName"){
+            String query="SELECT * FROM Students where lName like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
         }else if(typ=="Nic"){
-            String query="SELECT * FROM Students where nic = "+ valu +";";
+            String query="SELECT * FROM Students where nic like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
         }else if(typ=="Phone"){
             String query="SELECT * FROM Students where phone = "+ valu +";";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
         }else if(typ=="Department"){
-            String query="SELECT * FROM Students where department like "+ valu +";";
+            String query="SELECT * FROM Students where department like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
             dbConn.close();
         }else if(typ=="Course"){
-            String query="SELECT * FROM Students where course like "+ valu +";";
+            String query="SELECT * FROM Students where course like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
             dbConn.close();
