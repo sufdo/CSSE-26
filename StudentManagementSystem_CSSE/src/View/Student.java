@@ -20,13 +20,13 @@ public class Student extends javax.swing.JFrame {
     /** Creates new form Student */
     public Student(){
         initComponents();
-      /*  try{
+        try{
         //Load the Data Table in Main Form Search For Default
         ResultSet resSet1=Controller_Student.FillStuDataTable();
         dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         } catch (SQLException ex) {
                    
-        }*/
+        }
     }
  static Connection dbConn=null;
     @SuppressWarnings("unchecked")
@@ -512,13 +512,13 @@ public class Student extends javax.swing.JFrame {
     
     
     try{
-        String query="SELECT course FROM ";//need to write the sql query
+        String query="SELECT fname FROM students ";//need to write the sql query
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
-        dbConn.close();
+        //dbConn.close();
         
          while (resSet.next()) {
-            String pat = resSet.getString("name");
+            String pat = resSet.getString("fname");
             cmb_course_add.addItem(pat);
         }
    
