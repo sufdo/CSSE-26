@@ -508,7 +508,7 @@ public class Student extends javax.swing.JFrame {
     private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
     dbConn=DBConnect.connect();
     cmb_course_add.removeAllItems();
-    cmb_course_add.addItem("asd");
+   // cmb_course_add.addItem("asd");
     
     
     try{
@@ -516,6 +516,11 @@ public class Student extends javax.swing.JFrame {
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
         dbConn.close();
+        
+         while (resSet.next()) {
+            String pat = resSet.getString("name");
+            cmb_course_add.addItem(pat);
+        }
    
     }catch(Exception e){}
     }//GEN-LAST:event_jTabbedPane6FocusGained
