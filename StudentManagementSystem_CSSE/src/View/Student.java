@@ -5,11 +5,8 @@ package View;
 //Model and Controller
 import Model.Model_Student;
 import Controller.Controller_Student;
-import Controller.FacultyController;
-import Controller.Validation;
 //Other Utilities 
 import DBConnection.DBConnect;
-import Model.FacultyModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,11 +18,15 @@ import javax.swing.JOptionPane;
 public class Student extends javax.swing.JFrame {
 
     /** Creates new form Student */
-    public Student() throws SQLException{
+    public Student(){
         initComponents();
+      /*  try{
         //Load the Data Table in Main Form Search For Default
-        ResultSet resSet=Controller_Student.FillStuDataTable();
-        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet));      
+        ResultSet resSet1=Controller_Student.FillStuDataTable();
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        } catch (SQLException ex) {
+                   
+        }*/
     }
  static Connection dbConn=null;
     @SuppressWarnings("unchecked")
@@ -60,7 +61,7 @@ public class Student extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cmb_course = new javax.swing.JComboBox();
+        cmb_course_add = new javax.swing.JComboBox();
         cmb_department = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         btn_Ad_Save = new javax.swing.JButton();
@@ -260,7 +261,7 @@ public class Student extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel10.setText("Course");
 
-        cmb_course.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_course_add.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmb_department.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -296,7 +297,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(jLabel10))
                             .addGap(32, 32, 32)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmb_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmb_course_add, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tf_sid)
                                 .addComponent(tf_fName)
                                 .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
@@ -332,7 +333,7 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_course_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -495,8 +496,8 @@ public class Student extends javax.swing.JFrame {
         String filterType = (String)cmb_FilterType.getSelectedItem();
         String filterValue = tf_Search.getText();  
         try{
-        ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
-        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
+        ResultSet resSet2=Controller_Student.FillStuDt_Ser(filterType,filterValue );
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet2)); 
         } catch (SQLException ex) {
                    
         }
@@ -506,13 +507,17 @@ public class Student extends javax.swing.JFrame {
     //Load The Departments and Course to combo box in Add Form
     private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
     dbConn=DBConnect.connect();
-    /*
-        String query="SELECT * FROM Students";
+    cmb_course_add.removeAllItems();
+    cmb_course_add.addItem("asd");
+    
+    
+    try{
+        String query="SELECT course FROM ";//need to write the sql query
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
         dbConn.close();
    
-    */
+    }catch(Exception e){}
     }//GEN-LAST:event_jTabbedPane6FocusGained
 
     private void jTabbedPane6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane6ComponentShown
@@ -532,7 +537,7 @@ public class Student extends javax.swing.JFrame {
         String lName = tf_lName.getText();
         String Nic = tf_nic.getText();
         int Phone =  Integer.parseInt(tf_phone.getText());
-        String course = cmb_course.getSelectedItem().toString();
+        String course = cmb_course_add.getSelectedItem().toString();
         String Department = cmb_department.getSelectedItem().toString();
         
         
@@ -553,8 +558,8 @@ public class Student extends javax.swing.JFrame {
     private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
        String Sid = tf_Ed_Search.getText();
         try{
-        ResultSet resSet=Controller_Student.FillStuDt_del(Sid);
-        dt_delete.setModel(DbUtils.resultSetToTableModel(resSet)); 
+        ResultSet resSet3=Controller_Student.FillStuDt_del(Sid);
+        dt_delete.setModel(DbUtils.resultSetToTableModel(resSet3)); 
         } catch (SQLException ex) {
                    
                 }
@@ -599,11 +604,11 @@ public class Student extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+              //  try{
                 new Student().setVisible(true);
-                } catch (SQLException ex) {
+              //  } catch (SQLException ex) {
                    
-                }
+               // }
             }
         });
         
@@ -620,7 +625,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JComboBox cmb_Ed_course;
     private javax.swing.JComboBox cmb_Ed_department;
     private javax.swing.JComboBox cmb_FilterType;
-    private javax.swing.JComboBox cmb_course;
+    private javax.swing.JComboBox cmb_course_add;
     private javax.swing.JComboBox cmb_department;
     private javax.swing.JTable dt_Search;
     private javax.swing.JTable dt_delete;
