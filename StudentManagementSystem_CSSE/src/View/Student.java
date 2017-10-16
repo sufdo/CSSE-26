@@ -261,8 +261,6 @@ public class Student extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel10.setText("Course");
 
-        cmb_course_add.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         cmb_department.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -514,7 +512,7 @@ public class Student extends javax.swing.JFrame {
     try{
         String query="SELECT fname FROM students ";//need to write the sql query
         preSt=dbConn.prepareStatement(query);
-        resSet=preSt.executeQuery();
+        resSet=preSt.executeQuery(query);
         //dbConn.close();
         
          while (resSet.next()) {

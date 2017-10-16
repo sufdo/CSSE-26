@@ -47,7 +47,7 @@ public class Controller_Student {
     //fill the Default data table 
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
-        String query="SELECT * FROM Students";
+        String query="SELECT fname as 'First Name' FROM Students";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         return resSet;
