@@ -20,13 +20,14 @@ public class Student extends javax.swing.JFrame {
     /** Creates new form Student */
     public Student(){
         initComponents();
+        /*
         try{
         //Load the Data Table in Main Form Search For Default
         ResultSet resSet1=Controller_Student.FillStuDataTable();
         dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         } catch (SQLException ex) {
                    
-        }
+        }*/
     }
 
     @SuppressWarnings("unchecked")
