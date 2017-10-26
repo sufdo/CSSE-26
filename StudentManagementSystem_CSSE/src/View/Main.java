@@ -15,17 +15,13 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Rishni
+ * @author Rishni, Sewmi
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form mAIN
-     */
-//    private Timer tm,tm2;
-//    private ActionListener al,al2;
     public Main() {
         initComponents();
+   
         
 //        jFacultyButton.setBackground(new Color(0, 0, 0, 0));
 //        jFacultyButton.setOpaque(false);
@@ -72,15 +68,19 @@ public class Main extends javax.swing.JFrame {
         jFacultyButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCourseButton = new javax.swing.JButton();
+        btn_ViewFaculty = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btn_MainStudent = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jCourseButton1 = new javax.swing.JButton();
+        btn_ViewProfile1 = new javax.swing.JButton();
+        btn_ViewFaculty1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jFacultyButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jFacultyButton.setText("Faculty");
         jFacultyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,11 +97,12 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Student Management System Home Panels");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 80, 460, 30);
+        jLabel2.setBounds(20, 60, 460, 30);
 
-        jCourseButton.setText("Course");
-        getContentPane().add(jCourseButton);
-        jCourseButton.setBounds(20, 130, 280, 80);
+        btn_ViewFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_ViewFaculty.setText("View Courses");
+        getContentPane().add(btn_ViewFaculty);
+        btn_ViewFaculty.setBounds(380, 290, 280, 80);
 
         jButton1.setText("Logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +115,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 330, 80);
 
+        btn_MainStudent.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btn_MainStudent.setText("Student Details (Add/ Delete/ Update/ Search)");
         btn_MainStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +125,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(btn_MainStudent);
         btn_MainStudent.setBounds(20, 290, 280, 80);
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButton3.setText("Exam");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +134,21 @@ public class Main extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(20, 210, 280, 80);
+
+        jCourseButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jCourseButton1.setText("Course");
+        getContentPane().add(jCourseButton1);
+        jCourseButton1.setBounds(20, 130, 280, 80);
+
+        btn_ViewProfile1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_ViewProfile1.setText("View My Profile");
+        getContentPane().add(btn_ViewProfile1);
+        btn_ViewProfile1.setBounds(380, 130, 280, 80);
+
+        btn_ViewFaculty1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_ViewFaculty1.setText("View Faculty");
+        getContentPane().add(btn_ViewFaculty1);
+        btn_ViewFaculty1.setBounds(380, 210, 280, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,13 +167,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jFacultyButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        Login logOut = new Login();
+        logOut.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    
     private void btn_MainStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MainStudentActionPerformed
         this.dispose();
         Student stu;
@@ -198,12 +220,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_MainStudent;
+    public javax.swing.JButton btn_MainStudent;
+    private javax.swing.JButton btn_ViewFaculty;
+    private javax.swing.JButton btn_ViewFaculty1;
+    private javax.swing.JButton btn_ViewProfile1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jCourseButton;
+    private javax.swing.JButton jCourseButton1;
     private javax.swing.JButton jFacultyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -34,7 +34,7 @@ public class Student extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane6 = new javax.swing.JTabbedPane();
+        tp_StudentAdd = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cmb_FilterType = new javax.swing.JComboBox();
@@ -49,7 +49,7 @@ public class Student extends javax.swing.JFrame {
         btn_Dt_Delete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         dt_delete = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        pn_Add = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_sid = new javax.swing.JTextField();
@@ -88,20 +88,20 @@ public class Student extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTabbedPane6.addFocusListener(new java.awt.event.FocusAdapter() {
+        tp_StudentAdd.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        tp_StudentAdd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTabbedPane6FocusGained(evt);
+                tp_StudentAddFocusGained(evt);
             }
         });
-        jTabbedPane6.addMouseListener(new java.awt.event.MouseAdapter() {
+        tp_StudentAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane6MouseClicked(evt);
+                tp_StudentAddMouseClicked(evt);
             }
         });
-        jTabbedPane6.addComponentListener(new java.awt.event.ComponentAdapter() {
+        tp_StudentAdd.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTabbedPane6ComponentShown(evt);
+                tp_StudentAddComponentShown(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap(180, Short.MAX_VALUE))
         );
 
-        jTabbedPane6.addTab("Search", jPanel1);
+        tp_StudentAdd.addTab("Search", jPanel1);
 
         jPanel4.setEnabled(false);
 
@@ -242,7 +242,18 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap(317, Short.MAX_VALUE))
         );
 
-        jTabbedPane6.addTab("Delete Details", jPanel4);
+        tp_StudentAdd.addTab("Delete Details", jPanel4);
+
+        pn_Add.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pn_AddFocusGained(evt);
+            }
+        });
+        pn_Add.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pn_AddComponentShown(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setText("Fill The Details");
@@ -280,18 +291,18 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_AddLayout = new javax.swing.GroupLayout(pn_Add);
+        pn_Add.setLayout(pn_AddLayout);
+        pn_AddLayout.setHorizontalGroup(
+            pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_AddLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btn_Ad_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_AddLayout.createSequentialGroup()
+                            .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel7)
@@ -300,7 +311,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addComponent(jLabel10))
                             .addGap(32, 32, 32)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmb_course_add, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tf_sid)
                                 .addComponent(tf_fName)
@@ -310,37 +321,37 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(cmb_department, 0, 129, Short.MAX_VALUE)))))
                 .addContainerGap(468, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pn_AddLayout.setVerticalGroup(
+            pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_AddLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tf_sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_course_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
@@ -348,7 +359,7 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap(260, Short.MAX_VALUE))
         );
 
-        jTabbedPane6.addTab("Add Details", jPanel2);
+        tp_StudentAdd.addTab("Add Details", pn_Add);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Student id");
@@ -474,7 +485,7 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap(228, Short.MAX_VALUE))
         );
 
-        jTabbedPane6.addTab("Edit Details", jPanel3);
+        tp_StudentAdd.addTab("Edit Details", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -482,14 +493,14 @@ public class Student extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane6)
+                .addComponent(tp_StudentAdd)
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane6)
+                .addComponent(tp_StudentAdd)
                 .addContainerGap())
         );
 
@@ -512,14 +523,14 @@ public class Student extends javax.swing.JFrame {
     static PreparedStatement preSt=null;
     static ResultSet resSet=null;
     //Load The Departments and Course to combo box in Add Form
-    private void jTabbedPane6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane6FocusGained
+    private void tp_StudentAddFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tp_StudentAddFocusGained
 
-    }//GEN-LAST:event_jTabbedPane6FocusGained
+    }//GEN-LAST:event_tp_StudentAddFocusGained
 
-    private void jTabbedPane6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane6ComponentShown
+    private void tp_StudentAddComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tp_StudentAddComponentShown
         // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jTabbedPane6ComponentShown
+     //    JOptionPane.showMessageDialog(null, "Stude.");
+    }//GEN-LAST:event_tp_StudentAddComponentShown
 
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
         // TODO add your handling code here:
@@ -575,7 +586,7 @@ public class Student extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_Dt_DeleteActionPerformed
 
-    private void jTabbedPane6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane6MouseClicked
+    private void tp_StudentAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tp_StudentAddMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
         dbConn=DBConnect.connect();
@@ -589,7 +600,15 @@ public class Student extends javax.swing.JFrame {
                 cmb_course_add.addItem(pat);
             }
        }catch(Exception e){}
-    }//GEN-LAST:event_jTabbedPane6MouseClicked
+    }//GEN-LAST:event_tp_StudentAddMouseClicked
+
+    private void pn_AddFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pn_AddFocusGained
+JOptionPane.showMessageDialog(null, "Student===Added Successfully.");        // TODO add your handling code here:
+    }//GEN-LAST:event_pn_AddFocusGained
+
+    private void pn_AddComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pn_AddComponentShown
+      JOptionPane.showMessageDialog(null, "Studdsfsdnt===Added Successfully.");   // TODO add your handling code here:
+    }//GEN-LAST:event_pn_AddComponentShown
 
     /**
      * @param args the command line arguments
@@ -665,12 +684,11 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JPanel pn_Add;
     private javax.swing.JTextField tf_Ed_Name;
     private javax.swing.JTextField tf_Ed_Search;
     private javax.swing.JTextField tf_Ed_Search1;
@@ -684,6 +702,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nic;
     private javax.swing.JTextField tf_phone;
     private javax.swing.JTextField tf_sid;
+    private javax.swing.JTabbedPane tp_StudentAdd;
     // End of variables declaration//GEN-END:variables
 
 }

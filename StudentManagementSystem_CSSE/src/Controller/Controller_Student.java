@@ -62,7 +62,7 @@ public class Controller_Student {
     //for search the results according to the types and values
     public static ResultSet FillStuDt_Ser(String typ, String valu) throws SQLException{
         dbConn=DBConnect.connect(); 
-        if(typ=="StudentID"){
+        if(typ.equals("StudentID")){
             String query="SELECT * FROM Students where sid="+ valu +";";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
