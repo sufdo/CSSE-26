@@ -65,30 +65,31 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFacultyButton = new javax.swing.JButton();
+        btn_AdminFaculty = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btn_ViewFaculty = new javax.swing.JButton();
+        btn_StudentsExams = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btn_MainStudent = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jCourseButton1 = new javax.swing.JButton();
-        btn_ViewProfile = new javax.swing.JButton();
-        btn_ViewFaculty1 = new javax.swing.JButton();
+        btn_AdminStudents = new javax.swing.JButton();
+        btn_AdminExam = new javax.swing.JButton();
+        btn_AdminCourse = new javax.swing.JButton();
+        btn_StudentsViewProfile = new javax.swing.JButton();
+        btn_StudentsFaculty = new javax.swing.JButton();
+        btn_StudentsCouerse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jFacultyButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jFacultyButton.setText("Faculty");
-        jFacultyButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_AdminFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_AdminFaculty.setText("Faculty");
+        btn_AdminFaculty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFacultyButtonActionPerformed(evt);
+                btn_AdminFacultyActionPerformed(evt);
             }
         });
-        getContentPane().add(jFacultyButton);
-        jFacultyButton.setBounds(20, 370, 280, 80);
+        getContentPane().add(btn_AdminFaculty);
+        btn_AdminFaculty.setBounds(20, 370, 280, 80);
 
         jLabel1.setText("pic");
         getContentPane().add(jLabel1);
@@ -99,10 +100,10 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 460, 30);
 
-        btn_ViewFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_ViewFaculty.setText("View Courses");
-        getContentPane().add(btn_ViewFaculty);
-        btn_ViewFaculty.setBounds(380, 290, 280, 80);
+        btn_StudentsExams.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_StudentsExams.setText("View Exams");
+        getContentPane().add(btn_StudentsExams);
+        btn_StudentsExams.setBounds(380, 370, 280, 80);
 
         jButton1.setText("Logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,49 +112,54 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(620, 510, 65, 23);
+        jButton1.setBounds(20, 460, 110, 23);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 330, 80);
 
-        btn_MainStudent.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_MainStudent.setText("Student Details (Add/ Delete/ Update/ Search)");
-        btn_MainStudent.addActionListener(new java.awt.event.ActionListener() {
+        btn_AdminStudents.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_AdminStudents.setText("Student Details (Add/ Delete/ Update/ Search)");
+        btn_AdminStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MainStudentActionPerformed(evt);
+                btn_AdminStudentsActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_MainStudent);
-        btn_MainStudent.setBounds(20, 290, 280, 80);
+        getContentPane().add(btn_AdminStudents);
+        btn_AdminStudents.setBounds(20, 290, 280, 80);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jButton3.setText("Exam");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_AdminExam.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_AdminExam.setText("Exam");
+        btn_AdminExam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_AdminExamActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(20, 210, 280, 80);
+        getContentPane().add(btn_AdminExam);
+        btn_AdminExam.setBounds(20, 210, 280, 80);
 
-        jCourseButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jCourseButton1.setText("Course");
-        getContentPane().add(jCourseButton1);
-        jCourseButton1.setBounds(20, 130, 280, 80);
+        btn_AdminCourse.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_AdminCourse.setText("Course");
+        getContentPane().add(btn_AdminCourse);
+        btn_AdminCourse.setBounds(20, 130, 280, 80);
 
-        btn_ViewProfile.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_ViewProfile.setText("View My Profile");
-        getContentPane().add(btn_ViewProfile);
-        btn_ViewProfile.setBounds(380, 130, 280, 80);
+        btn_StudentsViewProfile.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_StudentsViewProfile.setText("View My Profile");
+        getContentPane().add(btn_StudentsViewProfile);
+        btn_StudentsViewProfile.setBounds(380, 130, 280, 80);
 
-        btn_ViewFaculty1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_ViewFaculty1.setText("View Faculty");
-        getContentPane().add(btn_ViewFaculty1);
-        btn_ViewFaculty1.setBounds(380, 210, 280, 80);
+        btn_StudentsFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_StudentsFaculty.setText("View Faculty");
+        getContentPane().add(btn_StudentsFaculty);
+        btn_StudentsFaculty.setBounds(380, 210, 280, 80);
+
+        btn_StudentsCouerse.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_StudentsCouerse.setText("View Courses");
+        getContentPane().add(btn_StudentsCouerse);
+        btn_StudentsCouerse.setBounds(380, 290, 280, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFacultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacultyButtonActionPerformed
+    private void btn_AdminFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminFacultyActionPerformed
         // tm.start();
         this.dispose();
         Faculty faculty;
@@ -164,7 +170,7 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jFacultyButtonActionPerformed
+    }//GEN-LAST:event_btn_AdminFacultyActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -172,18 +178,18 @@ public class Main extends javax.swing.JFrame {
         logOut.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_AdminExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminExamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_AdminExamActionPerformed
 
     
     
-    private void btn_MainStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MainStudentActionPerformed
+    private void btn_AdminStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminStudentsActionPerformed
         this.dispose();
         Student stu;
         stu = new Student();
         stu.setVisible(true);
-    }//GEN-LAST:event_btn_MainStudentActionPerformed
+    }//GEN-LAST:event_btn_AdminStudentsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,14 +229,15 @@ public class Main extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_MainStudent;
-    private javax.swing.JButton btn_ViewFaculty;
-    private javax.swing.JButton btn_ViewFaculty1;
-    public javax.swing.JButton btn_ViewProfile;
+    public javax.swing.JButton btn_AdminCourse;
+    public javax.swing.JButton btn_AdminExam;
+    public javax.swing.JButton btn_AdminFaculty;
+    public javax.swing.JButton btn_AdminStudents;
+    public javax.swing.JButton btn_StudentsCouerse;
+    public javax.swing.JButton btn_StudentsExams;
+    public javax.swing.JButton btn_StudentsFaculty;
+    public javax.swing.JButton btn_StudentsViewProfile;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jCourseButton1;
-    private javax.swing.JButton jFacultyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -109,6 +109,10 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     Main adminMain = new Main();
                     adminMain.setVisible(true);
+                    adminMain.btn_StudentsViewProfile.setEnabled(false);
+                    adminMain.btn_StudentsCouerse.setEnabled(false);
+                    adminMain.btn_StudentsExams.setEnabled(false);
+                    adminMain.btn_StudentsFaculty.setEnabled(false);
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong UserName or Password!");  
                 }
@@ -122,8 +126,10 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     Main stuMain = new Main();
                     stuMain.setVisible(true);
-                    stuMain.btn_MainStudent.setEnabled(false);
-                    stuMain.btn_ViewProfile.setEnabled(false);
+                    stuMain.btn_AdminStudents.setEnabled(false);
+                    stuMain.btn_AdminCourse.setEnabled(false);
+                    stuMain.btn_AdminExam.setEnabled(false);
+                    stuMain.btn_AdminFaculty.setEnabled(false);
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  
                 }

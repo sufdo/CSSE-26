@@ -5,7 +5,7 @@
  */
 package studentmanagementsystem_csse;
 
-import View.Main;
+import View.Login;
 
 /**
  *
@@ -17,7 +17,7 @@ public class StudentManagementSystem_CSSE {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Main m=new Main();
+        Login m=new Login();
         m.setVisible(true);
     }
     

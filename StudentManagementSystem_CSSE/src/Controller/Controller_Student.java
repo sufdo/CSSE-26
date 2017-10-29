@@ -20,13 +20,13 @@ public class Controller_Student {
                 + Student.getFname() +"','"+ Student.getLname() +"','"+ Student.getNic() +"',"
                 + Student.getPhone() +",'"+ Student.getCourse() +"','"+ Student.getDepartment() +"');" ;       
         Statement stmt = dbConn.createStatement();
-        stmt.executeQuery(query);   
-        dbConn.close();
+        stmt.executeUpdate(query);   
+        //dbConn.close();
     }
     //check the duplicate entry
     public static boolean hasDupEntry(String nic) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT * FROM Students where nic like '"+ nic +"'";
+        String query="SELECT * FROM Students where nic like '"+ nic +"';";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         String nicData="";
@@ -62,20 +62,12 @@ public class Controller_Student {
     //fill the Default data table 
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
-        String query="SELECT lname as 'First Name' FROM Students";
+        String query="SELECT *  FROM Students";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         return resSet;
     }
-    //fill the Delete form data table according to the student id
-//    public static ResultSet FillStuDt_del(String SId) throws SQLException{
-//        dbConn=DBConnect.connect();
-//        String query="SELECT * FROM Students where sid="+ SId +";";
-//        preSt=dbConn.prepareStatement(query);
-//        resSet=preSt.executeQuery();
-//        return resSet;
-//    }
-    //for search the results according to the types and values
+//fill the data table
     public static ResultSet FillStuDt_Ser(String typ, String valu) throws SQLException{
         dbConn=DBConnect.connect(); 
         if(typ.equals("StudentID")){
@@ -83,11 +75,11 @@ public class Controller_Student {
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="FirstName"){
-            String query="SELECT * FROM Students where fName like '"+ valu +"';";
+            String query="SELECT * FROM Students where fName like '"+ valu +"%';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="LastName"){
-            String query="SELECT * FROM Students where lName like '"+ valu +"';";
+            String query="SELECT * FROM Students where lName like '"+ valu +"%';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="Nic"){
@@ -102,15 +94,23 @@ public class Controller_Student {
             String query="SELECT * FROM Students where department like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
         }else if(typ=="Course"){
             String query="SELECT * FROM Students where course like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
-            dbConn.close();
         }
         return resSet;
     }
-  
-     
+    //return the last student id
+    public static int retLastID() throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="select sid from students order by sid desc limit 1;";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery();      
+        int lastId=0;
+        while(resSet.next()){
+            lastId=Integer.parseInt(resSet.getString(1));
+        }
+        return lastId;
+    }
 }

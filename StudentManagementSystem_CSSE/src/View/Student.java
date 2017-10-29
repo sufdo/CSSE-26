@@ -16,14 +16,14 @@ public class Student extends javax.swing.JFrame {
     /** Creates new form Student */
     public Student(){
         initComponents();
-        /*
+        
         try{
         //Load the Data Table in Main Form Search For Default
         ResultSet resSet1=Controller_Student.FillStuDataTable();
         dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         } catch (SQLException ex) {
                    
-        }*/
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -47,8 +47,6 @@ public class Student extends javax.swing.JFrame {
         dt_delete = new javax.swing.JTable();
         pn_Add = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tf_sid = new javax.swing.JTextField();
         tf_fName = new javax.swing.JTextField();
         tf_lName = new javax.swing.JTextField();
         tf_nic = new javax.swing.JTextField();
@@ -62,7 +60,7 @@ public class Student extends javax.swing.JFrame {
         cmb_Add_department = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         btn_Ad_Save = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pn_Update = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         tf_Ed_Search = new javax.swing.JTextField();
         btn_Edit = new javax.swing.JButton();
@@ -236,11 +234,6 @@ public class Student extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setText("Fill The Details");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel3.setText("Student Id");
-
-        tf_sid.setEditable(false);
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Last Name");
 
@@ -281,7 +274,6 @@ public class Student extends javax.swing.JFrame {
                         .addComponent(btn_Ad_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(pn_AddLayout.createSequentialGroup()
                             .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel6)
@@ -291,7 +283,6 @@ public class Student extends javax.swing.JFrame {
                             .addGap(32, 32, 32)
                             .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmb_course_add, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_sid)
                                 .addComponent(tf_fName)
                                 .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
@@ -304,11 +295,7 @@ public class Student extends javax.swing.JFrame {
             .addGroup(pn_AddLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tf_sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(49, 49, 49)
                 .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -339,9 +326,9 @@ public class Student extends javax.swing.JFrame {
 
         tp_StudentAdd.addTab("Add Details", pn_Add);
 
-        jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
+        pn_Update.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel3ComponentShown(evt);
+                pn_UpdateComponentShown(evt);
             }
         });
 
@@ -407,22 +394,22 @@ public class Student extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(dt_Edit);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_UpdateLayout = new javax.swing.GroupLayout(pn_Update);
+        pn_Update.setLayout(pn_UpdateLayout);
+        pn_UpdateLayout.setHorizontalGroup(
+            pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_UpdateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pn_UpdateLayout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(tf_Ed_Search)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btn_Edit))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_UpdateLayout.createSequentialGroup()
+                            .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel15)
                                 .addComponent(jLabel14)
@@ -431,7 +418,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(jLabel17)
                                 .addComponent(jLabel16))
                             .addGap(32, 32, 32)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmb_Ed_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tf_Ed_Sid)
                                 .addComponent(tf_Ed_Name)
@@ -444,42 +431,42 @@ public class Student extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(445, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pn_UpdateLayout.setVerticalGroup(
+            pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_UpdateLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_Edit))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tf_Ed_Sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_Ed_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_Ed_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_Ed_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_Ed_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_Ed_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -487,7 +474,7 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap(228, Short.MAX_VALUE))
         );
 
-        tp_StudentAdd.addTab("Edit Details", jPanel3);
+        tp_StudentAdd.addTab("Edit Details", pn_Update);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -525,18 +512,19 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SearchActionPerformed
 //Update - edit button
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
-        String Sid = tf_del_Id.getText();
+        String Sid = tf_Ed_Search.getText();
         try{
-            ResultSet resSet3=Controller_Student.FillStuDt_Ser("StudentID",Sid);
-            dt_Edit.setModel(DbUtils.resultSetToTableModel(resSet3)); 
+            ResultSet resSet=Controller_Student.FillStuDt_Ser("StudentID",Sid );
+            dt_Edit.setModel(DbUtils.resultSetToTableModel(resSet)); 
+            
             //initilize value from data table
-            String id=dt_Edit.getValueAt(1, 0).toString();
-            String fName=dt_Edit.getValueAt(1, 1).toString();
-            String lName=dt_Edit.getValueAt(1, 2).toString();
-            String nic=dt_Edit.getValueAt(1, 3).toString();
-            String phone=dt_Edit.getValueAt(1, 4).toString();
-            String course=dt_Edit.getValueAt(1, 5).toString();
-            String department=dt_Edit.getValueAt(1, 6).toString();
+            String id=dt_Edit.getValueAt(0, 0).toString();
+            String fName=dt_Edit.getValueAt(0, 1).toString();
+            String lName=dt_Edit.getValueAt(0, 2).toString();
+            String nic=dt_Edit.getValueAt(0, 3).toString();
+            String phone=dt_Edit.getValueAt(0, 4).toString();
+            String course=dt_Edit.getValueAt(0, 5).toString();
+            String department=dt_Edit.getValueAt(0, 6).toString();
             //assighn the value to the form
             tf_Ed_Sid.setText(id);
             tf_Ed_Name.setText(fName);
@@ -549,46 +537,87 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EditActionPerformed
 //Update - save button
     private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ed_SaveActionPerformed
-        String sId = tf_Ed_Sid.getText();
-        String fName = tf_Ed_Name.getText();
-        String lName = tf_Ed_lName.getText();
-        String Nic = tf_Ed_nic.getText();
-        int Phone =  Integer.parseInt(tf_Ed_phone.getText());
-        String course = cmb_Ed_course.getSelectedItem().toString();
-        String Department = cmb_Ed_department.getSelectedItem().toString();
-        
-        if(!fName.isEmpty() && !lName.isEmpty() && !Nic.isEmpty() && !course.isEmpty() && Department.isEmpty())
+        boolean upd = true;
+        if(tf_Ed_Name.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_lName.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_nic.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_phone.getText().equals("")){
+            upd=false;
+        }
+          
+        if(upd==false){
+            JOptionPane.showMessageDialog(null, "Fill the All Details");
+        }else
         {
+            String sId = tf_Ed_Sid.getText();
+            String fName = tf_Ed_Name.getText();
+            String lName = tf_Ed_lName.getText();
+            String Nic = tf_Ed_nic.getText();
+            int Phone =  Integer.parseInt(tf_Ed_phone.getText());
+            String course = cmb_Ed_course.getSelectedItem().toString();
+            String Department = cmb_Ed_department.getSelectedItem().toString();
             try
             {
                 Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
                 Controller_Student.UpdateStudent(Student, sId);
                 JOptionPane.showMessageDialog(null, "Student Details Update Successfully.");
+                tf_Ed_Name.setText("");
+                tf_Ed_lName.setText("");
+                tf_Ed_nic.setText("");
+                tf_Ed_phone.setText("");
             }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
         }
     }//GEN-LAST:event_btn_Ed_SaveActionPerformed
 //Add - Save button
     private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
-        String fName = tf_fName.getText();
-        String lName = tf_lName.getText();
-        String Nic = tf_nic.getText();
-        int Phone =  Integer.parseInt(tf_phone.getText());
-        String course = cmb_course_add.getSelectedItem().toString();
-        String Department = cmb_Add_department.getSelectedItem().toString();
-        
-        if(!fName.isEmpty() && !lName.isEmpty() && !Nic.isEmpty() && !course.isEmpty() && Department.isEmpty())
-        {
+        boolean upd = true;
+        if(tf_fName.getText().equals("")){
+            upd=false;
+        }
+        if(tf_lName.getText().equals("")){
+            upd=false;
+        }
+        if(tf_nic.getText().equals("")){
+            upd=false;
+        }
+        if(tf_phone.getText().equals("")){
+            upd=false;
+        }
+            
+        if(upd==false){
+            JOptionPane.showMessageDialog(null, "Fill the All Details");
+        }else{
+           //JOptionPane.showMessageDialog(null, "work");
+           
+            String fName = tf_fName.getText();
+            String lName = tf_lName.getText();
+            String Nic = tf_nic.getText();
+            int Phone =  Integer.parseInt(tf_phone.getText());
+            String course = cmb_course_add.getSelectedItem().toString();
+            String Department = cmb_Add_department.getSelectedItem().toString();
+
             try
             {
             if(Controller_Student.hasDupEntry(Nic)==false){
                 Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
                 Controller_Student.AddStudent(Student);
-                JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
+                int SaveID = Controller_Student.retLastID();
+                JOptionPane.showMessageDialog(null, "Student Details Added Successfully. \n Student ID : '"+ SaveID +"'");
+                tf_fName.setText("");
+                tf_lName.setText("");
+                tf_nic.setText("");
+                tf_phone.setText("");
             }
             else{
                JOptionPane.showMessageDialog(null, "Already Added Entry Check Again!");
             }
-            }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+            }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR1 : " + exc);}
         }
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
 //DELETE - find button
@@ -633,27 +662,27 @@ public class Student extends javax.swing.JFrame {
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_pn_AddComponentShown
 //UPDATE - load cmb datas
-    private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
+    private void pn_UpdateComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pn_UpdateComponentShown
     dbConn=DBConnect.connect();
-        cmb_course_add.removeAllItems();
-        cmb_Add_department.removeAllItems();
+        cmb_Ed_course.removeAllItems();
+        cmb_Ed_department.removeAllItems();
         try{
             String query="SELECT fname FROM students ";//need to write the sql query
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery(query);
             while (resSet.next()) {
                 String pat = resSet.getString("fname");
-                cmb_course_add.addItem(pat);
+                cmb_Ed_course.addItem(pat);
             }
             String query2="SELECT fname FROM students ";//need to write the sql query
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
                 String pat = resSet.getString("fname");
-                cmb_Add_department.addItem(pat);
+                cmb_Ed_department.addItem(pat);
             }   
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
-    }//GEN-LAST:event_jPanel3ComponentShown
+    }//GEN-LAST:event_pn_UpdateComponentShown
 
     /**
      * @param args the command line arguments
@@ -722,7 +751,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -730,12 +758,12 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel pn_Add;
+    private javax.swing.JPanel pn_Update;
     private javax.swing.JTextField tf_Ed_Name;
     private javax.swing.JTextField tf_Ed_Search;
     private javax.swing.JTextField tf_Ed_Sid;
@@ -748,7 +776,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTextField tf_lName;
     private javax.swing.JTextField tf_nic;
     private javax.swing.JTextField tf_phone;
-    private javax.swing.JTextField tf_sid;
     private javax.swing.JTabbedPane tp_StudentAdd;
     // End of variables declaration//GEN-END:variables
 
