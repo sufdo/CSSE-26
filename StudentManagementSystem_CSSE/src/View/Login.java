@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//@author Rishni, Sewmi
 package View;
 
 import javax.swing.JOptionPane;
 import Controller.Controller_Login;
-
-/**
- *
- * @author Rishni, Sewmi
- */
 
 public class Login extends javax.swing.JFrame {
 
@@ -39,7 +30,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Password");
 
-        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lectures", " " }));
+        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lectures" }));
 
         btn_login.setText("Login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +88,7 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//login button
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String userType = cmb_userType.getSelectedItem().toString();
         String userName = txt_userName.getText();
@@ -130,6 +121,7 @@ public class Login extends javax.swing.JFrame {
                     stuMain.btn_AdminCourse.setEnabled(false);
                     stuMain.btn_AdminExam.setEnabled(false);
                     stuMain.btn_AdminFaculty.setEnabled(false);
+                    Main.Nic = txt_password.getText();
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  
                 }

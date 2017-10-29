@@ -1,3 +1,4 @@
+//@author sewmi
 package Controller;
 import DBConnection.DBConnect;
 import java.sql.Connection;
@@ -7,13 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
- * @author sewmi
- */
-
 public class Controller_Student {
     static Connection dbConn=null;
-    //add function
+//add function
     public static void AddStudent(Model_Student Student) throws SQLException{
         dbConn=DBConnect.connect();     
         String query="INSERT INTO Students(fName,lName, nic, phone,course, department) VALUES('"
@@ -21,9 +18,8 @@ public class Controller_Student {
                 + Student.getPhone() +",'"+ Student.getCourse() +"','"+ Student.getDepartment() +"');" ;       
         Statement stmt = dbConn.createStatement();
         stmt.executeUpdate(query);   
-        //dbConn.close();
     }
-    //check the duplicate entry
+//check the duplicate entry
     public static boolean hasDupEntry(String nic) throws SQLException{
         dbConn=DBConnect.connect();     
         String query="SELECT * FROM Students where nic like '"+ nic +"';";
@@ -39,7 +35,7 @@ public class Controller_Student {
             return true;
         }
     }
-    //update function
+//update function
     public static void UpdateStudent(Model_Student Student, String sid) throws SQLException{
         dbConn=DBConnect.connect();     
         String query="UPDATE Students SET fName = '" + Student.getFname() +"',lName='"+ Student.getLname() +  
@@ -49,7 +45,7 @@ public class Controller_Student {
         stmt.executeUpdate(query);   
         dbConn.close();
     }
-    //delete function
+//delete function
     public static void DeleteStudent(String stuId) throws SQLException{
         dbConn=DBConnect.connect();     
         String query="DELETE FROM Students WHERE sid="+ stuId +";";
@@ -59,7 +55,7 @@ public class Controller_Student {
     
     static PreparedStatement preSt=null;
     static ResultSet resSet=null;
-    //fill the Default data table 
+//fill the Default data table 
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
         String query="SELECT *  FROM Students";
@@ -101,7 +97,7 @@ public class Controller_Student {
         }
         return resSet;
     }
-    //return the last student id
+//return the last student id
     public static int retLastID() throws SQLException{
         dbConn=DBConnect.connect();     
         String query="select sid from students order by sid desc limit 1;";
