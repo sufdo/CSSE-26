@@ -1,11 +1,7 @@
+//@author sewmi
 package View;
-/*
- * @author sewmi
- */
-//Model and Controller
 import Model.Model_Student;
 import Controller.Controller_Student;
-//Other Utilities 
 import DBConnection.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +12,7 @@ import javax.swing.JOptionPane;
 
 
 public class Student extends javax.swing.JFrame {
- static Connection dbConn=null;
+    static Connection dbConn=null;
     /** Creates new form Student */
     public Student(){
         initComponents();
@@ -43,8 +39,8 @@ public class Student extends javax.swing.JFrame {
         dt_Search = new javax.swing.JTable();
         btn_Search = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        btn_Edit1 = new javax.swing.JButton();
-        tf_Ed_Search1 = new javax.swing.JTextField();
+        btn_del_find = new javax.swing.JButton();
+        tf_del_Id = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         btn_Dt_Delete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -63,7 +59,7 @@ public class Student extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         cmb_course_add = new javax.swing.JComboBox();
-        cmb_department = new javax.swing.JComboBox();
+        cmb_Add_department = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         btn_Ad_Save = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -85,25 +81,12 @@ public class Student extends javax.swing.JFrame {
         tf_Ed_Name = new javax.swing.JTextField();
         tf_Ed_Sid = new javax.swing.JTextField();
         btn_Ed_Save = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        dt_Edit = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tp_StudentAdd.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        tp_StudentAdd.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tp_StudentAddFocusGained(evt);
-            }
-        });
-        tp_StudentAdd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tp_StudentAddMouseClicked(evt);
-            }
-        });
-        tp_StudentAdd.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                tp_StudentAddComponentShown(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Filter By");
@@ -172,15 +155,15 @@ public class Student extends javax.swing.JFrame {
 
         jPanel4.setEnabled(false);
 
-        btn_Edit1.setText("Find");
-        btn_Edit1.setName("btn_Search"); // NOI18N
-        btn_Edit1.addActionListener(new java.awt.event.ActionListener() {
+        btn_del_find.setText("Find");
+        btn_del_find.setName("btn_Search"); // NOI18N
+        btn_del_find.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Edit1ActionPerformed(evt);
+                btn_del_findActionPerformed(evt);
             }
         });
 
-        tf_Ed_Search1.setName("tf_FilterValues"); // NOI18N
+        tf_del_Id.setName("tf_FilterValues"); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel18.setText("Student id");
@@ -217,9 +200,9 @@ public class Student extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addComponent(tf_del_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Edit1)
+                        .addComponent(btn_del_find)
                         .addGap(422, 422, 422))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,8 +216,8 @@ public class Student extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(tf_Ed_Search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Edit1))
+                    .addComponent(tf_del_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_del_find))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -244,11 +227,6 @@ public class Student extends javax.swing.JFrame {
 
         tp_StudentAdd.addTab("Delete Details", jPanel4);
 
-        pn_Add.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pn_AddFocusGained(evt);
-            }
-        });
         pn_Add.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 pn_AddComponentShown(evt);
@@ -278,7 +256,7 @@ public class Student extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel10.setText("Course");
 
-        cmb_department.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_Add_department.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel11.setText("Department");
@@ -318,7 +296,7 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                 .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(cmb_department, 0, 129, Short.MAX_VALUE)))))
+                                .addComponent(cmb_Add_department, 0, 129, Short.MAX_VALUE)))))
                 .addContainerGap(468, Short.MAX_VALUE))
         );
         pn_AddLayout.setVerticalGroup(
@@ -352,7 +330,7 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_Add_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addComponent(btn_Ad_Save)
@@ -360,6 +338,12 @@ public class Student extends javax.swing.JFrame {
         );
 
         tp_StudentAdd.addTab("Add Details", pn_Add);
+
+        jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel3ComponentShown(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Student id");
@@ -401,13 +385,27 @@ public class Student extends javax.swing.JFrame {
 
         tf_Ed_Sid.setEditable(false);
 
-        btn_Ed_Save.setText("Save");
+        btn_Ed_Save.setText("Update");
         btn_Ed_Save.setName("btn_Search"); // NOI18N
         btn_Ed_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Ed_SaveActionPerformed(evt);
             }
         });
+
+        dt_Edit.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        dt_Edit.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(dt_Edit);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -441,17 +439,21 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(tf_Ed_nic)
                                 .addComponent(tf_Ed_phone)
                                 .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(468, Short.MAX_VALUE))
+                    .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(445, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Edit))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Edit))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -506,109 +508,152 @@ public class Student extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //Form Search 
+    
+    static PreparedStatement preSt=null;
+    static ResultSet resSet=null;    
+    
+//Search - search button
     private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
         String filterType = "";
         filterType = (String)cmb_FilterType.getSelectedItem();
         String filterValue = ""; 
         filterValue = tf_Search.getText();  
-        
         try{
-        ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
-        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
-        } catch (SQLException ex) {
-                   
-        }
+            ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
+            dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
+        }catch(SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_SearchActionPerformed
-    static PreparedStatement preSt=null;
-    static ResultSet resSet=null;
-    //Load The Departments and Course to combo box in Add Form
-    private void tp_StudentAddFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tp_StudentAddFocusGained
-
-    }//GEN-LAST:event_tp_StudentAddFocusGained
-
-    private void tp_StudentAddComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tp_StudentAddComponentShown
-        // TODO add your handling code here:
-     //    JOptionPane.showMessageDialog(null, "Stude.");
-    }//GEN-LAST:event_tp_StudentAddComponentShown
-
+//Update - edit button
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
-        // TODO add your handling code here:
+        String Sid = tf_del_Id.getText();
+        try{
+            ResultSet resSet3=Controller_Student.FillStuDt_Ser("StudentID",Sid);
+            dt_Edit.setModel(DbUtils.resultSetToTableModel(resSet3)); 
+            //initilize value from data table
+            String id=dt_Edit.getValueAt(1, 0).toString();
+            String fName=dt_Edit.getValueAt(1, 1).toString();
+            String lName=dt_Edit.getValueAt(1, 2).toString();
+            String nic=dt_Edit.getValueAt(1, 3).toString();
+            String phone=dt_Edit.getValueAt(1, 4).toString();
+            String course=dt_Edit.getValueAt(1, 5).toString();
+            String department=dt_Edit.getValueAt(1, 6).toString();
+            //assighn the value to the form
+            tf_Ed_Sid.setText(id);
+            tf_Ed_Name.setText(fName);
+            tf_Ed_lName.setText(lName);
+            tf_Ed_nic.setText(nic);
+            tf_Ed_phone.setText(phone);
+            cmb_Ed_course.setSelectedItem(course);
+            cmb_Ed_department.setSelectedItem(department);
+       }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_EditActionPerformed
-
+//Update - save button
     private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ed_SaveActionPerformed
-        // TODO add your handling code here:
+        String sId = tf_Ed_Sid.getText();
+        String fName = tf_Ed_Name.getText();
+        String lName = tf_Ed_lName.getText();
+        String Nic = tf_Ed_nic.getText();
+        int Phone =  Integer.parseInt(tf_Ed_phone.getText());
+        String course = cmb_Ed_course.getSelectedItem().toString();
+        String Department = cmb_Ed_department.getSelectedItem().toString();
+        
+        if(!fName.isEmpty() && !lName.isEmpty() && !Nic.isEmpty() && !course.isEmpty() && Department.isEmpty())
+        {
+            try
+            {
+                Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
+                Controller_Student.UpdateStudent(Student, sId);
+                JOptionPane.showMessageDialog(null, "Student Details Update Successfully.");
+            }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+        }
     }//GEN-LAST:event_btn_Ed_SaveActionPerformed
-
+//Add - Save button
     private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
         String fName = tf_fName.getText();
         String lName = tf_lName.getText();
         String Nic = tf_nic.getText();
         int Phone =  Integer.parseInt(tf_phone.getText());
         String course = cmb_course_add.getSelectedItem().toString();
-        String Department = cmb_department.getSelectedItem().toString();
-        
+        String Department = cmb_Add_department.getSelectedItem().toString();
         
         if(!fName.isEmpty() && !lName.isEmpty() && !Nic.isEmpty() && !course.isEmpty() && Department.isEmpty())
         {
-            Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
             try
             {
+            if(Controller_Student.hasDupEntry(Nic)==false){
+                Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
                 Controller_Student.AddStudent(Student);
                 JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
             }
-            catch (Exception ex)
-            {
+            else{
+               JOptionPane.showMessageDialog(null, "Already Added Entry Check Again!");
             }
+            }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
         }
     }//GEN-LAST:event_btn_Ad_SaveActionPerformed
-//Form Edit - Button Edit - For Find the Details and Fill the 
-    private void btn_Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edit1ActionPerformed
-       String Sid = tf_Ed_Search1.getText();
+//DELETE - find button
+    private void btn_del_findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_del_findActionPerformed
+        String Sid = tf_del_Id.getText();
         try{
-            ResultSet resSet3=Controller_Student.FillStuDt_del(Sid);
+            ResultSet resSet3=Controller_Student.FillStuDt_Ser("StudentID",Sid);
             dt_delete.setModel(DbUtils.resultSetToTableModel(resSet3)); 
-        } catch (SQLException ex) {
-                   
-                }
-    }//GEN-LAST:event_btn_Edit1ActionPerformed
-
+        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}       
+    }//GEN-LAST:event_btn_del_findActionPerformed
+//DELETE - delete button
     private void btn_Dt_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Dt_DeleteActionPerformed
-        String Sid = tf_Ed_Search1.getText();
-         JOptionPane.showMessageDialog(null, " Sid"+ Sid+"Student Details Deleted Successfully.");
-       try{
+        String Sid = tf_del_Id.getText();
+        try{
             Controller_Student.DeleteStudent(Sid);
-            ResultSet resSet7=Controller_Student.FillStuDt_del(Sid);
+            ResultSet resSet7=Controller_Student.FillStuDt_Ser("StudentID",Sid);
             dt_delete.setModel(DbUtils.resultSetToTableModel(resSet7)); 
-            JOptionPane.showMessageDialog(null, "Student Details Deleted Successfully.");
-        } catch (SQLException ex) {
-                   
-        }
+            JOptionPane.showMessageDialog(null, " Sid"+ Sid+"Student Details Deleted Successfully.");
+        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}           
     }//GEN-LAST:event_btn_Dt_DeleteActionPerformed
-
-    private void tp_StudentAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tp_StudentAddMouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Student Details Added Successfully.");
+//ADD - load cmb datas
+    private void pn_AddComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pn_AddComponentShown
+      //correct one
         dbConn=DBConnect.connect();
         cmb_course_add.removeAllItems();
+        cmb_Add_department.removeAllItems();
         try{
-           String query="SELECT fname FROM students ";//need to write the sql query
+            String query="SELECT fname FROM students ";//need to write the sql query
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery(query);
             while (resSet.next()) {
                 String pat = resSet.getString("fname");
                 cmb_course_add.addItem(pat);
             }
-       }catch(Exception e){}
-    }//GEN-LAST:event_tp_StudentAddMouseClicked
-
-    private void pn_AddFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pn_AddFocusGained
-JOptionPane.showMessageDialog(null, "Student===Added Successfully.");        // TODO add your handling code here:
-    }//GEN-LAST:event_pn_AddFocusGained
-
-    private void pn_AddComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pn_AddComponentShown
-      JOptionPane.showMessageDialog(null, "Studdsfsdnt===Added Successfully.");   // TODO add your handling code here:
+            String query2="SELECT fname FROM students ";//need to write the sql query
+            preSt=dbConn.prepareStatement(query2);
+            resSet=preSt.executeQuery(query2);
+            while (resSet.next()) {
+                String pat = resSet.getString("fname");
+                cmb_Add_department.addItem(pat);
+            }   
+       }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_pn_AddComponentShown
+//UPDATE - load cmb datas
+    private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
+    dbConn=DBConnect.connect();
+        cmb_course_add.removeAllItems();
+        cmb_Add_department.removeAllItems();
+        try{
+            String query="SELECT fname FROM students ";//need to write the sql query
+            preSt=dbConn.prepareStatement(query);
+            resSet=preSt.executeQuery(query);
+            while (resSet.next()) {
+                String pat = resSet.getString("fname");
+                cmb_course_add.addItem(pat);
+            }
+            String query2="SELECT fname FROM students ";//need to write the sql query
+            preSt=dbConn.prepareStatement(query2);
+            resSet=preSt.executeQuery(query2);
+            while (resSet.next()) {
+                String pat = resSet.getString("fname");
+                cmb_Add_department.addItem(pat);
+            }   
+       }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+    }//GEN-LAST:event_jPanel3ComponentShown
 
     /**
      * @param args the command line arguments
@@ -656,13 +701,14 @@ JOptionPane.showMessageDialog(null, "Student===Added Successfully.");        // 
     private javax.swing.JButton btn_Dt_Delete;
     private javax.swing.JButton btn_Ed_Save;
     private javax.swing.JButton btn_Edit;
-    private javax.swing.JButton btn_Edit1;
     private javax.swing.JButton btn_Search;
+    private javax.swing.JButton btn_del_find;
+    private javax.swing.JComboBox cmb_Add_department;
     private javax.swing.JComboBox cmb_Ed_course;
     private javax.swing.JComboBox cmb_Ed_department;
     private javax.swing.JComboBox cmb_FilterType;
     private javax.swing.JComboBox cmb_course_add;
-    private javax.swing.JComboBox cmb_department;
+    private javax.swing.JTable dt_Edit;
     private javax.swing.JTable dt_Search;
     private javax.swing.JTable dt_delete;
     private javax.swing.JLabel jLabel1;
@@ -688,15 +734,16 @@ JOptionPane.showMessageDialog(null, "Student===Added Successfully.");        // 
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel pn_Add;
     private javax.swing.JTextField tf_Ed_Name;
     private javax.swing.JTextField tf_Ed_Search;
-    private javax.swing.JTextField tf_Ed_Search1;
     private javax.swing.JTextField tf_Ed_Sid;
     private javax.swing.JTextField tf_Ed_lName;
     private javax.swing.JTextField tf_Ed_nic;
     private javax.swing.JTextField tf_Ed_phone;
     private javax.swing.JTextField tf_Search;
+    private javax.swing.JTextField tf_del_Id;
     private javax.swing.JTextField tf_fName;
     private javax.swing.JTextField tf_lName;
     private javax.swing.JTextField tf_nic;

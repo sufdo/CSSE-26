@@ -123,6 +123,7 @@ public class Login extends javax.swing.JFrame {
                     Main stuMain = new Main();
                     stuMain.setVisible(true);
                     stuMain.btn_MainStudent.setEnabled(false);
+                    stuMain.btn_ViewProfile.setEnabled(false);
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  
                 }

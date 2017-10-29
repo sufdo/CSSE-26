@@ -23,6 +23,22 @@ public class Controller_Student {
         stmt.executeQuery(query);   
         dbConn.close();
     }
+    //check the duplicate entry
+    public static boolean hasDupEntry(String nic) throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="SELECT * FROM Students where nic like '"+ nic +"'";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery();      
+        String nicData="";
+        while(resSet.next()){
+            nicData=resSet.getString(1);
+        }
+        if(nicData.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+    }
     //update function
     public static void UpdateStudent(Model_Student Student, String sid) throws SQLException{
         dbConn=DBConnect.connect();     
@@ -52,13 +68,13 @@ public class Controller_Student {
         return resSet;
     }
     //fill the Delete form data table according to the student id
-    public static ResultSet FillStuDt_del(String SId) throws SQLException{
-        dbConn=DBConnect.connect();
-        String query="SELECT * FROM Students where sid="+ SId +";";
-        preSt=dbConn.prepareStatement(query);
-        resSet=preSt.executeQuery();
-        return resSet;
-    }
+//    public static ResultSet FillStuDt_del(String SId) throws SQLException{
+//        dbConn=DBConnect.connect();
+//        String query="SELECT * FROM Students where sid="+ SId +";";
+//        preSt=dbConn.prepareStatement(query);
+//        resSet=preSt.executeQuery();
+//        return resSet;
+//    }
     //for search the results according to the types and values
     public static ResultSet FillStuDt_Ser(String typ, String valu) throws SQLException{
         dbConn=DBConnect.connect(); 

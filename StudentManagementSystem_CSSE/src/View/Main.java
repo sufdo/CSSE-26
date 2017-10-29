@@ -74,7 +74,7 @@ public class Main extends javax.swing.JFrame {
         btn_MainStudent = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jCourseButton1 = new javax.swing.JButton();
-        btn_ViewProfile1 = new javax.swing.JButton();
+        btn_ViewProfile = new javax.swing.JButton();
         btn_ViewFaculty1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,10 +140,10 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jCourseButton1);
         jCourseButton1.setBounds(20, 130, 280, 80);
 
-        btn_ViewProfile1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_ViewProfile1.setText("View My Profile");
-        getContentPane().add(btn_ViewProfile1);
-        btn_ViewProfile1.setBounds(380, 130, 280, 80);
+        btn_ViewProfile.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btn_ViewProfile.setText("View My Profile");
+        getContentPane().add(btn_ViewProfile);
+        btn_ViewProfile.setBounds(380, 130, 280, 80);
 
         btn_ViewFaculty1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btn_ViewFaculty1.setText("View Faculty");
@@ -226,7 +226,7 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JButton btn_MainStudent;
     private javax.swing.JButton btn_ViewFaculty;
     private javax.swing.JButton btn_ViewFaculty1;
-    private javax.swing.JButton btn_ViewProfile1;
+    public javax.swing.JButton btn_ViewProfile;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jCourseButton1;
