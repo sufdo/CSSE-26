@@ -1,5 +1,5 @@
 // @author Sewmi, Rishni
-//testing git add.
+//testing
 package View;
 
 import java.util.logging.Level;
