@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
-
     public Main() {
         initComponents();
     }
@@ -32,6 +31,11 @@ public class Main extends javax.swing.JFrame {
         btn_StudentsCouerse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         btn_AdminFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -91,6 +95,11 @@ public class Main extends javax.swing.JFrame {
 
         btn_AdminCourse.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btn_AdminCourse.setText("Course");
+        btn_AdminCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdminCourseActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_AdminCourse);
         btn_AdminCourse.setBounds(20, 130, 280, 80);
 
@@ -185,6 +194,25 @@ public class Main extends javax.swing.JFrame {
         Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsCouerseActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        
+        if(Constants.Color.userName .equals("Admin")){
+            btn_StudentsViewProfile.setEnabled(false);
+            btn_StudentsCouerse.setEnabled(false);
+            btn_StudentsExams.setEnabled(false);
+            btn_StudentsFaculty.setEnabled(false);
+        }else if(Constants.Color.userName .equals("Student")){
+            btn_AdminStudents.setEnabled(false);
+            btn_AdminCourse.setEnabled(false);
+            btn_AdminExam.setEnabled(false);
+            btn_AdminFaculty.setEnabled(false);
+        }
+    }//GEN-LAST:event_formComponentShown
+
+    private void btn_AdminCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AdminCourseActionPerformed
 
     /**
      * @param args the command line arguments

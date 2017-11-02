@@ -10,5 +10,5 @@ package Constants;
  * @author Rishni
  */
 public class Color {
-    
+    public static String userName;
 }

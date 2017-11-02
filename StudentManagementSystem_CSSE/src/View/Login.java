@@ -97,14 +97,12 @@ public class Login extends javax.swing.JFrame {
             try
             {
                 if(Controller_Login.loginAdmin(userName, pass)==true){
+                    Constants.Color.userName = "Admin";
                     this.dispose();
                     Main adminMain = new Main();
+                   // adminMain.userC = "Admin";
                     adminMain.setVisible(true);
-                    adminMain.btn_StudentsViewProfile.setEnabled(false);
-                    adminMain.btn_StudentsCouerse.setEnabled(false);
-                    adminMain.btn_StudentsExams.setEnabled(false);
-                    adminMain.btn_StudentsFaculty.setEnabled(false);
-                }else{
+               }else{
                     JOptionPane.showMessageDialog(null, "Wrong UserName or Password!");  
                 }
             } catch (Exception exc) {
@@ -114,13 +112,11 @@ public class Login extends javax.swing.JFrame {
          try
             {
                 if(Controller_Login.loginStudent(userName, pass)==true){
+                    Constants.Color.userName = "Student";
                     this.dispose();
                     Main stuMain = new Main();
                     stuMain.setVisible(true);
-                    stuMain.btn_AdminStudents.setEnabled(false);
-                    stuMain.btn_AdminCourse.setEnabled(false);
-                    stuMain.btn_AdminExam.setEnabled(false);
-                    stuMain.btn_AdminFaculty.setEnabled(false);
+                    //stuMain.userC = "Student";
                     Main.Nic = txt_password.getText();
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  

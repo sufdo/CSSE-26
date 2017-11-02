@@ -38,6 +38,8 @@ public class Student extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         dt_Search = new javax.swing.JTable();
         btn_Search = new javax.swing.JButton();
+        btn_Clear = new javax.swing.JButton();
+        btn_Back = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btn_del_find = new javax.swing.JButton();
         tf_del_Id = new javax.swing.JTextField();
@@ -45,6 +47,7 @@ public class Student extends javax.swing.JFrame {
         btn_Dt_Delete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         dt_delete = new javax.swing.JTable();
+        btn_Back1 = new javax.swing.JButton();
         pn_Add = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tf_fName = new javax.swing.JTextField();
@@ -60,6 +63,9 @@ public class Student extends javax.swing.JFrame {
         cmb_Add_department = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         btn_Ad_Save = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        dt_Add = new javax.swing.JTable();
+        btn_Back2 = new javax.swing.JButton();
         pn_Update = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         tf_Ed_Search = new javax.swing.JTextField();
@@ -81,6 +87,9 @@ public class Student extends javax.swing.JFrame {
         btn_Ed_Save = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         dt_Edit = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        dt_editV = new javax.swing.JTable();
+        btn_Back3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,19 +126,41 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
+        btn_Clear.setText("Clear");
+        btn_Clear.setName("btn_Search"); // NOI18N
+        btn_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ClearActionPerformed(evt);
+            }
+        });
+
+        btn_Back.setText("Back");
+        btn_Back.setName("btn_Search"); // NOI18N
+        btn_Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(cmb_FilterType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_Search)
-                    .addComponent(btn_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Back))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(cmb_FilterType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_Search)
+                            .addComponent(btn_Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,9 +175,13 @@ public class Student extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tf_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Search))
+                        .addComponent(btn_Search)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Clear))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(btn_Back)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         tp_StudentAdd.addTab("Search", jPanel1);
@@ -188,6 +223,14 @@ public class Student extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(dt_delete);
 
+        btn_Back1.setText("Back");
+        btn_Back1.setName("btn_Search"); // NOI18N
+        btn_Back1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Back1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -198,14 +241,17 @@ public class Student extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_del_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addComponent(tf_del_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_del_find)
                         .addGap(422, 422, 422))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Dt_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btn_Dt_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Back1)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -219,7 +265,9 @@ public class Student extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Dt_Delete)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Dt_Delete)
+                    .addComponent(btn_Back1))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
 
@@ -262,6 +310,28 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
+        dt_Add.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        dt_Add.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(dt_Add);
+
+        btn_Back2.setText("Back");
+        btn_Back2.setName("btn_Search"); // NOI18N
+        btn_Back2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Back2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_AddLayout = new javax.swing.GroupLayout(pn_Add);
         pn_Add.setLayout(pn_AddLayout);
         pn_AddLayout.setHorizontalGroup(
@@ -270,58 +340,72 @@ public class Student extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btn_Ad_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pn_AddLayout.createSequentialGroup()
-                            .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel10))
-                            .addGap(32, 32, 32)
-                            .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmb_course_add, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_fName)
-                                .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(cmb_Add_department, 0, 129, Short.MAX_VALUE)))))
-                .addContainerGap(468, Short.MAX_VALUE))
+                    .addGroup(pn_AddLayout.createSequentialGroup()
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Ad_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_AddLayout.createSequentialGroup()
+                                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10))
+                                .addGap(32, 32, 32)
+                                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmb_course_add, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tf_fName)
+                                    .addComponent(tf_lName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(tf_nic, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(tf_phone, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(cmb_Add_department, 0, 129, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_AddLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Back2)
+                .addGap(25, 25, 25))
         );
         pn_AddLayout.setVerticalGroup(
             pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_AddLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_course_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_Add_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_AddLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_AddLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1)
+                        .addGap(49, 49, 49)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_fName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_course_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_Add_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Ad_Save)))
                 .addGap(18, 18, 18)
-                .addComponent(btn_Ad_Save)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addComponent(btn_Back2)
+                .addContainerGap())
         );
 
         tp_StudentAdd.addTab("Add Details", pn_Add);
@@ -394,6 +478,28 @@ public class Student extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(dt_Edit);
 
+        dt_editV.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        dt_editV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane5.setViewportView(dt_editV);
+
+        btn_Back3.setText("Back");
+        btn_Back3.setName("btn_Search"); // NOI18N
+        btn_Back3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Back3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_UpdateLayout = new javax.swing.GroupLayout(pn_Update);
         pn_Update.setLayout(pn_UpdateLayout);
         pn_UpdateLayout.setHorizontalGroup(
@@ -427,50 +533,66 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(tf_Ed_phone)
                                 .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_UpdateLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_UpdateLayout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(449, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_UpdateLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_UpdateLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Back3)
+                        .addContainerGap())))
         );
         pn_UpdateLayout.setVerticalGroup(
             pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_UpdateLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_Edit))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tf_Ed_Sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_UpdateLayout.createSequentialGroup()
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_Edit))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(tf_Ed_Sid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_Ed_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_Ed_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_Ed_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_Ed_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_Ed_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_Ed_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_Ed_lName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_Ed_nic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_Ed_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_Ed_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_Ed_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Ed_Save)
+                .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_Ed_Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Back3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(228, Short.MAX_VALUE))
         );
 
@@ -564,9 +686,13 @@ public class Student extends javax.swing.JFrame {
             String Department = cmb_Ed_department.getSelectedItem().toString();
             try
             {
-                Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
+                int CourseId = Controller_Student.retCourseID(course);
+                int FacultyId = Controller_Student.retDepartmentID(Department);
+                Model_Student Student = new Model_Student(fName, lName, Nic, CourseId, FacultyId, Phone);
                 Controller_Student.UpdateStudent(Student, sId);
                 JOptionPane.showMessageDialog(null, "Student Details Update Successfully.");
+                ResultSet resSet1=Controller_Student.FillStuDataTable();
+                dt_editV.setModel(DbUtils.resultSetToTableModel(resSet1));
                 tf_Ed_Name.setText("");
                 tf_Ed_lName.setText("");
                 tf_Ed_nic.setText("");
@@ -601,11 +727,15 @@ public class Student extends javax.swing.JFrame {
             int Phone =  Integer.parseInt(tf_phone.getText());
             String course = cmb_course_add.getSelectedItem().toString();
             String Department = cmb_Add_department.getSelectedItem().toString();
+            
+            
 
             try
             {
+            int CourseId = Controller_Student.retCourseID(course);
+            int FacultyId = Controller_Student.retDepartmentID(Department);
             if(Controller_Student.hasDupEntry(Nic)==false){
-                Model_Student Student = new Model_Student(fName, lName, Nic, course, Department, Phone);
+                Model_Student Student = new Model_Student(fName, lName, Nic, CourseId, FacultyId, Phone);
                 Controller_Student.AddStudent(Student);
                 int SaveID = Controller_Student.retLastID();
                 JOptionPane.showMessageDialog(null, "Student Details Added Successfully. \n Student ID : '"+ SaveID +"'");
@@ -613,6 +743,8 @@ public class Student extends javax.swing.JFrame {
                 tf_lName.setText("");
                 tf_nic.setText("");
                 tf_phone.setText("");
+                    ResultSet resSet1=Controller_Student.FillStuDataTable();
+                    dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
             }
             else{
                JOptionPane.showMessageDialog(null, "Already Added Entry Check Again!");
@@ -645,18 +777,18 @@ public class Student extends javax.swing.JFrame {
         cmb_course_add.removeAllItems();
         cmb_Add_department.removeAllItems();
         try{
-            String query="SELECT fname FROM students ";//need to write the sql query
+            String query="SELECT CourseName FROM course;";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery(query);
             while (resSet.next()) {
-                String pat = resSet.getString("fname");
+                String pat = resSet.getString("CourseName");
                 cmb_course_add.addItem(pat);
             }
-            String query2="SELECT fname FROM students ";//need to write the sql query
+            String query2="SELECT FacultyName FROM faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
-                String pat = resSet.getString("fname");
+                String pat = resSet.getString("FacultyName");
                 cmb_Add_department.addItem(pat);
             }   
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
@@ -667,22 +799,55 @@ public class Student extends javax.swing.JFrame {
         cmb_Ed_course.removeAllItems();
         cmb_Ed_department.removeAllItems();
         try{
-            String query="SELECT fname FROM students ";//need to write the sql query
+            String query="SELECT CourseName FROM course;";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery(query);
             while (resSet.next()) {
-                String pat = resSet.getString("fname");
+                String pat = resSet.getString("CourseName");
                 cmb_Ed_course.addItem(pat);
             }
-            String query2="SELECT fname FROM students ";//need to write the sql query
+            String query2="SELECT FacultyName FROM faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
-                String pat = resSet.getString("fname");
+                String pat = resSet.getString("FacultyName");
                 cmb_Ed_department.addItem(pat);
             }   
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_pn_UpdateComponentShown
+
+    private void btn_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ClearActionPerformed
+         try{
+        //Load the Data Table in Main Form Search For Default
+        ResultSet resSet1=Controller_Student.FillStuDataTable();
+        dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        } catch (SQLException ex) {}
+                   
+    }//GEN-LAST:event_btn_ClearActionPerformed
+
+    private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
+        this.dispose();
+        Main adminMain = new Main();
+        adminMain.setVisible(true);
+    }//GEN-LAST:event_btn_BackActionPerformed
+
+    private void btn_Back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Back1ActionPerformed
+        this.dispose();
+        Main adminMain = new Main();
+        adminMain.setVisible(true);
+    }//GEN-LAST:event_btn_Back1ActionPerformed
+
+    private void btn_Back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Back2ActionPerformed
+         this.dispose();
+        Main adminMain = new Main();
+        adminMain.setVisible(true);
+    }//GEN-LAST:event_btn_Back2ActionPerformed
+
+    private void btn_Back3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Back3ActionPerformed
+         this.dispose();
+        Main adminMain = new Main();
+        adminMain.setVisible(true);
+    }//GEN-LAST:event_btn_Back3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -727,6 +892,11 @@ public class Student extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ad_Save;
+    private javax.swing.JButton btn_Back;
+    private javax.swing.JButton btn_Back1;
+    private javax.swing.JButton btn_Back2;
+    private javax.swing.JButton btn_Back3;
+    private javax.swing.JButton btn_Clear;
     private javax.swing.JButton btn_Dt_Delete;
     private javax.swing.JButton btn_Ed_Save;
     private javax.swing.JButton btn_Edit;
@@ -737,9 +907,11 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JComboBox cmb_Ed_department;
     private javax.swing.JComboBox cmb_FilterType;
     private javax.swing.JComboBox cmb_course_add;
+    private javax.swing.JTable dt_Add;
     private javax.swing.JTable dt_Edit;
     private javax.swing.JTable dt_Search;
     private javax.swing.JTable dt_delete;
+    private javax.swing.JTable dt_editV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -762,6 +934,8 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel pn_Add;
     private javax.swing.JPanel pn_Update;
     private javax.swing.JTextField tf_Ed_Name;

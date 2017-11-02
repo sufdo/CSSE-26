@@ -9,10 +9,10 @@ package Model;
  * @author sewmi
  */
 public class Model_Student {
-    public String FName, LName , Nic, Course, Department;
-    public int Phone;
+    public String FName, LName , Nic;
+    public int Phone, Course, Department;
     
-    public Model_Student(String fName,String lName ,String nic,String course,String department, int phone) {
+    public Model_Student(String fName,String lName ,String nic,int course,int department, int phone) {
         FName = fName;LName = lName;Nic = nic;Course = course;Department = department;Phone = phone;
     };
       
@@ -34,16 +34,16 @@ public class Model_Student {
     public String getNic(){
         return Nic;
     }
-    public void StoreCourse(String course){
+    public void StoreCourse(int course){
         Course=course;  
     }
-    public String getCourse(){
+    public int getCourse(){
         return Course;
     }
-    public void StoreDepartment(String department){
+    public void StoreDepartment(int department){
         Department=department;  
     }
-    public String getDepartment(){
+    public int getDepartment(){
         return Department;
     }
     public void StorePhone(int phone){
