@@ -85,8 +85,6 @@ public class Student extends javax.swing.JFrame {
         tf_Ed_Name = new javax.swing.JTextField();
         tf_Ed_Sid = new javax.swing.JTextField();
         btn_Ed_Save = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        dt_Edit = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         dt_editV = new javax.swing.JTable();
         btn_Back3 = new javax.swing.JButton();
@@ -456,20 +454,6 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        dt_Edit.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        dt_Edit.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane3.setViewportView(dt_Edit);
-
         dt_editV.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         dt_editV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -527,14 +511,8 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(btn_Ed_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_UpdateLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_UpdateLayout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(510, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_UpdateLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 81, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_UpdateLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_Back3)
@@ -546,12 +524,10 @@ public class Student extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pn_UpdateLayout.createSequentialGroup()
-                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_Edit))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Edit))
                         .addGap(60, 60, 60)
                         .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -629,16 +605,16 @@ public class Student extends javax.swing.JFrame {
         String Sid = tf_Ed_Search.getText();
         try{
             ResultSet resSet=Controller_Student.FillStuDt_Ser("StudentID",Sid );
-            dt_Edit.setModel(DbUtils.resultSetToTableModel(resSet)); 
+            dt_editV.setModel(DbUtils.resultSetToTableModel(resSet)); 
             
             //initilize value from data table
-            String id=dt_Edit.getValueAt(0, 0).toString();
-            String fName=dt_Edit.getValueAt(0, 1).toString();
-            String lName=dt_Edit.getValueAt(0, 2).toString();
-            String nic=dt_Edit.getValueAt(0, 3).toString();
-            String phone=dt_Edit.getValueAt(0, 4).toString();
-            String course=dt_Edit.getValueAt(0, 5).toString();
-            String department=dt_Edit.getValueAt(0, 6).toString();
+            String id=dt_editV.getValueAt(0, 0).toString();
+            String fName=dt_editV.getValueAt(0, 1).toString();
+            String lName=dt_editV.getValueAt(0, 2).toString();
+            String nic=dt_editV.getValueAt(0, 3).toString();
+            String phone=dt_editV.getValueAt(0, 4).toString();
+            String course=dt_editV.getValueAt(0, 5).toString();
+            String department=dt_editV.getValueAt(0, 6).toString();
             //assighn the value to the form
             tf_Ed_Sid.setText(id);
             tf_Ed_Name.setText(fName);
@@ -900,7 +876,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JComboBox cmb_FilterType;
     private javax.swing.JComboBox cmb_course_add;
     private javax.swing.JTable dt_Add;
-    private javax.swing.JTable dt_Edit;
     private javax.swing.JTable dt_Search;
     private javax.swing.JTable dt_delete;
     private javax.swing.JTable dt_editV;
@@ -925,7 +900,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel pn_Add;
