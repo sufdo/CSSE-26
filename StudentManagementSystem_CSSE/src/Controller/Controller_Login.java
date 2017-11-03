@@ -29,7 +29,7 @@ public class Controller_Login {
 //login function for Admin
     public static boolean loginAdmin(String userName,String Password) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT pass FROM Admin where uName like '"+ userName +"'";
+        String query="SELECT pass FROM admin where uName like '"+ userName +"'";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         String passwo="";

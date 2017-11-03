@@ -12,6 +12,21 @@ import javax.swing.JOptionPane;
  * @author Rishni
  */
 public class Validation {
+    public static Boolean isEmpty(String textfield1)
+    {
+        String TextValue1=textfield1;
+        
+        if(TextValue1.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Select a faculty");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     public static Boolean isEmpty(String textfield1,String textfield2)
     {
         String TextValue1=textfield1;
