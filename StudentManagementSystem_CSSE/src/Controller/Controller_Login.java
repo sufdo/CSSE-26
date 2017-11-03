@@ -20,6 +20,7 @@ public class Controller_Login {
         while(resSet.next()){
             passwo=resSet.getString(1);
         }
+        dbConn.close();
         if(Password.equals(passwo)){
             return true;
         }else{
@@ -36,6 +37,7 @@ public class Controller_Login {
         while(resSet.next()){
             passwo=resSet.getString(1);
         }
+        dbConn.close();
         if(Password.equals(passwo)){
             return true;
         }else{
