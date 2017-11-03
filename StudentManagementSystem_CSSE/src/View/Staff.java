@@ -249,20 +249,20 @@ public class Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(Constants.Color.userName .equals("Admin")){
+        if(Constants.LoginUserType.userName .equals("Admin")){
             jAddStaffAddButton.setEnabled(true);
             jAddStaffClearButton.setEnabled(true);
             
             
-        }else if(Constants.Color.userName .equals("Dean")){
+        }else if(Constants.LoginUserType.userName .equals("Dean")){
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
         }
-        else if(Constants.Color.userName .equals("Lecturer")){
+        else if(Constants.LoginUserType.userName .equals("Lecturer")){
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
         }
-        else if(Constants.Color.userName .equals("Student")){
+        else if(Constants.LoginUserType.userName .equals("Student")){
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
         }

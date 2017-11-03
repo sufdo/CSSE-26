@@ -961,7 +961,7 @@ public class Event extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(Constants.Color.userName .equals("Admin")){
+        if(Constants.LoginUserType.userName .equals("Admin")){
             jAddEventAddButton.setEnabled(true);
             jAddEventClearButton.setEnabled(true);
             jViewEventSearchButton.setEnabled(true);
@@ -974,7 +974,7 @@ public class Event extends javax.swing.JFrame {
             jDeleteEventDeleteButton.setEnabled(true);
             jDeleteEventRefreshButton.setEnabled(true);
             
-        }else if(Constants.Color.userName .equals("Dean")){
+        }else if(Constants.LoginUserType.userName .equals("Dean")){
             jAddEventAddButton.setEnabled(true);
             jAddEventClearButton.setEnabled(true);
             jViewEventSearchButton.setEnabled(true);
@@ -987,7 +987,7 @@ public class Event extends javax.swing.JFrame {
             jDeleteEventDeleteButton.setEnabled(true);
             jDeleteEventRefreshButton.setEnabled(true);
         }
-        else if(Constants.Color.userName .equals("Lecturer")){
+        else if(Constants.LoginUserType.userName .equals("Lecturer")){
             jAddEventAddButton.setEnabled(false);
             jAddEventClearButton.setEnabled(false);
             jViewEventSearchButton.setEnabled(true);
@@ -1000,7 +1000,7 @@ public class Event extends javax.swing.JFrame {
             jDeleteEventDeleteButton.setEnabled(false);
             jDeleteEventRefreshButton.setEnabled(false);
         }
-        else if(Constants.Color.userName .equals("Student")){
+        else if(Constants.LoginUserType.userName .equals("Student")){
             jAddEventAddButton.setEnabled(false);
             jAddEventClearButton.setEnabled(false);
             jViewEventSearchButton.setEnabled(true);

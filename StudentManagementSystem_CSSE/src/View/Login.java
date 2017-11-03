@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
          try
             {
                 if(Controller_Login.loginDean(userName, pass)==true){
-                    Constants.Color.userName = "Dean";
+                    Constants.LoginUserType.userName = "Dean";
                     this.dispose();
                     Main deanMain = new Main();
                     deanMain.setVisible(true);
@@ -146,7 +146,7 @@ public class Login extends javax.swing.JFrame {
          try
             {
                 if(Controller_Login.loginLecturer(userName, pass)==true){
-                    Constants.Color.userName = "Lecturer";
+                    Constants.LoginUserType.userName = "Lecturer";
                     this.dispose();
                     Main lecMain = new Main();
                     lecMain.setVisible(true);

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Constants.MessageConsts;
 import DBConnection.DBConnect;
 import Model.EventModel;
 import Model.FacultyModel;
@@ -67,15 +68,20 @@ public class EventController {
     {
         conn=DBConnect.connect();
         
-        String q="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+event.getEventID()+"' ";
-        pst=conn.prepareStatement(q);
-        pst.execute();
-        JOptionPane.showMessageDialog(null, "Updated successfully");
-//        Statement stm = conn.createStatement();
-//
-//        int executeUpdate = stm.execute(q);
-//
-//        return executeUpdate;
+        int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+        
+        if(x==0)
+        {
+            String q="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+event.getEventID()+"' ";
+            pst=conn.prepareStatement(q);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+        }
+
       
     }
     
@@ -84,19 +90,19 @@ public class EventController {
     {
         conn=DBConnect.connect();
         
-        int x=JOptionPane.showConfirmDialog(null, "Do you really want to delete?");
+        int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
         
         if(x==0)
         {
         String q="DELETE FROM Event WHERE EventID='"+event.getEventID()+"' ";
         pst=conn.prepareStatement(q);
         pst.execute();
-        JOptionPane.showMessageDialog(null, "Deleted successfully");
+        JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
 
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Not deleted");
+            JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
         }
     }
     
