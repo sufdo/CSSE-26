@@ -137,6 +137,13 @@ public class Main extends javax.swing.JFrame {
         try{
         ResultSet resSet1=Controller.Controller_StudentViews.ViewProfile(nic);
         Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        Students_View.tf_VID.setText(Students_View.dt_View_C_D_P.getValueAt(0, 0).toString());
+        Students_View.tf_VFName.setText(Students_View.dt_View_C_D_P.getValueAt(0, 1).toString());
+        Students_View.tf_VLName.setText(Students_View.dt_View_C_D_P.getValueAt(0, 2).toString());
+        Students_View.tf_Nic.setText(Students_View.dt_View_C_D_P.getValueAt(0, 3).toString());
+        Students_View.tf_Phone.setText(Students_View.dt_View_C_D_P.getValueAt(0, 4).toString());
+        Students_View.tf_Course.setText(Students_View.dt_View_C_D_P.getValueAt(0, 5).toString());
+        Students_View.tf_VDep.setText(Students_View.dt_View_C_D_P.getValueAt(0, 6).toString());
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsViewProfileActionPerformed
 
