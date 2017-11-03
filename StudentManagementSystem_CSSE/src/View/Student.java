@@ -483,10 +483,11 @@ public class Student extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_UpdateLayout.createSequentialGroup()
-                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(tf_Ed_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(60, 60, 60)
                         .addGroup(pn_UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -682,8 +683,50 @@ public class Student extends javax.swing.JFrame {
             cmb_Ed_department.setSelectedItem(department);
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_EditActionPerformed
-
-/Add - Save button
+//Update - save button
+    private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ed_SaveActionPerformed
+        boolean upd = true;
+        if(tf_Ed_Name.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_lName.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_nic.getText().equals("")){
+            upd=false;
+        }
+        if(tf_Ed_phone.getText().equals("")){
+            upd=false;
+        }
+          
+        if(upd==false){
+            JOptionPane.showMessageDialog(null, "Fill the All Details");
+        }else
+        {
+            String sId = tf_Ed_Sid.getText();
+            String fName = tf_Ed_Name.getText();
+            String lName = tf_Ed_lName.getText();
+            String Nic = tf_Ed_nic.getText();
+            int Phone =  Integer.parseInt(tf_Ed_phone.getText());
+            String course = cmb_Ed_course.getSelectedItem().toString();
+            String Department = cmb_Ed_department.getSelectedItem().toString();
+            try
+            {
+                int CourseId = Controller_Student.retCourseID(course);
+                int FacultyId = Controller_Student.retDepartmentID(Department);
+                Model_Student Student = new Model_Student(fName, lName, Nic, CourseId, FacultyId, Phone);
+                Controller_Student.UpdateStudent(Student, sId);
+                JOptionPane.showMessageDialog(null, "Student Details Update Successfully.");
+                ResultSet resSet1=Controller_Student.FillStuDataTable();
+                dt_editV.setModel(DbUtils.resultSetToTableModel(resSet1));
+                tf_Ed_Name.setText("");
+                tf_Ed_lName.setText("");
+                tf_Ed_nic.setText("");
+                tf_Ed_phone.setText("");
+            }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+        }
+    }
+//Add - Save button
     private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
         boolean upd = true;
         if(tf_fName.getText().equals("")){
