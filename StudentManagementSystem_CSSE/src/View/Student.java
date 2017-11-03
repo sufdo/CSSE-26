@@ -744,7 +744,7 @@ public class Student extends javax.swing.JFrame {
                 tf_nic.setText("");
                 tf_phone.setText("");
                     ResultSet resSet1=Controller_Student.FillStuDataTable();
-                    dt_Search.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+                    dt_Add.setModel(DbUtils.resultSetToTableModel(resSet1)); 
             }
             else{
                JOptionPane.showMessageDialog(null, "Already Added Entry Check Again!");
