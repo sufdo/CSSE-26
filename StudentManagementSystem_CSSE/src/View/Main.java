@@ -19,7 +19,6 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_AdminFaculty = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btn_StudentsExams = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -32,7 +31,6 @@ public class Main extends javax.swing.JFrame {
         btn_StudentsCouerse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1499, 762));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -50,12 +48,8 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(btn_AdminFaculty);
         btn_AdminFaculty.setBounds(20, 370, 280, 80);
 
-        jLabel1.setText("pic");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 40, 90, 14);
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Student Management System Home Panels");
+        jLabel2.setText("Student Management System");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 460, 30);
 
@@ -76,7 +70,7 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setBounds(0, 0, 330, 80);
 
         btn_AdminStudents.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_AdminStudents.setText("Student Details (Add/ Delete/ Update/ Search)");
+        btn_AdminStudents.setText("Student Details");
         btn_AdminStudents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AdminStudentsActionPerformed(evt);
@@ -166,31 +160,31 @@ public class Main extends javax.swing.JFrame {
     private void btn_StudentsViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsViewProfileActionPerformed
         String nic = Nic;
         this.dispose();
-        Cou_Dep_Pro stu = new Cou_Dep_Pro();
+        Students_View stu = new Students_View();
         stu.setVisible(true);
         try{
-        ResultSet resSet1=Controller.Controller_View_DPC.ViewProfile(nic);
-        Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        ResultSet resSet1=Controller.Controller_StudentViews.ViewProfile(nic);
+        Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsViewProfileActionPerformed
 //Student - View Faculty
     private void btn_StudentsFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsFacultyActionPerformed
         this.dispose();
-        Cou_Dep_Pro stu = new Cou_Dep_Pro();
+        Students_View stu = new Students_View();
         stu.setVisible(true);
         try{
-        ResultSet resSet1=Controller.Controller_View_DPC.ViewDepartment();
-        Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        ResultSet resSet1=Controller.Controller_StudentViews.ViewDepartment();
+        Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsFacultyActionPerformed
 //Student - View Course
     private void btn_StudentsCouerseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsCouerseActionPerformed
         this.dispose();
-        Cou_Dep_Pro stu = new Cou_Dep_Pro();
+        Students_View stu = new Students_View();
         stu.setVisible(true);
         try{
-        ResultSet resSet1=Controller.Controller_View_DPC.ViewCourse();
-        Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        ResultSet resSet1=Controller.Controller_StudentViews.ViewCourse();
+        Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsCouerseActionPerformed
 
@@ -260,7 +254,6 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JButton btn_StudentsFaculty;
     public javax.swing.JButton btn_StudentsViewProfile;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

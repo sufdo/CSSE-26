@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Controller_View_DPC {
+public class Controller_StudentViews {
     static Connection dbConn=null;
     static PreparedStatement preSt=null;
     static ResultSet resSet=null;

@@ -3,9 +3,9 @@ package View;
 import java.sql.SQLException;
 
 
-public class Cou_Dep_Pro extends javax.swing.JFrame {
+public class Students_View extends javax.swing.JFrame {
 
-    public Cou_Dep_Pro(){
+    public Students_View(){
         initComponents();
     }
 
@@ -106,13 +106,13 @@ public class Cou_Dep_Pro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cou_Dep_Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Students_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cou_Dep_Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Students_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cou_Dep_Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Students_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cou_Dep_Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Students_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -121,7 +121,7 @@ public class Cou_Dep_Pro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
               //  try{
-                new Cou_Dep_Pro().setVisible(true);
+                new Students_View().setVisible(true);
               //  } catch (SQLException ex) {
                    
                // }
