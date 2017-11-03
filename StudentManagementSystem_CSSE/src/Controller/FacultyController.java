@@ -65,15 +65,20 @@ public class FacultyController {
     {
         conn=DBConnect.connect();
         
-        String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
-        pst=conn.prepareStatement(q);
-        pst.execute();
-        JOptionPane.showMessageDialog(null, "Updated successfully");
-//        Statement stm = conn.createStatement();
-//
-//        int executeUpdate = stm.execute(q);
-//
-//        return executeUpdate;
+        int x=JOptionPane.showConfirmDialog(null, "Do you really want to update?");
+        
+        if(x==0)
+        {
+            String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
+            pst=conn.prepareStatement(q);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Updated successfully");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Not updated");
+        }
+
       
     }
     
