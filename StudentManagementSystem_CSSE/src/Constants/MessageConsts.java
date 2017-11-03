@@ -19,4 +19,8 @@ public class MessageConsts {
     public static String notDeleted="Not deleted";
     
     public static String deleteQuestion= "Do you really want to delete?";
+    
+    
+    public static String InsertSuccess="Successfully added";
+    public static String InsertFail="Insertion failed";
 }

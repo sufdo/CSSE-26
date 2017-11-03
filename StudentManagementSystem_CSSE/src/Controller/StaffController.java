@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Constants.MessageConsts;
 import static Controller.EventController.conn;
 import DBConnection.DBConnect;
 import Model.StaffModel;
@@ -13,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,17 +40,41 @@ public class StaffController {
     }
         
 
-    public static int AddStaff(StaffModel staff) throws SQLException
+    public static boolean AddStaff(StaffModel staff) throws SQLException
     {
         conn=DBConnect.connect();
         
-        String q="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
+        try 
+        {
+            String q="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
 
-        Statement stm = conn.createStatement();
-
-        int executeUpdate = stm.executeUpdate(q);
-
-        return executeUpdate;
+            System.out.println("d");
+            Statement stm = conn.createStatement(); 
+            int executeUpdate = stm.executeUpdate(q);
+            System.out.println("e");
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            return true;
+        } 
+        catch (Exception e)
+        {
+            System.out.println("f");
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            return false;
+        }
+        
+//        int executeUpdate = stm.executeUpdate(q);
+//
+////        return executeUpdate;
+//        if (executeUpdate>0)
+//        {
+//            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+//            return true;
+//        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+//            return false;
+//        }
       
     }
     public static ResultSet loadStafftable() throws SQLException{
