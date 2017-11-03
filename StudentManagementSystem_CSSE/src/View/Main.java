@@ -20,15 +20,12 @@ public class Main extends javax.swing.JFrame {
 
         btn_AdminFaculty = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btn_StudentsExams = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btn_AdminStudents = new javax.swing.JButton();
         btn_AdminExam = new javax.swing.JButton();
         btn_AdminCourse = new javax.swing.JButton();
         btn_StudentsViewProfile = new javax.swing.JButton();
-        btn_StudentsFaculty = new javax.swing.JButton();
-        btn_StudentsCouerse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -52,11 +49,6 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("Student Management System");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 460, 30);
-
-        btn_StudentsExams.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_StudentsExams.setText("View Exams");
-        getContentPane().add(btn_StudentsExams);
-        btn_StudentsExams.setBounds(380, 370, 280, 80);
 
         jButton1.setText("Logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,26 +101,6 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(btn_StudentsViewProfile);
         btn_StudentsViewProfile.setBounds(380, 130, 280, 80);
 
-        btn_StudentsFaculty.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_StudentsFaculty.setText("View Faculty");
-        btn_StudentsFaculty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_StudentsFacultyActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_StudentsFaculty);
-        btn_StudentsFaculty.setBounds(380, 210, 280, 80);
-
-        btn_StudentsCouerse.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btn_StudentsCouerse.setText("View Courses");
-        btn_StudentsCouerse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_StudentsCouerseActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_StudentsCouerse);
-        btn_StudentsCouerse.setBounds(380, 290, 280, 80);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     //rishni
@@ -167,34 +139,13 @@ public class Main extends javax.swing.JFrame {
         Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsViewProfileActionPerformed
-//Student - View Faculty
-    private void btn_StudentsFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsFacultyActionPerformed
-        this.dispose();
-        Students_View stu = new Students_View();
-        stu.setVisible(true);
-        try{
-        ResultSet resSet1=Controller.Controller_StudentViews.ViewDepartment();
-        Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
-        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
-    }//GEN-LAST:event_btn_StudentsFacultyActionPerformed
-//Student - View Course
-    private void btn_StudentsCouerseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsCouerseActionPerformed
-        this.dispose();
-        Students_View stu = new Students_View();
-        stu.setVisible(true);
-        try{
-        ResultSet resSet1=Controller.Controller_StudentViews.ViewCourse();
-        Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
-        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
-    }//GEN-LAST:event_btn_StudentsCouerseActionPerformed
 
+//Student - View Course
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         
         if(Constants.LoginUserType.userName .equals("Admin")){
             btn_StudentsViewProfile.setEnabled(false);
-            btn_StudentsCouerse.setEnabled(false);
-            btn_StudentsExams.setEnabled(false);
-            btn_StudentsFaculty.setEnabled(false);
+            
         }else if(Constants.LoginUserType.userName .equals("Student")){
             btn_AdminStudents.setEnabled(false);
             btn_AdminCourse.setEnabled(false);
@@ -249,9 +200,6 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JButton btn_AdminExam;
     public javax.swing.JButton btn_AdminFaculty;
     public javax.swing.JButton btn_AdminStudents;
-    public javax.swing.JButton btn_StudentsCouerse;
-    public javax.swing.JButton btn_StudentsExams;
-    public javax.swing.JButton btn_StudentsFaculty;
     public javax.swing.JButton btn_StudentsViewProfile;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

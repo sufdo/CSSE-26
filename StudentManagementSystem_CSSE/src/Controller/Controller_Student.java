@@ -95,7 +95,7 @@ public class Controller_Student {
         }else if(typ=="Nic"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
                  + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
-                 + " inner join Faculty as f  on s.department = f.FacultyID where s.nic like '"+ valu +"%';";
+                 + " inner join Faculty as f  on s.department = f.FacultyID where s.nic like '"+ valu +"';";
             //String query="SELECT * FROM Students where nic like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
