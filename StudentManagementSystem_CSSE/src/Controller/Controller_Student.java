@@ -17,7 +17,8 @@ public class Controller_Student {
                 + Student.getFname() +"','"+ Student.getLname() +"','"+ Student.getNic() +"',"
                 + Student.getPhone() +",'"+ Student.getCourse() +"','"+ Student.getDepartment() +"');" ;       
         Statement stmt = dbConn.createStatement();
-        stmt.executeUpdate(query);   
+        stmt.executeUpdate(query); 
+        dbConn.close();
     }
 //check the duplicate entry
     public static boolean hasDupEntry(String nic) throws SQLException{
@@ -29,6 +30,7 @@ public class Controller_Student {
         while(resSet.next()){
             nicData=resSet.getString(1);
         }
+        dbConn.close();
         if(nicData.equals("")){
             return false;
         }else{
@@ -51,6 +53,7 @@ public class Controller_Student {
         String query="DELETE FROM Students WHERE sid="+ stuId +";";
         Statement stmt = dbConn.createStatement();
         stmt.executeUpdate(query); 
+          dbConn.close();
     }
     
     static PreparedStatement preSt=null;
@@ -130,6 +133,7 @@ public class Controller_Student {
         while(resSet.next()){
             lastId=Integer.parseInt(resSet.getString(1));
         }
+        dbConn.close();
         return lastId;
     }
     //return the Course id
@@ -142,6 +146,7 @@ public class Controller_Student {
         while(resSet.next()){
             lastId=Integer.parseInt(resSet.getString(1));
         }
+        dbConn.close();
         return lastId;
     }
      //return the Department id
@@ -154,6 +159,7 @@ public class Controller_Student {
         while(resSet.next()){
             lastId=Integer.parseInt(resSet.getString(1));
         }
+        dbConn.close();
         return lastId;
     }
 }
