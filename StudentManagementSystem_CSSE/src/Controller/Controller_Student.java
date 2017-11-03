@@ -59,7 +59,7 @@ public class Controller_Student {
     public static ResultSet FillStuDataTable() throws SQLException{
         dbConn=DBConnect.connect();
         String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName, "
-                + "c.CourseName from students as s inner join course as c"
+                + "c.CourseName from Students as s inner join course as c"
                 + " on s.course = c.CourseID inner join Faculty as f  on s.department = f.FacultyID ;";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
@@ -70,49 +70,49 @@ public class Controller_Student {
         dbConn=DBConnect.connect(); 
         if(typ.equals("StudentID")){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                    + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                    + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                     + " inner join Faculty as f  on s.department = f.FacultyID where s.sid="+ valu +";";
             // String query="SELECT * FROM Students where sid="+ valu +";";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="FirstName"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where s.fName like '"+ valu +"%';";
             //String query="SELECT * FROM Students where fName like '"+ valu +"%';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="LastName"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where s.lName like '"+ valu +"%';";
             //String query="SELECT * FROM Students where lName like '"+ valu +"%';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="Nic"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where s.nic like '"+ valu +"%';";
             //String query="SELECT * FROM Students where nic like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="Phone"){
              String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where s.phone="+ valu +";";
             //String query="SELECT * FROM Students where phone = "+ valu +";";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="Department"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where f.FacultyName like '"+ valu +"%';";
             //String query="SELECT * FROM Students where department like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
             resSet=preSt.executeQuery();
         }else if(typ=="Course"){
              String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from Students as s inner join course as c on s.course = c.CourseID"
                  + " inner join Faculty as f  on s.department = f.FacultyID where c.CourseName like '"+ valu +"%';";
             //String query="SELECT * FROM Students where course like '"+ valu +"';";
             preSt=dbConn.prepareStatement(query);
@@ -123,7 +123,7 @@ public class Controller_Student {
 //return the last student id
     public static int retLastID() throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="select sid from students order by sid desc limit 1;";
+        String query="select sid from Students order by sid desc limit 1;";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         int lastId=0;

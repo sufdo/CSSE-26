@@ -784,7 +784,7 @@ public class Student extends javax.swing.JFrame {
                 String pat = resSet.getString("CourseName");
                 cmb_course_add.addItem(pat);
             }
-            String query2="SELECT FacultyName FROM faculty;";
+            String query2="SELECT FacultyName FROM Faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
@@ -806,7 +806,7 @@ public class Student extends javax.swing.JFrame {
                 String pat = resSet.getString("CourseName");
                 cmb_Ed_course.addItem(pat);
             }
-            String query2="SELECT FacultyName FROM faculty;";
+            String query2="SELECT FacultyName FROM Faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
