@@ -562,7 +562,7 @@ public class Faculty extends javax.swing.JFrame {
         
             try
             {
-                int addFaculty=FacultyController.AddFaculty(facultymodel);
+                FacultyController.AddFaculty(facultymodel);
 
                 ResultSet rs=FacultyController.loadFacultytable();
                 jFacultyTableAdd.setModel(DbUtils.resultSetToTableModel(rs));

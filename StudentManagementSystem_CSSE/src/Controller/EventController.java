@@ -40,17 +40,26 @@ public class EventController {
     }
         
 
-    public static int AddEvent(EventModel event) throws SQLException
+    public static boolean AddEvent(EventModel event) throws SQLException
     {
         conn=DBConnect.connect();
         
-        String q="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
+        try 
+        {
+            String q="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
 
-        Statement stm = conn.createStatement();
+            Statement stm = conn.createStatement();
 
-        int executeUpdate = stm.executeUpdate(q);
-
-        return executeUpdate;
+            int executeUpdate = stm.executeUpdate(q);
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            return true;
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            return false;
+        }
+            //return executeUpdate;
       
     }
     public static ResultSet loadEventtable() throws SQLException{

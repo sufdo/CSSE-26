@@ -38,17 +38,26 @@ public class FacultyController {
     }
         
 
-    public static int AddFaculty(FacultyModel faculty) throws SQLException
+    public static boolean AddFaculty(FacultyModel faculty) throws SQLException
     {
         conn=DBConnect.connect();
         
-        String q="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
+        try 
+        {
+            String q="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
 
-        Statement stm = conn.createStatement();
+            Statement stm = conn.createStatement();
 
-        int executeUpdate = stm.executeUpdate(q);
-
-        return executeUpdate;
+            int executeUpdate = stm.executeUpdate(q);
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            return true;
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            return false;
+        }
+//        return executeUpdate;
       
     }
     public static ResultSet loadFacultytable() throws SQLException{
