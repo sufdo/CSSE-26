@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import static Controller.EventController.pst;
 import DBConnection.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +21,9 @@ public class FacultyController {
     static Connection conn=null;
     static PreparedStatement pst=null;
     static ResultSet rs=null;
+
+    
+    
     
     Validation v=new Validation();
     
@@ -71,6 +75,61 @@ public class FacultyController {
 //
 //        return executeUpdate;
       
+    }
+    
+    
+    public static void DeleteFaculty(FacultyModel faculty) throws SQLException
+    {
+        conn=DBConnect.connect();
+        
+        int x=JOptionPane.showConfirmDialog(null, "Do you really want to delete?");
+        
+        if(x==0)
+        {
+        String q="DELETE FROM Faculty WHERE FacultyID='"+faculty.getFacultyID()+"' ";
+        pst=conn.prepareStatement(q);
+        pst.execute();
+        JOptionPane.showMessageDialog(null, "Deleted successfully");
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Not deleted");
+        }
+    }
+    
+    
+    public static ResultSet SearchFaculty(String search) throws SQLException {
+        
+        String sql="SELECT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+        return rs;
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static ResultSet SearchFaculty(char search) throws SQLException {
+        
+        String sql="SELECT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+        return rs;
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static ResultSet fillOrganizedBy() throws SQLException
+    {
+        conn=DBConnect.connect();
+        
+        String sql="SELECT FacultyName FROM Faculty";
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+
+        return rs;
+            
+        
     }
    
 }
