@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+import Constants.MessageConsts;
 import static Controller.EventController.pst;
 import DBConnection.DBConnect;
 import java.sql.Connection;
@@ -65,18 +66,18 @@ public class FacultyController {
     {
         conn=DBConnect.connect();
         
-        int x=JOptionPane.showConfirmDialog(null, "Do you really want to update?");
+        int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
         
         if(x==0)
         {
             String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
             pst=conn.prepareStatement(q);
             pst.execute();
-            JOptionPane.showMessageDialog(null, "Updated successfully");
+            JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Not updated");
+            JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
         }
 
       
@@ -87,19 +88,19 @@ public class FacultyController {
     {
         conn=DBConnect.connect();
         
-        int x=JOptionPane.showConfirmDialog(null, "Do you really want to delete?");
+        int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
         
         if(x==0)
         {
         String q="DELETE FROM Faculty WHERE FacultyID='"+faculty.getFacultyID()+"' ";
         pst=conn.prepareStatement(q);
         pst.execute();
-        JOptionPane.showMessageDialog(null, "Deleted successfully");
+        JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
 
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Not deleted");
+            JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
         }
     }
     

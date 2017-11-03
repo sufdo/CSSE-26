@@ -785,7 +785,7 @@ public class Faculty extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(Constants.Color.userName .equals("Admin")){
+        if(Constants.LoginUserType.userName .equals("Admin")){
             jAddFaculty.setEnabled(true);
             jFacultyAddClearButton.setEnabled(true);
             jFacultyViewSearchButton.setEnabled(true);
@@ -798,7 +798,7 @@ public class Faculty extends javax.swing.JFrame {
             jDeleteFacultyRefreshButton.setEnabled(true);
             jDeleteFacultySearchButton.setEnabled(true);
             
-        }else if(Constants.Color.userName .equals("Dean")){
+        }else if(Constants.LoginUserType.userName .equals("Dean")){
             jAddFaculty.setEnabled(false);
             jFacultyAddClearButton.setEnabled(false);
             jFacultyViewSearchButton.setEnabled(true);
@@ -811,7 +811,7 @@ public class Faculty extends javax.swing.JFrame {
             jDeleteFacultyRefreshButton.setEnabled(false);
             jDeleteFacultySearchButton.setEnabled(false);
         }
-        else if(Constants.Color.userName .equals("Lecturer")){
+        else if(Constants.LoginUserType.userName .equals("Lecturer")){
             jAddFaculty.setEnabled(false);
             jFacultyAddClearButton.setEnabled(false);
             jFacultyViewSearchButton.setEnabled(true);
@@ -824,7 +824,7 @@ public class Faculty extends javax.swing.JFrame {
             jDeleteFacultyRefreshButton.setEnabled(false);
             jDeleteFacultySearchButton.setEnabled(false);
         }
-        else if(Constants.Color.userName .equals("Student")){
+        else if(Constants.LoginUserType.userName .equals("Student")){
             jAddFaculty.setEnabled(false);
             jFacultyAddClearButton.setEnabled(false);
             jFacultyViewSearchButton.setEnabled(true);
