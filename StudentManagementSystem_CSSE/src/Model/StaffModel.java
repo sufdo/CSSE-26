@@ -15,6 +15,7 @@ public class StaffModel {
     public String LastName;
     public int Faculty;
     public String Position;
+    public String NIC;
   
     
     public StaffModel()
@@ -22,22 +23,23 @@ public class StaffModel {
         
     }
     
-    public StaffModel(String staffid,String fname,String lname,int faculty,String position)
+    public StaffModel(String staffid,String fname,String lname,int faculty,String position,String nic)
     {
         StaffID=staffid;
         FirstName=fname;
         LastName=lname;
         Faculty=faculty;
         Position=position;
-        
+        NIC=nic;
     }
     
-    public StaffModel(String fname,String lname,int faculty,String position)
+    public StaffModel(String fname,String lname,int faculty,String position,String nic)
     {
         FirstName=fname;
         LastName=lname;
         Faculty=faculty;
         Position=position;
+        NIC=nic;
     }
     
     public StaffModel(String staffid)
@@ -71,6 +73,10 @@ public class StaffModel {
         return Position;
     }
     
+    public String getNIC()
+    {
+        return NIC;
+    }
    
     
     //setters
@@ -98,6 +104,12 @@ public class StaffModel {
     {
         Position=position;
     }
+    
+    public void setNIC(String nic)
+    {
+        NIC=nic;
+    }
+    
     
    
 }

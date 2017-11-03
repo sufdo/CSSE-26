@@ -62,14 +62,14 @@ public class Faculty extends javax.swing.JFrame {
         jAddFaculty = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jFacultyTableAdd = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jFacultyAddClearButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jSearchFacultytable = new javax.swing.JTable();
         jFacultySearchtxt = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jFacultyViewSearchButton = new javax.swing.JButton();
+        jFacultyViewRefreshButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jscrollpane = new javax.swing.JScrollPane();
         jUpdateFacultyTable = new javax.swing.JTable();
@@ -79,11 +79,11 @@ public class Faculty extends javax.swing.JFrame {
         jUpdateFacultyNametxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jUpdateFacultyDeantxt = new javax.swing.JTextField();
-        jUpdateFaculty = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jUpdateFacultyUpdateButton = new javax.swing.JButton();
+        jUpdateFacultyClearButton = new javax.swing.JButton();
+        jUpdateFacultyRefreshButton = new javax.swing.JButton();
         jUpdateFacultySearchtxt = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        jUpdateFacultySearchButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jDeleteFacultyTable = new javax.swing.JTable();
@@ -93,13 +93,18 @@ public class Faculty extends javax.swing.JFrame {
         jDeleteFacultyIDlbl = new javax.swing.JLabel();
         jDeleteFacultyNAMElbl = new javax.swing.JLabel();
         jDeleteFacultyDEANlbl = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jDeleteFacultyDeleteButton = new javax.swing.JButton();
+        jDeleteFacultyRefreshButton = new javax.swing.JButton();
+        jDeleteFacultySearchButton = new javax.swing.JButton();
         jDeleteFacultySearchtxt = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,10 +136,10 @@ public class Faculty extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jFacultyTableAdd);
 
-        jButton2.setText("CLEAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jFacultyAddClearButton.setText("CLEAR");
+        jFacultyAddClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jFacultyAddClearButtonActionPerformed(evt);
             }
         });
 
@@ -157,7 +162,7 @@ public class Faculty extends javax.swing.JFrame {
                         .addGap(146, 146, 146)
                         .addComponent(jAddFaculty)
                         .addGap(73, 73, 73)
-                        .addComponent(jButton2)))
+                        .addComponent(jFacultyAddClearButton)))
                 .addGap(96, 96, 96)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(421, Short.MAX_VALUE))
@@ -178,7 +183,7 @@ public class Faculty extends javax.swing.JFrame {
                         .addGap(93, 93, 93)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jAddFaculty)
-                            .addComponent(jButton2)))
+                            .addComponent(jFacultyAddClearButton)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -208,17 +213,17 @@ public class Faculty extends javax.swing.JFrame {
 
         jLabel9.setText("Search");
 
-        jButton3.setText("SEARCH");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jFacultyViewSearchButton.setText("SEARCH");
+        jFacultyViewSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jFacultyViewSearchButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("REFRESH");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jFacultyViewRefreshButton.setText("REFRESH");
+        jFacultyViewRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jFacultyViewRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -234,13 +239,13 @@ public class Faculty extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jButton3))
+                        .addComponent(jFacultyViewSearchButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(555, 555, 555)
-                        .addComponent(jButton5)))
+                        .addComponent(jFacultyViewRefreshButton)))
                 .addContainerGap(753, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -250,11 +255,11 @@ public class Faculty extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jButton3))
+                    .addComponent(jFacultyViewSearchButton))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton5)
+                .addComponent(jFacultyViewRefreshButton)
                 .addContainerGap(290, Short.MAX_VALUE))
         );
 
@@ -286,24 +291,24 @@ public class Faculty extends javax.swing.JFrame {
 
         jLabel6.setText("Faculty Dean");
 
-        jUpdateFaculty.setText("UPDATE");
-        jUpdateFaculty.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateFacultyUpdateButton.setText("UPDATE");
+        jUpdateFacultyUpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jUpdateFacultyActionPerformed(evt);
+                jUpdateFacultyUpdateButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("CLEAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateFacultyClearButton.setText("CLEAR");
+        jUpdateFacultyClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jUpdateFacultyClearButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("REFRESH");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateFacultyRefreshButton.setText("REFRESH");
+        jUpdateFacultyRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jUpdateFacultyRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -313,10 +318,10 @@ public class Faculty extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("SEARCH");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateFacultySearchButton.setText("SEARCH");
+        jUpdateFacultySearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jUpdateFacultySearchButtonActionPerformed(evt);
             }
         });
 
@@ -341,19 +346,19 @@ public class Faculty extends javax.swing.JFrame {
                                     .addComponent(jUpdateFacultyIDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(85, 85, 85)
-                                .addComponent(jUpdateFaculty)
+                                .addComponent(jUpdateFacultyUpdateButton)
                                 .addGap(96, 96, 96)
-                                .addComponent(jButton4)))
+                                .addComponent(jUpdateFacultyClearButton)))
                         .addGap(168, 168, 168)
                         .addComponent(jscrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(692, 692, 692)
-                        .addComponent(jButton6))
+                        .addComponent(jUpdateFacultyRefreshButton))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(655, 655, 655)
                         .addComponent(jUpdateFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
-                        .addComponent(jButton9)))
+                        .addComponent(jUpdateFacultySearchButton)))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -362,7 +367,7 @@ public class Faculty extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jUpdateFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9))
+                    .addComponent(jUpdateFacultySearchButton))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jscrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,10 +385,10 @@ public class Faculty extends javax.swing.JFrame {
                             .addComponent(jUpdateFacultyDeantxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jUpdateFaculty)
-                            .addComponent(jButton4))))
+                            .addComponent(jUpdateFacultyUpdateButton)
+                            .addComponent(jUpdateFacultyClearButton))))
                 .addGap(37, 37, 37)
-                .addComponent(jButton6)
+                .addComponent(jUpdateFacultyRefreshButton)
                 .addContainerGap(281, Short.MAX_VALUE))
         );
 
@@ -419,24 +424,24 @@ public class Faculty extends javax.swing.JFrame {
 
         jDeleteFacultyDEANlbl.setText("DEAN");
 
-        jButton1.setText("DELETE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteFacultyDeleteButton.setText("DELETE");
+        jDeleteFacultyDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jDeleteFacultyDeleteButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("REFRESH");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteFacultyRefreshButton.setText("REFRESH");
+        jDeleteFacultyRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jDeleteFacultyRefreshButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("SEARCH");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteFacultySearchButton.setText("SEARCH");
+        jDeleteFacultySearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jDeleteFacultySearchButtonActionPerformed(evt);
             }
         });
 
@@ -465,19 +470,19 @@ public class Faculty extends javax.swing.JFrame {
                             .addComponent(jDeleteFacultyDEANlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(151, 151, 151)
-                        .addComponent(jButton1)))
+                        .addComponent(jDeleteFacultyDeleteButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(317, 317, 317))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(677, 677, 677)
-                .addComponent(jButton7)
+                .addComponent(jDeleteFacultyRefreshButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDeleteFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94)
-                .addComponent(jButton8)
+                .addComponent(jDeleteFacultySearchButton)
                 .addGap(352, 352, 352))
         );
         jPanel4Layout.setVerticalGroup(
@@ -487,7 +492,7 @@ public class Faculty extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8)
+                            .addComponent(jDeleteFacultySearchButton)
                             .addComponent(jDeleteFacultySearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -505,9 +510,9 @@ public class Faculty extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jDeleteFacultyDEANlbl))
                         .addGap(83, 83, 83)
-                        .addComponent(jButton1)))
+                        .addComponent(jDeleteFacultyDeleteButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton7)
+                .addComponent(jDeleteFacultyRefreshButton)
                 .addContainerGap(369, Short.MAX_VALUE))
         );
 
@@ -570,12 +575,12 @@ public class Faculty extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jAddFacultyActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jFacultyAddClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacultyAddClearButtonActionPerformed
         jFacultynametxt.setText("");
         jFacultydeantxt.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jFacultyAddClearButtonActionPerformed
 
-    private void jUpdateFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateFacultyActionPerformed
+    private void jUpdateFacultyUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateFacultyUpdateButtonActionPerformed
         String facultyid=jUpdateFacultyIDlbl.getText();
         String facultyname=jUpdateFacultyNametxt.getText();
         String facultydean=jUpdateFacultyDeantxt.getText();
@@ -597,13 +602,13 @@ public class Faculty extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jUpdateFacultyActionPerformed
+    }//GEN-LAST:event_jUpdateFacultyUpdateButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jUpdateFacultyClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateFacultyClearButtonActionPerformed
         jUpdateFacultyIDlbl.setText("");
         jUpdateFacultyNametxt.setText("");
         jUpdateFacultyDeantxt.setText("");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jUpdateFacultyClearButtonActionPerformed
 
     private void jUpdateFacultyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jUpdateFacultyTableMouseClicked
         int r=jUpdateFacultyTable.getSelectedRow();
@@ -629,7 +634,7 @@ public class Faculty extends javax.swing.JFrame {
         jDeleteFacultyDEANlbl.setText(dean);
     }//GEN-LAST:event_jDeleteFacultyTableMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jDeleteFacultyDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteFacultyDeleteButtonActionPerformed
         String facultyid=jDeleteFacultyIDlbl.getText();
         
         Boolean isempty=Validation.isEmpty(facultyid);
@@ -653,7 +658,7 @@ public class Faculty extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jDeleteFacultyDeleteButtonActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
 //        try {
@@ -681,7 +686,7 @@ public class Faculty extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jFacultySearchtxtKeyTyped
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jFacultyViewSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacultyViewSearchButtonActionPerformed
         String search=jFacultySearchtxt.getText();
         
         try {
@@ -692,34 +697,34 @@ public class Faculty extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jFacultyViewSearchButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jFacultyViewRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFacultyViewRefreshButtonActionPerformed
         try {
             rs = FacultyController.loadFacultytable();
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
         jSearchFacultytable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jFacultyViewRefreshButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jUpdateFacultyRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateFacultyRefreshButtonActionPerformed
         try {
             rs = FacultyController.loadFacultytable();
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
         jSearchFacultytable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jUpdateFacultyRefreshButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jDeleteFacultyRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteFacultyRefreshButtonActionPerformed
         try {
             rs = FacultyController.loadFacultytable();
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDeleteFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jDeleteFacultyRefreshButtonActionPerformed
 
     private void jUpdateFacultySearchtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUpdateFacultySearchtxtKeyTyped
         char search=evt.getKeyChar();
@@ -734,7 +739,7 @@ public class Faculty extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jUpdateFacultySearchtxtKeyTyped
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jUpdateFacultySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateFacultySearchButtonActionPerformed
         String search=jUpdateFacultySearchtxt.getText();
         
         try {
@@ -745,7 +750,7 @@ public class Faculty extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jUpdateFacultySearchButtonActionPerformed
 
     private void jDeleteFacultySearchtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDeleteFacultySearchtxtKeyTyped
         char search=evt.getKeyChar();
@@ -759,7 +764,7 @@ public class Faculty extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDeleteFacultySearchtxtKeyTyped
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jDeleteFacultySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteFacultySearchButtonActionPerformed
         String search=jDeleteFacultySearchtxt.getText();
         
         try {
@@ -770,7 +775,7 @@ public class Faculty extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jDeleteFacultySearchButtonActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         this.dispose();
@@ -778,6 +783,61 @@ public class Faculty extends javax.swing.JFrame {
         facultymain = new FacultyMain();
         facultymain.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(Constants.Color.userName .equals("Admin")){
+            jAddFaculty.setEnabled(true);
+            jFacultyAddClearButton.setEnabled(true);
+            jFacultyViewSearchButton.setEnabled(true);
+            jFacultyViewRefreshButton.setEnabled(true);
+            jUpdateFacultyUpdateButton.setEnabled(true);
+            jUpdateFacultyClearButton.setEnabled(true);
+            jUpdateFacultyRefreshButton.setEnabled(true);
+            jUpdateFacultySearchButton.setEnabled(true);
+            jDeleteFacultyDeleteButton.setEnabled(true);
+            jDeleteFacultyRefreshButton.setEnabled(true);
+            jDeleteFacultySearchButton.setEnabled(true);
+            
+        }else if(Constants.Color.userName .equals("Dean")){
+            jAddFaculty.setEnabled(false);
+            jFacultyAddClearButton.setEnabled(false);
+            jFacultyViewSearchButton.setEnabled(true);
+            jFacultyViewRefreshButton.setEnabled(true);
+            jUpdateFacultyUpdateButton.setEnabled(true);
+            jUpdateFacultyClearButton.setEnabled(true);
+            jUpdateFacultyRefreshButton.setEnabled(true);
+            jUpdateFacultySearchButton.setEnabled(true);
+            jDeleteFacultyDeleteButton.setEnabled(false);
+            jDeleteFacultyRefreshButton.setEnabled(false);
+            jDeleteFacultySearchButton.setEnabled(false);
+        }
+        else if(Constants.Color.userName .equals("Lecturer")){
+            jAddFaculty.setEnabled(false);
+            jFacultyAddClearButton.setEnabled(false);
+            jFacultyViewSearchButton.setEnabled(true);
+            jFacultyViewRefreshButton.setEnabled(true);
+            jUpdateFacultyUpdateButton.setEnabled(false);
+            jUpdateFacultyClearButton.setEnabled(false);
+            jUpdateFacultyRefreshButton.setEnabled(false);
+            jUpdateFacultySearchButton.setEnabled(false);
+            jDeleteFacultyDeleteButton.setEnabled(false);
+            jDeleteFacultyRefreshButton.setEnabled(false);
+            jDeleteFacultySearchButton.setEnabled(false);
+        }
+        else if(Constants.Color.userName .equals("Student")){
+            jAddFaculty.setEnabled(false);
+            jFacultyAddClearButton.setEnabled(false);
+            jFacultyViewSearchButton.setEnabled(true);
+            jFacultyViewRefreshButton.setEnabled(true);
+            jUpdateFacultyUpdateButton.setEnabled(false);
+            jUpdateFacultyClearButton.setEnabled(false);
+            jUpdateFacultyRefreshButton.setEnabled(false);
+            jUpdateFacultySearchButton.setEnabled(false);
+            jDeleteFacultyDeleteButton.setEnabled(false);
+            jDeleteFacultyRefreshButton.setEnabled(false);
+            jDeleteFacultySearchButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -823,23 +883,20 @@ public class Faculty extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddFaculty;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jDeleteFacultyDEANlbl;
+    private javax.swing.JButton jDeleteFacultyDeleteButton;
     private javax.swing.JLabel jDeleteFacultyIDlbl;
     private javax.swing.JLabel jDeleteFacultyNAMElbl;
+    private javax.swing.JButton jDeleteFacultyRefreshButton;
+    private javax.swing.JButton jDeleteFacultySearchButton;
     private javax.swing.JTextField jDeleteFacultySearchtxt;
     private javax.swing.JTable jDeleteFacultyTable;
+    private javax.swing.JButton jFacultyAddClearButton;
     private javax.swing.JTextField jFacultySearchtxt;
     private javax.swing.JTable jFacultyTableAdd;
+    private javax.swing.JButton jFacultyViewRefreshButton;
+    private javax.swing.JButton jFacultyViewSearchButton;
     private javax.swing.JTextField jFacultydeantxt;
     private javax.swing.JTextField jFacultynametxt;
     private javax.swing.JLabel jLabel1;
@@ -860,12 +917,15 @@ public class Faculty extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jSearchFacultytable;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton jUpdateFaculty;
+    private javax.swing.JButton jUpdateFacultyClearButton;
     private javax.swing.JTextField jUpdateFacultyDeantxt;
     private javax.swing.JLabel jUpdateFacultyIDlbl;
     private javax.swing.JTextField jUpdateFacultyNametxt;
+    private javax.swing.JButton jUpdateFacultyRefreshButton;
+    private javax.swing.JButton jUpdateFacultySearchButton;
     private javax.swing.JTextField jUpdateFacultySearchtxt;
     private javax.swing.JTable jUpdateFacultyTable;
+    private javax.swing.JButton jUpdateFacultyUpdateButton;
     private javax.swing.JScrollPane jscrollpane;
     // End of variables declaration//GEN-END:variables
 }

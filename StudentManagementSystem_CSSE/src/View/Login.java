@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Password");
 
-        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lectures" }));
+        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lectures", "Dean", " " }));
 
         btn_login.setText("Login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +116,40 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     Main stuMain = new Main();
                     stuMain.setVisible(true);
+                    //stuMain.userC = "Student";
+                    Main.Nic = txt_password.getText();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  
+                }
+            } catch (Exception exc) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + exc);      
+            }
+        }
+        else if(userType.equals("Dean")){
+         try
+            {
+                if(Controller_Login.loginDean(userName, pass)==true){
+                    Constants.Color.userName = "Dean";
+                    this.dispose();
+                    Main deanMain = new Main();
+                    deanMain.setVisible(true);
+                    //stuMain.userC = "Student";
+                    Main.Nic = txt_password.getText();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Wrong First name or Nic no!");  
+                }
+            } catch (Exception exc) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + exc);      
+            }
+        }
+        else if(userType.equals("Lecturer")){
+         try
+            {
+                if(Controller_Login.loginLecturer(userName, pass)==true){
+                    Constants.Color.userName = "Lecturer";
+                    this.dispose();
+                    Main lecMain = new Main();
+                    lecMain.setVisible(true);
                     //stuMain.userC = "Student";
                     Main.Nic = txt_password.getText();
                 }else{
