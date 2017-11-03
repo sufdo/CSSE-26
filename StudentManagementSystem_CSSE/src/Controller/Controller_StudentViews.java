@@ -16,7 +16,7 @@ public class Controller_StudentViews {
         dbConn=DBConnect.connect();
         String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName," +
                 "c.CourseName from students as s inner join course as c on s.course = c.CourseID" +
-                "inner join Faculty as f  on s.department = f.FacultyID where s,nic like '"+ nic +"'%;";
+                "inner join Faculty as f  on s.department = f.FacultyID where s.nic like '"+ nic +"'%;";
         //String query="SELECT * FROM Students where nic like '"+ nic +"';";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();
