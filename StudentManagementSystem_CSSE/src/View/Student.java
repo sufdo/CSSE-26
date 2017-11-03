@@ -92,6 +92,7 @@ public class Student extends javax.swing.JFrame {
         btn_Back3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1499, 762));
 
         tp_StudentAdd.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 

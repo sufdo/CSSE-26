@@ -34,6 +34,7 @@ public class Students_View extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dt_Search);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1499, 762));
 
         dt_View_C_D_P.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         dt_View_C_D_P.setModel(new javax.swing.table.DefaultTableModel(

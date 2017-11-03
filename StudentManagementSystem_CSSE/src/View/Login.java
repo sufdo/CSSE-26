@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1499, 762));
 
         jLabel4.setText("User Type");
 
