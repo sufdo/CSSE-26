@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
  * @author Rishni
  */
 public class EventControllerNGTest {
+    public static final String EVENTID="6";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";
@@ -31,10 +32,14 @@ public class EventControllerNGTest {
     
     EventController eventcontroller;
     EventModel eventmodel;
+    //EventModel eventmodel1;
+    //EventModel eventmodel2;
     public EventControllerNGTest() {
         conn=DBConnect.connect();
         eventcontroller=new EventController();
         eventmodel=new EventModel(NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
+        //eventmodel1=new EventModel(EVENTID,NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
+        //eventmodel2=new EventModel(EVENTID);
     }
 
     @BeforeClass
@@ -58,14 +63,6 @@ public class EventControllerNGTest {
      */
     @Test
     public void testAddEvent() throws Exception {
-//        System.out.println("AddEvent");
-//        EventModel event = null;
-//        boolean expResult = false;
-//        boolean result = EventController.AddEvent(event);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-
           Assert.assertTrue(eventcontroller.AddEvent(eventmodel));
     }
 
@@ -81,34 +78,26 @@ public class EventControllerNGTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-//
-//    /**
-//     * Test of UpdateEvent method, of class EventController.
-//     */
-//    @Test
-//    public void testUpdateEvent() throws Exception {
-//        System.out.println("UpdateEvent");
-//        EventModel event = null;
-//        EventController.UpdateEvent(event);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of DeleteEvent method, of class EventController.
-//     */
-//    @Test
-//    public void testDeleteEvent() throws Exception {
-//        System.out.println("DeleteEvent");
-//        EventModel event = null;
-//        EventController.DeleteEvent(event);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of SearchEvent method, of class EventController.
-//     */
+
+    /**
+     * Test of UpdateEvent method, of class EventController.
+     */
+    @Test(dependsOnMethods = {"testAddEvent"})
+    public void testUpdateEvent() throws Exception {
+        Assert.assertTrue(eventcontroller.UpdateEvent(eventmodel,EVENTID));
+    }
+
+    /**
+     * Test of DeleteEvent method, of class EventController.
+     */
+    @Test(dependsOnMethods = {"testAddEvent","testUpdateEvent"})
+    public void testDeleteEvent() throws Exception {
+       Assert.assertTrue(eventcontroller.DeleteEvent(EVENTID));
+    }
+
+    /**
+     * Test of SearchEvent method, of class EventController.
+     */
 //    @Test
 //    public void testSearchEvent_String() throws Exception {
 //        System.out.println("SearchEvent");

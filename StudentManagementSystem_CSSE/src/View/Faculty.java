@@ -588,11 +588,11 @@ public class Faculty extends javax.swing.JFrame {
         Boolean isempty=Validation.isEmpty(facultyname,facultydean);
         if(!isempty)
         {
-            FacultyModel facultymodel=new FacultyModel(facultyid,facultyname,facultydean);
+            FacultyModel facultymodel=new FacultyModel(facultyname,facultydean);
         
             try
             {
-                FacultyController.UpdateFaculty(facultymodel);
+                FacultyController.UpdateFaculty(facultymodel,facultyid);
 
                 ResultSet rs=FacultyController.loadFacultytable();
                 jUpdateFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -640,11 +640,12 @@ public class Faculty extends javax.swing.JFrame {
         Boolean isempty=Validation.isEmpty(facultyid);
         if(!isempty)
         {
-            FacultyModel facultymodel=new FacultyModel(facultyid);
+            //FacultyModel facultymodel=new FacultyModel(facultyid);
         
             try
             {
-                FacultyController.DeleteFaculty(facultymodel);
+//                FacultyController.DeleteFaculty(facultymodel);
+                FacultyController.DeleteFaculty(facultyid);
 
                 ResultSet rs=FacultyController.loadFacultytable();
                 jDeleteFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));

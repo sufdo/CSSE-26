@@ -73,46 +73,69 @@ public class EventController {
         return rs;
     }
     
-    public static void UpdateEvent(EventModel event) throws SQLException
+    public static boolean UpdateEvent(EventModel event,String id) throws SQLException
     {
-        conn=DBConnect.connect();
-        
-        int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
-        
-        if(x==0)
+        try 
         {
-            String q="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+event.getEventID()+"' ";
-            pst=conn.prepareStatement(q);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+            conn=DBConnect.connect();
+            int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+
+            if(x==0)
+            {
+                String query="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+id+"' ";
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query);   
+                conn.close();
+                JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+                return true;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+                return true;
+            }
         }
-        else
+        catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
-        }
-
+            return false;
+        }        
       
     }
     
     
-    public static void DeleteEvent(EventModel event) throws SQLException
+    public static boolean DeleteEvent(String event) throws SQLException
     {
-        conn=DBConnect.connect();
-        
         int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
-        
-        if(x==0)
+
+        try
         {
-        String q="DELETE FROM Event WHERE EventID='"+event.getEventID()+"' ";
-        pst=conn.prepareStatement(q);
-        pst.execute();
-        JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
+            if(x==0)
+            {
+                conn=DBConnect.connect();
+                String query="DELETE FROM Event WHERE EventID='"+event+"' ";
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query); 
+
+                JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
+                conn.close();
+                return true;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                return true;
+            }
+
 
         }
-        else
+        catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+            return false;
         }
+
+
     }
     
     
