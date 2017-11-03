@@ -8,12 +8,13 @@ package View;
 import Controller.EventController;
 import Controller.FacultyController;
 import Controller.Validation;
-import Model.EventModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Model.EventModel;
 import net.proteanit.sql.DbUtils;
+
 
 /**
  *
@@ -716,11 +717,7 @@ public class Event extends javax.swing.JFrame {
         //{
             
         //}
-        //Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-        //if(!isempty)
-        //{
-            
-        //}
+        
     }//GEN-LAST:event_jAddEventAddButtonActionPerformed
 
     private void jAddEventClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddEventClearButtonActionPerformed
@@ -733,15 +730,15 @@ public class Event extends javax.swing.JFrame {
     }//GEN-LAST:event_jAddEventClearButtonActionPerformed
 
     private void jUpdateEventTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jUpdateEventTableMouseClicked
-        int r=jUpdateEventTable.getSelectedRow();
+        int row=jUpdateEventTable.getSelectedRow();
         
-        String id=jUpdateEventTable.getValueAt(r, 0).toString();
-        String name=jUpdateEventTable.getValueAt(r, 1).toString();
-        String organizedbytxt=jUpdateEventTable.getValueAt(r, 2).toString();
-        String category=jUpdateEventTable.getValueAt(r, 3).toString();
-        String venue=jUpdateEventTable.getValueAt(r, 4).toString();
-        String date=jUpdateEventTable.getValueAt(r, 5).toString();
-        String time=jUpdateEventTable.getValueAt(r, 6).toString();
+        String id=jUpdateEventTable.getValueAt(row, 0).toString();
+        String name=jUpdateEventTable.getValueAt(row, 1).toString();
+        String organizedbytxt=jUpdateEventTable.getValueAt(row, 2).toString();
+        String category=jUpdateEventTable.getValueAt(row, 3).toString();
+        String venue=jUpdateEventTable.getValueAt(row, 4).toString();
+        String date=jUpdateEventTable.getValueAt(row, 5).toString();
+        String time=jUpdateEventTable.getValueAt(row, 6).toString();
         
         
         jUpdateEventIDlbl.setText(id);
@@ -790,11 +787,7 @@ public class Event extends javax.swing.JFrame {
 //        {
             
         //}
-//        Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-//        if(!isempty)
-//        {
-            
-        //}
+
     }//GEN-LAST:event_jUpdateEventUpdateButtonActionPerformed
 
     private void jUpdateEventClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateEventClearButtonActionPerformed
@@ -808,15 +801,15 @@ public class Event extends javax.swing.JFrame {
     }//GEN-LAST:event_jUpdateEventClearButtonActionPerformed
 
     private void jDeleteEventTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteEventTableMouseClicked
-        int r=jDeleteEventTable.getSelectedRow();
+        int row=jDeleteEventTable.getSelectedRow();
         
-        String id=jDeleteEventTable.getValueAt(r, 0).toString();
-        String name=jDeleteEventTable.getValueAt(r, 1).toString();
-        String organizedbytxt=jDeleteEventTable.getValueAt(r, 2).toString();
-        String category=jDeleteEventTable.getValueAt(r, 3).toString();
-        String venue=jDeleteEventTable.getValueAt(r, 4).toString();
-        String date=jDeleteEventTable.getValueAt(r, 5).toString();
-        String time=jDeleteEventTable.getValueAt(r, 6).toString();
+        String id=jDeleteEventTable.getValueAt(row, 0).toString();
+        String name=jDeleteEventTable.getValueAt(row, 1).toString();
+        String organizedbytxt=jDeleteEventTable.getValueAt(row, 2).toString();
+        String category=jDeleteEventTable.getValueAt(row, 3).toString();
+        String venue=jDeleteEventTable.getValueAt(row, 4).toString();
+        String date=jDeleteEventTable.getValueAt(row, 5).toString();
+        String time=jDeleteEventTable.getValueAt(row, 6).toString();
         
         
         jDeleteEventIDlbl.setText(id);
@@ -862,7 +855,7 @@ public class Event extends javax.swing.JFrame {
         char search=evt.getKeyChar();
         
         try {
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jDeleteEventTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -875,7 +868,7 @@ public class Event extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jDeleteEventTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -895,7 +888,7 @@ public class Event extends javax.swing.JFrame {
         char search=evt.getKeyChar();
         
         try {
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -907,7 +900,7 @@ public class Event extends javax.swing.JFrame {
         
         try {
             
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -927,7 +920,7 @@ public class Event extends javax.swing.JFrame {
         char search=evt.getKeyChar();
         
         try {
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jSearchEventtable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -939,7 +932,7 @@ public class Event extends javax.swing.JFrame {
         
         try {
             
-            rs = EventController.SearchEvent(search);
+            ResultSet rs = EventController.SearchEvent(search);
             jSearchEventtable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);

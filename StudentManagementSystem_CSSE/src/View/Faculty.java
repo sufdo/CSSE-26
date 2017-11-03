@@ -5,14 +5,15 @@
  */
 package View;
 
-import Model.FacultyModel;
+
 import Controller.FacultyController;
+import Controller.Validation;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
-import Controller.Validation;
+import Model.FacultyModel;
 /**
  *
  * @author Rishni
@@ -611,11 +612,11 @@ public class Faculty extends javax.swing.JFrame {
     }//GEN-LAST:event_jUpdateFacultyClearButtonActionPerformed
 
     private void jUpdateFacultyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jUpdateFacultyTableMouseClicked
-        int r=jUpdateFacultyTable.getSelectedRow();
+        int row=jUpdateFacultyTable.getSelectedRow();
         
-        String id=jUpdateFacultyTable.getValueAt(r, 0).toString();
-        String name=jUpdateFacultyTable.getValueAt(r, 1).toString();
-        String dean=jUpdateFacultyTable.getValueAt(r, 2).toString();
+        String id=jUpdateFacultyTable.getValueAt(row, 0).toString();
+        String name=jUpdateFacultyTable.getValueAt(row, 1).toString();
+        String dean=jUpdateFacultyTable.getValueAt(row, 2).toString();
         
         jUpdateFacultyIDlbl.setText(id);
         jUpdateFacultyNametxt.setText(name);
@@ -623,11 +624,11 @@ public class Faculty extends javax.swing.JFrame {
     }//GEN-LAST:event_jUpdateFacultyTableMouseClicked
 
     private void jDeleteFacultyTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteFacultyTableMouseClicked
-        int r=jDeleteFacultyTable.getSelectedRow();
+        int row=jDeleteFacultyTable.getSelectedRow();
         
-        String id=jDeleteFacultyTable.getValueAt(r, 0).toString();
-        String name=jDeleteFacultyTable.getValueAt(r, 1).toString();
-        String dean=jDeleteFacultyTable.getValueAt(r, 2).toString();
+        String id=jDeleteFacultyTable.getValueAt(row, 0).toString();
+        String name=jDeleteFacultyTable.getValueAt(row, 1).toString();
+        String dean=jDeleteFacultyTable.getValueAt(row, 2).toString();
         
         jDeleteFacultyIDlbl.setText(id);
         jDeleteFacultyNAMElbl.setText(name);
@@ -662,14 +663,6 @@ public class Faculty extends javax.swing.JFrame {
     }//GEN-LAST:event_jDeleteFacultyDeleteButtonActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-//        try {
-//            rs=FacultyController.loadFacultytable();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        jUpdateFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
-//        jFacultyTableAdd.setModel(DbUtils.resultSetToTableModel(rs));
-//        jDeleteFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
 
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
@@ -679,7 +672,7 @@ public class Faculty extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jSearchFacultytable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -693,7 +686,7 @@ public class Faculty extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jSearchFacultytable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -715,7 +708,7 @@ public class Faculty extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jSearchFacultytable.setModel(DbUtils.resultSetToTableModel(rs));
+        jUpdateFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
     }//GEN-LAST:event_jUpdateFacultyRefreshButtonActionPerformed
 
     private void jDeleteFacultyRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteFacultyRefreshButtonActionPerformed
@@ -733,7 +726,7 @@ public class Faculty extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jUpdateFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -746,7 +739,7 @@ public class Faculty extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jUpdateFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -758,7 +751,7 @@ public class Faculty extends javax.swing.JFrame {
         
         try {
             
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jDeleteFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
@@ -771,7 +764,7 @@ public class Faculty extends javax.swing.JFrame {
         try {
             //FacultyController.SearchFaculty(search);              
         
-            rs = FacultyController.SearchFaculty(search);
+            ResultSet rs = FacultyController.SearchFaculty(search);
             jDeleteFacultyTable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
