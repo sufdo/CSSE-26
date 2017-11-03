@@ -31,7 +31,6 @@ public class Main extends javax.swing.JFrame {
         btn_StudentsCouerse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1499, 762));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -66,7 +65,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(1050, 30, 110, 23);
+        jButton1.setBounds(20, 460, 110, 23);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 330, 80);
 
