@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
  * @author Rishni
  */
 public class EventControllerNGTest {
-    public static final String EVENTID="6";
+    public static final String EVENTID="20";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";

@@ -8,7 +8,7 @@ package Controller;
 import Constants.MessageConsts;
 import DBConnection.DBConnect;
 import Model.EventModel;
-import Model.FacultyModel;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,42 +26,40 @@ public class EventController {
     static ResultSet rs=null;
 
     
-    
-    
-    Validation v=new Validation();
+    Validation validation=new Validation();
     
     public EventController() {
-        
         
         //connect to DB
         conn=DBConnect.connect();
         
-    
     }
         
-
+    //method to add event
     public static boolean AddEvent(EventModel event) throws SQLException
     {
         conn=DBConnect.connect();
         
         try 
         {
-            String q="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
+            String query="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
 
-            Statement stm = conn.createStatement();
+            Statement statement = conn.createStatement();
 
-            int executeUpdate = stm.executeUpdate(q);
+            statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            conn.close();
             return true;
         }
-        catch (Exception e)
+        catch (HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
             return false;
         }
-            //return executeUpdate;
-      
+            
     }
+    
+    //method to load event table
     public static ResultSet loadEventtable() throws SQLException{
         conn=DBConnect.connect();
         
@@ -69,24 +67,24 @@ public class EventController {
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
-        
         return rs;
     }
     
+    //method to uodate event
     public static boolean UpdateEvent(EventModel event,String id) throws SQLException
     {
         try 
         {
             conn=DBConnect.connect();
-            int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+            int option=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
 
-            if(x==0)
+            if(option==0)
             {
                 String query="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+id+"' ";
-                Statement stmt = conn.createStatement();
-                stmt.executeUpdate(query);   
-                conn.close();
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(query); 
                 JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+                conn.close();
                 return true;
             }
             else
@@ -103,19 +101,19 @@ public class EventController {
       
     }
     
-    
-    public static boolean DeleteEvent(String event) throws SQLException
+    //method to delete event
+    public static boolean DeleteEvent(String id) throws SQLException
     {
-        int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
+        int option=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
 
         try
         {
-            if(x==0)
+            if(option==0)
             {
                 conn=DBConnect.connect();
-                String query="DELETE FROM Event WHERE EventID='"+event+"' ";
-                Statement stmt = conn.createStatement();
-                stmt.executeUpdate(query); 
+                String query="DELETE FROM Event WHERE EventID='"+id+"' ";
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(query); 
 
                 JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
                 conn.close();
@@ -129,7 +127,7 @@ public class EventController {
 
 
         }
-        catch (Exception e)
+        catch (HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
             return false;
@@ -138,43 +136,31 @@ public class EventController {
 
     }
     
-    
+    //method to search event details when search button is pressed
     public static ResultSet SearchEvent(String search) throws SQLException {
+        //conn=DBConnect.connect();
+        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
         
-        String sql="SELECT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
-        
-        pst=conn.prepareStatement(sql);
+        pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         return rs;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    //method to search event details when key typed
     public static ResultSet SearchEvent(char search) throws SQLException {
+        //conn=DBConnect.connect();
+        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
         
-        String sql="SELECT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
-        
-        pst=conn.prepareStatement(sql);
+        pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         return rs;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-//    public static ResultSet fillOrganizedBy() throws SQLException
-//    {
-//        
-//            String sql="SELECT f.Name FROM Faculty f";
-//            pst=conn.prepareStatement(sql);
-//            rs=pst.executeQuery();
-//            
-//            return rs;
-//            
-//        
-//    }
-    
+    //method to find the facultyid for a given faculty name
     public static int findFacultyID(String organizedby) throws SQLException
     {
-        String sql="SELECT FacultyID FROM Faculty WHERE FacultyName='"+organizedby+"'";
-        pst=conn.prepareStatement(sql);
+        String query="SELECT FacultyID FROM Faculty WHERE FacultyName='"+organizedby+"'";
+        pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         
         int facultyID=0;

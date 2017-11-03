@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package Controller;
+
 import Constants.MessageConsts;
-import static Controller.EventController.pst;
 import DBConnection.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import Model.FacultyModel;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Model.FacultyModel;
+import java.awt.HeadlessException;
 /**
  *
  * @author Rishni
@@ -23,43 +24,38 @@ public class FacultyController {
     static PreparedStatement pst=null;
     static ResultSet rs=null;
 
-    
-    
-    
     Validation v=new Validation();
     
     public FacultyController() {
-        
-        
-        //connect to DB
+         //connect to DB
         conn=DBConnect.connect();
-        
-    
+
     }
         
-
+    //method to add faculty
     public static boolean AddFaculty(FacultyModel faculty) throws SQLException
     {
         conn=DBConnect.connect();
         
         try 
         {
-            String q="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
+            String query="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
 
-            Statement stm = conn.createStatement();
+            Statement statement = conn.createStatement();
 
-            int executeUpdate = stm.executeUpdate(q);
+            statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
             return true;
         }
-        catch (Exception e)
+        catch (HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
             return false;
         }
-//        return executeUpdate;
-      
+
     }
+    
+    //method to load the faculty table 
     public static ResultSet loadFacultytable() throws SQLException{
         conn=DBConnect.connect();
         
@@ -71,18 +67,19 @@ public class FacultyController {
         return rs;
     }
     
+    //method to update faculty
     public static boolean UpdateFaculty(FacultyModel faculty,String id) throws SQLException
     {
         try 
         {
             conn=DBConnect.connect();
-            int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+            int option=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
 
-            if(x==0)
+            if(option==0)
             {
                 String query="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+id+"' ";
-                Statement stmt = conn.createStatement();
-                stmt.executeUpdate(query);   
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(query);   
                 conn.close();
                 JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
                 return true;
@@ -93,7 +90,7 @@ public class FacultyController {
                 return true;
             }
         }
-        catch (Exception e)
+        catch (HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
             return false;
@@ -102,19 +99,19 @@ public class FacultyController {
       
     }
     
-    
+    //method to delete faculty
     public static boolean DeleteFaculty(String faculty) throws SQLException
     {
-        int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
+        int option=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
 
             try
             {
-                if(x==0)
+                if(option==0)
                 {
                     conn=DBConnect.connect();
                     String query="DELETE FROM Faculty WHERE FacultyID='"+faculty+"' ";
-                    Statement stmt = conn.createStatement();
-                    stmt.executeUpdate(query); 
+                    Statement statement = conn.createStatement();
+                    statement.executeUpdate(query); 
 
                     JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
                     conn.close();
@@ -135,27 +132,27 @@ public class FacultyController {
 
     }
     
-    
+    //method to search faculty details when search button is pressed
     public static ResultSet SearchFaculty(String search) throws SQLException {
         
-        String sql="SELECT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        String sql="SELECT DISTINCT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
         return rs;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    //method to search faculty details when key typed
     public static ResultSet SearchFaculty(char search) throws SQLException {
         
-        String sql="SELECT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        String sql="SELECT DISTINCT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
         return rs;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    //method to fill the combo box values with faculty names
     public static ResultSet fillOrganizedBy() throws SQLException
     {
         conn=DBConnect.connect();
@@ -165,8 +162,7 @@ public class FacultyController {
         rs=pst.executeQuery();
 
         return rs;
-            
-        
+ 
     }
    
 }

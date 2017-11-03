@@ -24,11 +24,11 @@ import org.testng.annotations.Test;
  */
 public class StaffControllerNGTest {
     
-    public static final String FNAME="Malee";
+    public static final String FNAME="Maneka";
     public static final String LNAME="Dissanayake";
     public static final int FACULTY=9;
     public static final String POSITION="Lecturer";
-    public static final String NIC="582354129v";
+    public static final String NIC="582394128v";
     
     
     StaffController staffcontroller;

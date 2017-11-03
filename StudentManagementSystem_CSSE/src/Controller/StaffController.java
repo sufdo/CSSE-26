@@ -6,15 +6,15 @@
 package Controller;
 
 import Constants.MessageConsts;
-import static Controller.EventController.conn;
 import DBConnection.DBConnect;
-import Model.StaffModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Model.StaffModel;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -25,58 +25,36 @@ public class StaffController {
     static PreparedStatement pst=null;
     static ResultSet rs=null;
 
-    
-    
-    
     Validation v=new Validation();
     
     public StaffController() {
-        
-        
-        //connect to DB
+       //connect to DB
         conn=DBConnect.connect();
-        
-    
     }
         
-
+    //method to add staff members
     public static boolean AddStaff(StaffModel staff) throws SQLException
     {
         conn=DBConnect.connect();
         
         try 
         {
-            String q="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
+            String query="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
 
-            System.out.println("d");
-            Statement stm = conn.createStatement(); 
-            int executeUpdate = stm.executeUpdate(q);
-            System.out.println("e");
+            Statement statement = conn.createStatement(); 
+            int executeUpdate = statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
             return true;
         } 
-        catch (Exception e)
+        catch (HeadlessException | SQLException e)
         {
-            System.out.println("f");
             JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
             return false;
         }
-        
-//        int executeUpdate = stm.executeUpdate(q);
-//
-////        return executeUpdate;
-//        if (executeUpdate>0)
-//        {
-//            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
-//            return true;
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
-//            return false;
-//        }
-      
+
     }
+    
+    //method to load/display staff table
     public static ResultSet loadStafftable() throws SQLException{
         conn=DBConnect.connect();
         
@@ -88,10 +66,11 @@ public class StaffController {
         return rs;
     }
     
+    //method to find faculty id for a given faculty
     public static int findFacultyID(String facultytxt) throws SQLException
     {
-        String sql="SELECT FacultyID FROM Faculty WHERE FacultyName='"+facultytxt+"'";
-        pst=conn.prepareStatement(sql);
+        String query="SELECT FacultyID FROM Faculty WHERE FacultyName='"+facultytxt+"'";
+        pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         
         int facultyID=0;
