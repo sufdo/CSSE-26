@@ -30,7 +30,6 @@ public class Student extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tp_StudentAdd = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cmb_FilterType = new javax.swing.JComboBox();
@@ -41,6 +40,7 @@ public class Student extends javax.swing.JFrame {
         btn_Clear = new javax.swing.JButton();
         btn_Back = new javax.swing.JButton();
         btn_print = new javax.swing.JButton();
+        tp_StudentAdd = new javax.swing.JTabbedPane();
         pn_Add = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tf_fName = new javax.swing.JTextField();
@@ -90,10 +90,6 @@ public class Student extends javax.swing.JFrame {
         dt_delete = new javax.swing.JTable();
         btn_Back1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        tp_StudentAdd.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -197,7 +193,9 @@ public class Student extends javax.swing.JFrame {
                 .addGap(58, 58, 58))
         );
 
-        tp_StudentAdd.addTab("Search", jPanel1);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tp_StudentAdd.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         pn_Add.setBackground(new java.awt.Color(255, 255, 255));
         pn_Add.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -683,7 +681,7 @@ public class Student extends javax.swing.JFrame {
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_EditActionPerformed
 
-/Add - Save button
+//Add - Save button
     private void btn_Ad_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ad_SaveActionPerformed
         boolean upd = true;
         if(tf_fName.getText().equals("")){
