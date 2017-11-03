@@ -42,7 +42,7 @@ public class StaffController {
     {
         conn=DBConnect.connect();
         
-        String q="INSERT INTO Staff(FirstName,LastName,Faculty,Position) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"')";
+        String q="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
 
         Statement stm = conn.createStatement();
 

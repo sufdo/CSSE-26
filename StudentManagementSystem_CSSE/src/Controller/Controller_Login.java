@@ -42,4 +42,69 @@ public class Controller_Login {
             return false;
         }
     }
+    public static boolean loginDean(String userName,String Password) throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="SELECT Position FROM Staff where FirstName = '"+ userName +"'";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery(); 
+        String position=null;
+        while(resSet.next())
+        {
+            position=resSet.getString("Position");
+        }
+        if(position.equals("Dean"))
+        {
+            String query2="SELECT NIC FROM Staff where FirstName = '"+ userName +"'";
+            preSt=dbConn.prepareStatement(query2);
+            resSet=preSt.executeQuery();
+            
+            String passwo="";
+            while(resSet.next()){
+                passwo=resSet.getString("NIC");
+            }
+            if(Password.equals(passwo)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    public static boolean loginLecturer(String userName,String Password) throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="SELECT Position FROM Staff where FirstName like '"+ userName +"'";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery(); 
+        String position=null;
+        while(resSet.next())
+        {
+            position=resSet.getString("Position");
+        }
+        if(position.equals("Lecturer"))
+        {
+            String query3="SELECT NIC FROM Staff where FirstName like '"+ userName +"'";
+            preSt=dbConn.prepareStatement(query3);
+            resSet=preSt.executeQuery();
+            
+            String passwo="";
+            while(resSet.next()){
+                passwo=resSet.getString("NIC");
+            }
+            if(Password.equals(passwo)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
 }

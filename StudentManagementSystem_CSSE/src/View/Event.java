@@ -77,16 +77,16 @@ public class Event extends javax.swing.JFrame {
         jEventvenuetxt = new javax.swing.JTextField();
         jEventdatetxt = new javax.swing.JTextField();
         jEventtimetxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jAddEventAddButton = new javax.swing.JButton();
+        jAddEventClearButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEventTableAdd = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jSearchEventSearchtxt = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jViewEventSearchButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jSearchEventtable = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
+        jViewEventRefreshButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -102,13 +102,13 @@ public class Event extends javax.swing.JFrame {
         jUpdateEventVenuetxt = new javax.swing.JTextField();
         jUpdateEventDatetxt = new javax.swing.JTextField();
         jUpdateEventTimetxt = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jUpdateEventUpdateButton = new javax.swing.JButton();
+        jUpdateEventClearButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jUpdateEventTable = new javax.swing.JTable();
         jUpdateEventSearchtxt = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jUpdateEventSearchButton = new javax.swing.JButton();
+        jUpdateEventRefreshButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -124,15 +124,20 @@ public class Event extends javax.swing.JFrame {
         jDeleteEventVenuetxt = new javax.swing.JLabel();
         jDeleteEventDatetxt = new javax.swing.JLabel();
         jDeleteEventTimetxt = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        jDeleteEventDeleteButton = new javax.swing.JButton();
         jDeleteEventSearchtxt = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        jDeleteEventSearchButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jDeleteEventTable = new javax.swing.JTable();
-        jButton9 = new javax.swing.JButton();
+        jDeleteEventRefreshButton = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("Event Name");
 
@@ -148,17 +153,17 @@ public class Event extends javax.swing.JFrame {
 
         jEventorganizedbycmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select faculty" }));
 
-        jButton1.setText("ADD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jAddEventAddButton.setText("ADD");
+        jAddEventAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jAddEventAddButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("CLEAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jAddEventClearButton.setText("CLEAR");
+        jAddEventClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jAddEventClearButtonActionPerformed(evt);
             }
         });
 
@@ -200,9 +205,9 @@ public class Event extends javax.swing.JFrame {
                             .addComponent(jEventtimetxt)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jButton1)
+                        .addComponent(jAddEventAddButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(jAddEventClearButton)))
                 .addGap(106, 106, 106)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(577, Short.MAX_VALUE))
@@ -238,8 +243,8 @@ public class Event extends javax.swing.JFrame {
                             .addComponent(jEventtimetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
+                            .addComponent(jAddEventAddButton)
+                            .addComponent(jAddEventClearButton)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(352, Short.MAX_VALUE))
         );
@@ -252,10 +257,10 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("SEARCH");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jViewEventSearchButton.setText("SEARCH");
+        jViewEventSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jViewEventSearchButtonActionPerformed(evt);
             }
         });
 
@@ -272,10 +277,10 @@ public class Event extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jSearchEventtable);
 
-        jButton11.setText("REFRESH");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jViewEventRefreshButton.setText("REFRESH");
+        jViewEventRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jViewEventRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -289,9 +294,9 @@ public class Event extends javax.swing.JFrame {
                         .addGap(146, 146, 146)
                         .addComponent(jSearchEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton3)
+                        .addComponent(jViewEventSearchButton)
                         .addGap(109, 109, 109)
-                        .addComponent(jButton11))
+                        .addComponent(jViewEventRefreshButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -303,8 +308,8 @@ public class Event extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSearchEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton11))
+                    .addComponent(jViewEventSearchButton)
+                    .addComponent(jViewEventRefreshButton))
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(292, Short.MAX_VALUE))
@@ -331,17 +336,17 @@ public class Event extends javax.swing.JFrame {
         jUpdateEventOrganizedBycmb.setEditable(true);
         jUpdateEventOrganizedBycmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Faculty" }));
 
-        jButton4.setText("UPDATE");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateEventUpdateButton.setText("UPDATE");
+        jUpdateEventUpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jUpdateEventUpdateButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("CLEAR");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateEventClearButton.setText("CLEAR");
+        jUpdateEventClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jUpdateEventClearButtonActionPerformed(evt);
             }
         });
 
@@ -369,17 +374,17 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("SEARCH");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateEventSearchButton.setText("SEARCH");
+        jUpdateEventSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jUpdateEventSearchButtonActionPerformed(evt);
             }
         });
 
-        jButton10.setText("REFRESH");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jUpdateEventRefreshButton.setText("REFRESH");
+        jUpdateEventRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jUpdateEventRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -390,56 +395,54 @@ public class Event extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jUpdateEventIDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jUpdateEventNametxt)
-                            .addComponent(jUpdateEventOrganizedBycmb, 0, 175, Short.MAX_VALUE)
-                            .addComponent(jUpdateEventCategorytxt)
-                            .addComponent(jUpdateEventVenuetxt)
-                            .addComponent(jUpdateEventDatetxt)
-                            .addComponent(jUpdateEventTimetxt)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jButton4)
-                        .addGap(90, 90, 90)
-                        .addComponent(jButton5)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 583, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jUpdateEventIDlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jUpdateEventNametxt)
+                                    .addComponent(jUpdateEventOrganizedBycmb, 0, 175, Short.MAX_VALUE)
+                                    .addComponent(jUpdateEventCategorytxt)
+                                    .addComponent(jUpdateEventVenuetxt)
+                                    .addComponent(jUpdateEventDatetxt)
+                                    .addComponent(jUpdateEventTimetxt)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(jUpdateEventUpdateButton)
+                                .addGap(90, 90, 90)
+                                .addComponent(jUpdateEventClearButton)))
                         .addGap(102, 102, 102)
-                        .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101)
-                        .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton10)
-                .addGap(254, 254, 254))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)
+                                .addComponent(jUpdateEventSearchButton))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(680, 680, 680)
+                        .addComponent(jUpdateEventRefreshButton)))
+                .addContainerGap(522, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jUpdateEventIDlbl)
-                    .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jUpdateEventIDlbl)
+                            .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jUpdateEventSearchButton))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -466,14 +469,14 @@ public class Event extends javax.swing.JFrame {
                             .addComponent(jUpdateEventTimetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(68, 68, 68)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)))
+                            .addComponent(jUpdateEventUpdateButton)
+                            .addComponent(jUpdateEventClearButton)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(jButton10)
-                .addContainerGap(203, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jUpdateEventRefreshButton)))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Update Event", jPanel3);
@@ -506,10 +509,10 @@ public class Event extends javax.swing.JFrame {
 
         jDeleteEventTimetxt.setText("TIME");
 
-        jButton7.setText("DELETE");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteEventDeleteButton.setText("DELETE");
+        jDeleteEventDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jDeleteEventDeleteButtonActionPerformed(evt);
             }
         });
 
@@ -519,10 +522,10 @@ public class Event extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("SEARCH");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteEventSearchButton.setText("SEARCH");
+        jDeleteEventSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jDeleteEventSearchButtonActionPerformed(evt);
             }
         });
 
@@ -544,10 +547,10 @@ public class Event extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jDeleteEventTable);
 
-        jButton9.setText("REFRESH");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jDeleteEventRefreshButton.setText("REFRESH");
+        jDeleteEventRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jDeleteEventRefreshButtonActionPerformed(evt);
             }
         });
 
@@ -579,18 +582,18 @@ public class Event extends javax.swing.JFrame {
                                     .addComponent(jDeleteEventDatetxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jDeleteEventTimetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(46, 46, 46)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1132, Short.MAX_VALUE))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1142, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton9)
-                                .addGap(342, 342, 342))))
+                                .addComponent(jDeleteEventDeleteButton)
+                                .addGap(310, 310, 310)
+                                .addComponent(jDeleteEventRefreshButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(457, 457, 457)
                         .addComponent(jDeleteEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(jButton8)))
+                        .addComponent(jDeleteEventSearchButton)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -599,7 +602,7 @@ public class Event extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDeleteEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
+                    .addComponent(jDeleteEventSearchButton))
                 .addGap(62, 62, 62)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -634,11 +637,11 @@ public class Event extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7))
+                        .addComponent(jDeleteEventDeleteButton))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton9)))
-                .addContainerGap(262, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addComponent(jDeleteEventRefreshButton)))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Delete Event", jPanel4);
@@ -669,14 +672,14 @@ public class Event extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton12)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jAddEventAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddEventAddButtonActionPerformed
         String name=jEventnametxt.getText();
         String organizedbytxt=jEventorganizedbycmb.getSelectedItem().toString();
         String category=jEventcategorytxt.getText();
@@ -716,16 +719,16 @@ public class Event extends javax.swing.JFrame {
         //{
             
         //}
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jAddEventAddButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jAddEventClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddEventClearButtonActionPerformed
         jEventnametxt.setText("");
         jEventorganizedbycmb.setSelectedIndex(0);
         jEventcategorytxt.setText("");
         jEventvenuetxt.setText("");
         jEventdatetxt.setText("");
         jEventtimetxt.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jAddEventClearButtonActionPerformed
 
     private void jUpdateEventTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jUpdateEventTableMouseClicked
         int r=jUpdateEventTable.getSelectedRow();
@@ -748,7 +751,7 @@ public class Event extends javax.swing.JFrame {
         jUpdateEventTimetxt.setText(time);
     }//GEN-LAST:event_jUpdateEventTableMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jUpdateEventUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateEventUpdateButtonActionPerformed
         String id=jUpdateEventIDlbl.getText();
         String name=jUpdateEventNametxt.getText();
         String organizedbytxt=jUpdateEventOrganizedBycmb.getSelectedItem().toString();
@@ -790,9 +793,9 @@ public class Event extends javax.swing.JFrame {
 //        {
             
         //}
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jUpdateEventUpdateButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jUpdateEventClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateEventClearButtonActionPerformed
         jUpdateEventIDlbl.setText("");
         jUpdateEventNametxt.setText("");
         jUpdateEventOrganizedBycmb.setSelectedItem("Select Faculty");
@@ -800,7 +803,7 @@ public class Event extends javax.swing.JFrame {
         jUpdateEventVenuetxt.setText("");
         jUpdateEventDatetxt.setText("");
         jUpdateEventTimetxt.setText("");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jUpdateEventClearButtonActionPerformed
 
     private void jDeleteEventTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteEventTableMouseClicked
         int r=jDeleteEventTable.getSelectedRow();
@@ -823,7 +826,7 @@ public class Event extends javax.swing.JFrame {
         jDeleteEventTimetxt.setText(time);
     }//GEN-LAST:event_jDeleteEventTableMouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jDeleteEventDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteEventDeleteButtonActionPerformed
         String eventid=jDeleteEventIDlbl.getText();
         
         Boolean isempty=Validation.isEmpty(eventid);
@@ -851,7 +854,7 @@ public class Event extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jDeleteEventDeleteButtonActionPerformed
 
     private void jDeleteEventSearchtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDeleteEventSearchtxtKeyTyped
         char search=evt.getKeyChar();
@@ -864,7 +867,7 @@ public class Event extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jDeleteEventSearchtxtKeyTyped
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jDeleteEventSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteEventSearchButtonActionPerformed
         String search=jDeleteEventSearchtxt.getText();
         
         try {
@@ -875,16 +878,16 @@ public class Event extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jDeleteEventSearchButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jDeleteEventRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteEventRefreshButtonActionPerformed
         try {
             rs=EventController.loadEventtable();
         } catch (SQLException ex) {
             Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
         jDeleteEventTable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jDeleteEventRefreshButtonActionPerformed
 
     private void jUpdateEventSearchtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUpdateEventSearchtxtKeyTyped
         char search=evt.getKeyChar();
@@ -897,7 +900,7 @@ public class Event extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jUpdateEventSearchtxtKeyTyped
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jUpdateEventSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateEventSearchButtonActionPerformed
         String search=jUpdateEventSearchtxt.getText();
         
         try {
@@ -907,16 +910,16 @@ public class Event extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jUpdateEventSearchButtonActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jUpdateEventRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateEventRefreshButtonActionPerformed
         try {
             rs=EventController.loadEventtable();
         } catch (SQLException ex) {
             Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
         jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_jUpdateEventRefreshButtonActionPerformed
 
     private void jSearchEventSearchtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSearchEventSearchtxtKeyTyped
         char search=evt.getKeyChar();
@@ -929,7 +932,7 @@ public class Event extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jSearchEventSearchtxtKeyTyped
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jViewEventSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jViewEventSearchButtonActionPerformed
         String search=jSearchEventSearchtxt.getText();
         
         try {
@@ -939,16 +942,16 @@ public class Event extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Faculty.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jViewEventSearchButtonActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jViewEventRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jViewEventRefreshButtonActionPerformed
         try {
             rs=EventController.loadEventtable();
         } catch (SQLException ex) {
             Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
         jSearchEventtable.setModel(DbUtils.resultSetToTableModel(rs));
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_jViewEventRefreshButtonActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         this.dispose();
@@ -956,6 +959,61 @@ public class Event extends javax.swing.JFrame {
         facultymain = new FacultyMain();
         facultymain.setVisible(true);
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(Constants.Color.userName .equals("Admin")){
+            jAddEventAddButton.setEnabled(true);
+            jAddEventClearButton.setEnabled(true);
+            jViewEventSearchButton.setEnabled(true);
+            jViewEventRefreshButton.setEnabled(true);
+            jUpdateEventSearchButton.setEnabled(true);
+            jUpdateEventUpdateButton.setEnabled(true);
+            jUpdateEventClearButton.setEnabled(true);
+            jUpdateEventRefreshButton.setEnabled(true);
+            jDeleteEventSearchButton.setEnabled(true);
+            jDeleteEventDeleteButton.setEnabled(true);
+            jDeleteEventRefreshButton.setEnabled(true);
+            
+        }else if(Constants.Color.userName .equals("Dean")){
+            jAddEventAddButton.setEnabled(true);
+            jAddEventClearButton.setEnabled(true);
+            jViewEventSearchButton.setEnabled(true);
+            jViewEventRefreshButton.setEnabled(true);
+            jUpdateEventSearchButton.setEnabled(true);
+            jUpdateEventUpdateButton.setEnabled(true);
+            jUpdateEventClearButton.setEnabled(true);
+            jUpdateEventRefreshButton.setEnabled(true);
+            jDeleteEventSearchButton.setEnabled(true);
+            jDeleteEventDeleteButton.setEnabled(true);
+            jDeleteEventRefreshButton.setEnabled(true);
+        }
+        else if(Constants.Color.userName .equals("Lecturer")){
+            jAddEventAddButton.setEnabled(false);
+            jAddEventClearButton.setEnabled(false);
+            jViewEventSearchButton.setEnabled(true);
+            jViewEventRefreshButton.setEnabled(true);
+            jUpdateEventSearchButton.setEnabled(false);
+            jUpdateEventUpdateButton.setEnabled(false);
+            jUpdateEventClearButton.setEnabled(false);
+            jUpdateEventRefreshButton.setEnabled(false);
+            jDeleteEventSearchButton.setEnabled(false);
+            jDeleteEventDeleteButton.setEnabled(false);
+            jDeleteEventRefreshButton.setEnabled(false);
+        }
+        else if(Constants.Color.userName .equals("Student")){
+            jAddEventAddButton.setEnabled(false);
+            jAddEventClearButton.setEnabled(false);
+            jViewEventSearchButton.setEnabled(true);
+            jViewEventRefreshButton.setEnabled(true);
+            jUpdateEventSearchButton.setEnabled(false);
+            jUpdateEventUpdateButton.setEnabled(false);
+            jUpdateEventClearButton.setEnabled(false);
+            jUpdateEventRefreshButton.setEnabled(false);
+            jDeleteEventSearchButton.setEnabled(false);
+            jDeleteEventDeleteButton.setEnabled(false);
+            jDeleteEventRefreshButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -998,23 +1056,17 @@ public class Event extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jAddEventAddButton;
+    private javax.swing.JButton jAddEventClearButton;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jDeleteEventCategorytxt;
     private javax.swing.JLabel jDeleteEventDatetxt;
+    private javax.swing.JButton jDeleteEventDeleteButton;
     private javax.swing.JLabel jDeleteEventIDlbl;
     private javax.swing.JLabel jDeleteEventNametxt;
     private javax.swing.JLabel jDeleteEventOrganizedBycmb;
+    private javax.swing.JButton jDeleteEventRefreshButton;
+    private javax.swing.JButton jDeleteEventSearchButton;
     private javax.swing.JTextField jDeleteEventSearchtxt;
     private javax.swing.JTable jDeleteEventTable;
     private javax.swing.JLabel jDeleteEventTimetxt;
@@ -1058,13 +1110,19 @@ public class Event extends javax.swing.JFrame {
     private javax.swing.JTable jSearchEventtable;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jUpdateEventCategorytxt;
+    private javax.swing.JButton jUpdateEventClearButton;
     private javax.swing.JTextField jUpdateEventDatetxt;
     private javax.swing.JLabel jUpdateEventIDlbl;
     private javax.swing.JTextField jUpdateEventNametxt;
     private javax.swing.JComboBox<String> jUpdateEventOrganizedBycmb;
+    private javax.swing.JButton jUpdateEventRefreshButton;
+    private javax.swing.JButton jUpdateEventSearchButton;
     private javax.swing.JTextField jUpdateEventSearchtxt;
     private javax.swing.JTable jUpdateEventTable;
     private javax.swing.JTextField jUpdateEventTimetxt;
+    private javax.swing.JButton jUpdateEventUpdateButton;
     private javax.swing.JTextField jUpdateEventVenuetxt;
+    private javax.swing.JButton jViewEventRefreshButton;
+    private javax.swing.JButton jViewEventSearchButton;
     // End of variables declaration//GEN-END:variables
 }
