@@ -71,22 +71,32 @@ public class FacultyController {
         return rs;
     }
     
-    public static void UpdateFaculty(FacultyModel faculty) throws SQLException
+    public static boolean UpdateFaculty(FacultyModel faculty) throws SQLException
     {
         conn=DBConnect.connect();
         
-        int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
-        
-        if(x==0)
+        try 
         {
-            String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
-            pst=conn.prepareStatement(q);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+            int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+
+            if(x==0)
+            {
+                String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
+                pst=conn.prepareStatement(q);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+                return true;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+                return true;
+            }
         }
-        else
+        catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+            return false;
         }
 
       
