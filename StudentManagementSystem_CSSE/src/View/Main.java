@@ -197,12 +197,12 @@ public class Main extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         
-        if(Constants.Color.userName .equals("Admin")){
+        if(Constants.LoginUserType.userName .equals("Admin")){
             btn_StudentsViewProfile.setEnabled(false);
             btn_StudentsCouerse.setEnabled(false);
             btn_StudentsExams.setEnabled(false);
             btn_StudentsFaculty.setEnabled(false);
-        }else if(Constants.Color.userName .equals("Student")){
+        }else if(Constants.LoginUserType.userName .equals("Student")){
             btn_AdminStudents.setEnabled(false);
             btn_AdminCourse.setEnabled(false);
             btn_AdminExam.setEnabled(false);
