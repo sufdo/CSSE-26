@@ -43,12 +43,12 @@ public class StaffController {
 
             Statement statement = conn.createStatement(); 
             int executeUpdate = statement.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_SUCCESS);
             return true;
         } 
         catch (HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_FAIL);
             return false;
         }
 

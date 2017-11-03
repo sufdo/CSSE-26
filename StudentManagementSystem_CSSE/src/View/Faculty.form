@@ -136,6 +136,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jFacultynametxt">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFacultynametxtKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
@@ -143,6 +146,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jFacultydeantxt">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFacultydeantxtKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jAddFaculty">
               <Properties>
@@ -591,7 +597,7 @@
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jDeleteFacultyIDlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDeleteFacultyIDlbl" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -673,9 +679,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jDeleteFacultyIDlbl">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jDeleteFacultyNAMElbl">
               <Properties>

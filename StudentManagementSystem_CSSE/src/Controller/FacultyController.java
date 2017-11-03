@@ -44,12 +44,12 @@ public class FacultyController {
             Statement statement = conn.createStatement();
 
             statement.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_SUCCESS);
             return true;
         }
         catch (HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_FAIL);
             return false;
         }
 
@@ -73,7 +73,7 @@ public class FacultyController {
         try 
         {
             conn=DBConnect.connect();
-            int option=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+            int option=JOptionPane.showConfirmDialog(null, MessageConsts.UPDATE_QUESTION);
 
             if(option==0)
             {
@@ -81,18 +81,18 @@ public class FacultyController {
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query);   
                 conn.close();
-                JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+                JOptionPane.showMessageDialog(null, MessageConsts.UPDATE_SUCCESS);
                 return true;
             }
             else
             {
-                JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+                JOptionPane.showMessageDialog(null, MessageConsts.NOT_UPDATED);
                 return true;
             }
         }
         catch (HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+            JOptionPane.showMessageDialog(null, MessageConsts.NOT_UPDATED);
             return false;
         }
 
@@ -102,7 +102,7 @@ public class FacultyController {
     //method to delete faculty
     public static boolean DeleteFaculty(String faculty) throws SQLException
     {
-        int option=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
+        int option=JOptionPane.showConfirmDialog(null, MessageConsts.DELETE_QUESTION);
 
             try
             {
@@ -113,20 +113,20 @@ public class FacultyController {
                     Statement statement = conn.createStatement();
                     statement.executeUpdate(query); 
 
-                    JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
+                    JOptionPane.showMessageDialog(null, MessageConsts.DELETION_SUCCESS);
                     conn.close();
                     return true;
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                    JOptionPane.showMessageDialog(null, MessageConsts.NOT_DELETED);
                     return true;
                 }
 
             }
             catch (Exception e)
             {
-                JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                JOptionPane.showMessageDialog(null, MessageConsts.NOT_DELETED);
                 return false;
             }
 

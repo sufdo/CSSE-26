@@ -498,8 +498,6 @@ public class Event extends javax.swing.JFrame {
 
         jLabel21.setText("Time");
 
-        jDeleteEventIDlbl.setText("ID");
-
         jDeleteEventNametxt.setText("NAME");
 
         jDeleteEventOrganizedBycmb.setText("ORGANIZED BY");
@@ -585,13 +583,12 @@ public class Event extends javax.swing.JFrame {
                                     .addComponent(jDeleteEventDatetxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jDeleteEventTimetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(46, 46, 46)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1142, Short.MAX_VALUE))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1132, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
                                 .addComponent(jDeleteEventDeleteButton)
                                 .addGap(310, 310, 310)
-                                .addComponent(jDeleteEventRefreshButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jDeleteEventRefreshButton))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(457, 457, 457)
                         .addComponent(jDeleteEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -685,32 +682,37 @@ public class Event extends javax.swing.JFrame {
     private void jAddEventAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddEventAddButtonActionPerformed
         String name=jEventnametxt.getText();
         String organizedbytxt=jEventorganizedbycmb.getSelectedItem().toString();
+        int organizedbycmb=jEventorganizedbycmb.getSelectedIndex();
         String category=jEventcategorytxt.getText();
         String venue=jEventvenuetxt.getText();
         String date=jEventdatetxt.getText();
         String time=jEventtimetxt.getText();
         
-        int organizedby;        
-        try {
-            int facultyID=EventController.findFacultyID(organizedbytxt);
-            organizedby=facultyID;
-            
-            EventModel eventmodel=new EventModel(name,organizedby,category,venue,date,time);
-        
-            try
-            {
-                EventController.AddEvent(eventmodel);
+        Boolean isempty=Validation.isEmptyEvent(name,organizedbycmb,category,venue,date,time);
+        if(!isempty)
+        {
+            int organizedby;        
+            try {
+                int facultyID=EventController.findFacultyID(organizedbytxt);
+                organizedby=facultyID;
 
-                ResultSet rs=EventController.loadEventtable();
-                jEventTableAdd.setModel(DbUtils.resultSetToTableModel(rs));
+                EventModel eventmodel=new EventModel(name,organizedby,category,venue,date,time);
+
+                try
+                {
+                    EventController.AddEvent(eventmodel);
+
+                    ResultSet rs=EventController.loadEventtable();
+                    jEventTableAdd.setModel(DbUtils.resultSetToTableModel(rs));
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Boolean isempty=Validation.isEmpty(facultyname,facultydean);
         //if(!isempty)
@@ -754,39 +756,39 @@ public class Event extends javax.swing.JFrame {
         String id=jUpdateEventIDlbl.getText();
         String name=jUpdateEventNametxt.getText();
         String organizedbytxt=jUpdateEventOrganizedBycmb.getSelectedItem().toString();
+        int organizedbycmb=jUpdateEventOrganizedBycmb.getSelectedIndex();
         String category=jUpdateEventCategorytxt.getText();
         String venue=jUpdateEventVenuetxt.getText();
         String date=jUpdateEventDatetxt.getText();
         String time=jUpdateEventTimetxt.getText();
         
-        
-        int organizedby;        
-        try {
-            int facultyID=EventController.findFacultyID(organizedbytxt);
-            organizedby=facultyID;
-            
-            EventModel eventmodel=new EventModel(name,organizedby,category,venue,date,time);
-        
-            try
-            {
-                EventController.UpdateEvent(eventmodel,id);
+        Boolean isempty=Validation.isEmptyEvent(id,name,organizedbycmb,category,venue,date,time);
+        if(!isempty)
+        {
+            int organizedby;        
+            try {
+                int facultyID=EventController.findFacultyID(organizedbytxt);
+                organizedby=facultyID;
 
-                ResultSet rs=EventController.loadEventtable();
-                jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
+                EventModel eventmodel=new EventModel(name,organizedby,category,venue,date,time);
+
+                try
+                {
+                    EventController.UpdateEvent(eventmodel,id);
+
+                    ResultSet rs=EventController.loadEventtable();
+                    jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-//        if(!isempty)
-//        {
-            
-        //}
+
 
     }//GEN-LAST:event_jUpdateEventUpdateButtonActionPerformed
 
@@ -824,7 +826,7 @@ public class Event extends javax.swing.JFrame {
     private void jDeleteEventDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeleteEventDeleteButtonActionPerformed
         String eventid=jDeleteEventIDlbl.getText();
         
-        Boolean isempty=Validation.isEmpty(eventid);
+        Boolean isempty=Validation.isEmptyEvent(eventid);
         if(!isempty)
         {
             //EventModel eventmodel=new EventModel(eventid);
