@@ -71,19 +71,19 @@ public class FacultyController {
         return rs;
     }
     
-    public static boolean UpdateFaculty(FacultyModel faculty) throws SQLException
+    public static boolean UpdateFaculty(FacultyModel faculty,String id) throws SQLException
     {
-        conn=DBConnect.connect();
-        
         try 
         {
+            conn=DBConnect.connect();
             int x=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
 
             if(x==0)
             {
-                String q="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+faculty.getFacultyID()+"' ";
-                pst=conn.prepareStatement(q);
-                pst.execute();
+                String query="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+id+"' ";
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query);   
+                conn.close();
                 JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
                 return true;
             }
@@ -103,24 +103,36 @@ public class FacultyController {
     }
     
     
-    public static void DeleteFaculty(FacultyModel faculty) throws SQLException
+    public static boolean DeleteFaculty(String faculty) throws SQLException
     {
-        conn=DBConnect.connect();
-        
         int x=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
-        
-        if(x==0)
-        {
-        String q="DELETE FROM Faculty WHERE FacultyID='"+faculty.getFacultyID()+"' ";
-        pst=conn.prepareStatement(q);
-        pst.execute();
-        JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
 
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
-        }
+            try
+            {
+                if(x==0)
+                {
+                    conn=DBConnect.connect();
+                    String query="DELETE FROM Faculty WHERE FacultyID='"+faculty+"' ";
+                    Statement stmt = conn.createStatement();
+                    stmt.executeUpdate(query); 
+
+                    JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
+                    conn.close();
+                    return true;
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                    return true;
+                }
+
+            }
+            catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                return false;
+            }
+
     }
     
     

@@ -420,29 +420,31 @@ public class Event extends javax.swing.JFrame {
                                 .addComponent(jUpdateEventUpdateButton)
                                 .addGap(90, 90, 90)
                                 .addComponent(jUpdateEventClearButton)))
-                        .addGap(102, 102, 102)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
                                 .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101)
                                 .addComponent(jUpdateEventSearchButton))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(680, 680, 680)
+                        .addGap(683, 683, 683)
                         .addComponent(jUpdateEventRefreshButton)))
-                .addContainerGap(522, Short.MAX_VALUE))
+                .addContainerGap(466, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jUpdateEventIDlbl)
+                    .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jUpdateEventSearchButton))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jUpdateEventIDlbl)
-                            .addComponent(jUpdateEventSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jUpdateEventSearchButton))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -471,12 +473,12 @@ public class Event extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jUpdateEventUpdateButton)
                             .addComponent(jUpdateEventClearButton)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jUpdateEventRefreshButton)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jUpdateEventRefreshButton)
+                .addGap(226, 226, 226))
         );
 
         jTabbedPane1.addTab("Update Event", jPanel3);
@@ -766,11 +768,11 @@ public class Event extends javax.swing.JFrame {
             int facultyID=EventController.findFacultyID(organizedbytxt);
             organizedby=facultyID;
             
-            EventModel eventmodel=new EventModel(id,name,organizedby,category,venue,date,time);
+            EventModel eventmodel=new EventModel(name,organizedby,category,venue,date,time);
         
             try
             {
-                EventController.UpdateEvent(eventmodel);
+                EventController.UpdateEvent(eventmodel,id);
 
                 ResultSet rs=EventController.loadEventtable();
                 jUpdateEventTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -832,11 +834,11 @@ public class Event extends javax.swing.JFrame {
         Boolean isempty=Validation.isEmpty(eventid);
         if(!isempty)
         {
-            EventModel eventmodel=new EventModel(eventid);
+            //EventModel eventmodel=new EventModel(eventid);
         
             try
             {
-                EventController.DeleteEvent(eventmodel);
+                EventController.DeleteEvent(eventid);
 
                 ResultSet rs=EventController.loadEventtable();
                 jDeleteEventTable.setModel(DbUtils.resultSetToTableModel(rs));

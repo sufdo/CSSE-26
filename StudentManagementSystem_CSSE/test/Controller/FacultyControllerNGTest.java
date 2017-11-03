@@ -28,13 +28,15 @@ public class FacultyControllerNGTest {
     
     FacultyController facultycontroller;
     FacultyModel facultymodel;
-    FacultyModel facultymodel1;
+    //FacultyModel facultymodel1;
+    //FacultyModel facultymodel2;
     
     public FacultyControllerNGTest() {
         conn=DBConnect.connect();
         facultycontroller=new FacultyController();
         facultymodel=new FacultyModel(FACULTYNAME,FACULTYDEAN);
-        facultymodel1=new FacultyModel(FACULTYID,FACULTYNAME,FACULTYDEAN);
+        //facultymodel1=new FacultyModel(FACULTYID,FACULTYNAME,FACULTYDEAN);
+        //facultymodel2=new FacultyModel(FACULTYID);
     }
 
     @BeforeClass
@@ -65,75 +67,71 @@ public class FacultyControllerNGTest {
     /**
      * Test of loadFacultytable method, of class FacultyController.
      */
-    @Test
-    public void testLoadFacultytable() throws Exception {
-//        System.out.println("loadFacultytable");
-//        ResultSet expResult = null;
-//        ResultSet result = FacultyController.loadFacultytable();
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testLoadFacultytable() throws Exception {
+////        System.out.println("loadFacultytable");
+////        ResultSet expResult = null;
+////        ResultSet result = FacultyController.loadFacultytable();
+////        assertEquals(result, expResult);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of UpdateFaculty method, of class FacultyController.
      */
-    @Test
+    @Test(dependsOnMethods = {"testAddFaculty"})
     public void testUpdateFaculty() throws Exception {
-        Assert.assertTrue(facultycontroller.UpdateFaculty(facultymodel1));
+        Assert.assertTrue(facultycontroller.UpdateFaculty(facultymodel,FACULTYID));
     }
 
     /**
      * Test of DeleteFaculty method, of class FacultyController.
      */
-    @Test
+    @Test(dependsOnMethods = {"testAddFaculty","testUpdateFaculty"})
     public void testDeleteFaculty() throws Exception {
-//        System.out.println("DeleteFaculty");
-//        FacultyModel faculty = null;
-//        FacultyController.DeleteFaculty(faculty);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Assert.assertTrue(facultycontroller.DeleteFaculty(FACULTYID));
     }
 
     /**
      * Test of SearchFaculty method, of class FacultyController.
      */
-    @Test
-    public void testSearchFaculty_String() throws Exception {
-//        System.out.println("SearchFaculty");
-//        String search = "";
-//        ResultSet expResult = null;
-//        ResultSet result = FacultyController.SearchFaculty(search);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of SearchFaculty method, of class FacultyController.
-     */
-    @Test
-    public void testSearchFaculty_char() throws Exception {
-//        System.out.println("SearchFaculty");
-//        char search = ' ';
-//        ResultSet expResult = null;
-//        ResultSet result = FacultyController.SearchFaculty(search);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fillOrganizedBy method, of class FacultyController.
-     */
-    @Test
-    public void testFillOrganizedBy() throws Exception {
-//        System.out.println("fillOrganizedBy");
-//        ResultSet expResult = null;
-//        ResultSet result = FacultyController.fillOrganizedBy();
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testSearchFaculty_String() throws Exception {
+////        System.out.println("SearchFaculty");
+////        String search = "";
+////        ResultSet expResult = null;
+////        ResultSet result = FacultyController.SearchFaculty(search);
+////        assertEquals(result, expResult);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of SearchFaculty method, of class FacultyController.
+//     */
+//    @Test
+//    public void testSearchFaculty_char() throws Exception {
+////        System.out.println("SearchFaculty");
+////        char search = ' ';
+////        ResultSet expResult = null;
+////        ResultSet result = FacultyController.SearchFaculty(search);
+////        assertEquals(result, expResult);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of fillOrganizedBy method, of class FacultyController.
+//     */
+//    @Test
+//    public void testFillOrganizedBy() throws Exception {
+////        System.out.println("fillOrganizedBy");
+////        ResultSet expResult = null;
+////        ResultSet result = FacultyController.fillOrganizedBy();
+////        assertEquals(result, expResult);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+//    }
     
 }
