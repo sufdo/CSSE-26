@@ -130,12 +130,16 @@ public class Main extends javax.swing.JFrame {
 //Student - view Profile
     public static String Nic;
     private void btn_StudentsViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsViewProfileActionPerformed
+
         String nic = Nic;
+     
         this.dispose();
         Students_View stu = new Students_View();
         stu.setVisible(true);
+           //JOptionPane.showMessageDialog(null, "ERROR : " + nic);
         try{
         ResultSet resSet1=Controller.Controller_StudentViews.ViewProfile(nic);
+        
         Students_View.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
         Students_View.tf_VID.setText(Students_View.dt_View_C_D_P.getValueAt(0, 0).toString());
         Students_View.tf_VFName.setText(Students_View.dt_View_C_D_P.getValueAt(0, 1).toString());
