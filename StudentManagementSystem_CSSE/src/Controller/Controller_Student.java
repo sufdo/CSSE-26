@@ -11,14 +11,18 @@ import java.sql.Statement;
 public class Controller_Student {
     static Connection dbConn=null;
 //add function
-    public static void AddStudent(Model_Student Student) throws SQLException{
-        dbConn=DBConnect.connect();     
+    public static boolean AddStudent(Model_Student Student) throws SQLException{
+        try{
+            dbConn=DBConnect.connect();
+            
         String query="INSERT INTO Students(fName,lName, nic, phone,course, department) VALUES('"
                 + Student.getFname() +"','"+ Student.getLname() +"','"+ Student.getNic() +"',"
                 + Student.getPhone() +",'"+ Student.getCourse() +"','"+ Student.getDepartment() +"');" ;       
         Statement stmt = dbConn.createStatement();
         stmt.executeUpdate(query); 
         dbConn.close();
+        return true;
+        }catch(Exception ex){ return false;}
     }
 //check the duplicate entry
     public static boolean hasDupEntry(String nic) throws SQLException{
@@ -38,7 +42,8 @@ public class Controller_Student {
         }
     }
 //update function
-    public static void UpdateStudent(Model_Student Student, String sid) throws SQLException{
+    public static boolean UpdateStudent(Model_Student Student, String sid) throws SQLException{
+        try{
         dbConn=DBConnect.connect();     
         String query="UPDATE Students SET fName = '" + Student.getFname() +"',lName='"+ Student.getLname() +  
                 "', nic='"+ Student.getNic() +"', phone='" + Student.getPhone() + "',course='"+ Student.getCourse() +
@@ -46,14 +51,21 @@ public class Controller_Student {
         Statement stmt = dbConn.createStatement();
         stmt.executeUpdate(query);   
         dbConn.close();
+        return true;
+        }catch(Exception ex){return false;}
     }
 //delete function
-    public static void DeleteStudent(String stuId) throws SQLException{
+    public static boolean DeleteStudent(String stuId) throws SQLException{
+        try{
         dbConn=DBConnect.connect();     
         String query="DELETE FROM Students WHERE sid="+ stuId +";";
         Statement stmt = dbConn.createStatement();
         stmt.executeUpdate(query); 
           dbConn.close();
+          return true;
+                  }catch(Exception ex){
+                      return false;
+                  }
     }
     
     static PreparedStatement preSt=null;
