@@ -47,13 +47,13 @@ public class EventController {
             Statement statement = conn.createStatement();
 
             statement.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertSuccess);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_SUCCESS);
             conn.close();
             return true;
         }
         catch (HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.InsertFail);
+            JOptionPane.showMessageDialog(null, MessageConsts.INSERT_FAIL);
             return false;
         }
             
@@ -76,26 +76,26 @@ public class EventController {
         try 
         {
             conn=DBConnect.connect();
-            int option=JOptionPane.showConfirmDialog(null, MessageConsts.updateQuestion);
+            int option=JOptionPane.showConfirmDialog(null, MessageConsts.UPDATE_QUESTION);
 
             if(option==0)
             {
                 String query="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+id+"' ";
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query); 
-                JOptionPane.showMessageDialog(null, MessageConsts.updateSuccess);
+                JOptionPane.showMessageDialog(null, MessageConsts.UPDATE_SUCCESS);
                 conn.close();
                 return true;
             }
             else
             {
-                JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+                JOptionPane.showMessageDialog(null, MessageConsts.NOT_UPDATED);
                 return true;
             }
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.notUpdated);
+            JOptionPane.showMessageDialog(null, MessageConsts.NOT_UPDATED);
             return false;
         }        
       
@@ -104,7 +104,7 @@ public class EventController {
     //method to delete event
     public static boolean DeleteEvent(String id) throws SQLException
     {
-        int option=JOptionPane.showConfirmDialog(null, MessageConsts.deleteQuestion);
+        int option=JOptionPane.showConfirmDialog(null, MessageConsts.DELETE_QUESTION);
 
         try
         {
@@ -115,13 +115,13 @@ public class EventController {
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query); 
 
-                JOptionPane.showMessageDialog(null, MessageConsts.deletionSuccess);
+                JOptionPane.showMessageDialog(null, MessageConsts.DELETION_SUCCESS);
                 conn.close();
                 return true;
             }
             else
             {
-                JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+                JOptionPane.showMessageDialog(null, MessageConsts.NOT_DELETED);
                 return true;
             }
 
@@ -129,7 +129,7 @@ public class EventController {
         }
         catch (HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(null, MessageConsts.notDeleted);
+            JOptionPane.showMessageDialog(null, MessageConsts.NOT_DELETED);
             return false;
         }
 

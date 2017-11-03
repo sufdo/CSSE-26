@@ -115,7 +115,19 @@ public class Faculty extends javax.swing.JFrame {
 
         jLabel1.setText("Faculty Name");
 
+        jFacultynametxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFacultynametxtKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Faculty Dean");
+
+        jFacultydeantxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFacultydeantxtKeyTyped(evt);
+            }
+        });
 
         jAddFaculty.setText("ADD");
         jAddFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -419,8 +431,6 @@ public class Faculty extends javax.swing.JFrame {
 
         jLabel8.setText("Faculty Dean");
 
-        jDeleteFacultyIDlbl.setText("ID");
-
         jDeleteFacultyNAMElbl.setText("NAME");
 
         jDeleteFacultyDEANlbl.setText("DEAN");
@@ -501,7 +511,7 @@ public class Faculty extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jDeleteFacultyIDlbl))
+                            .addComponent(jDeleteFacultyIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -832,6 +842,26 @@ public class Faculty extends javax.swing.JFrame {
             jDeleteFacultySearchButton.setEnabled(false);
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void jFacultynametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFacultynametxtKeyTyped
+        char c=evt.getKeyChar();
+       
+        if(!Character.isLetter(c))
+        {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFacultynametxtKeyTyped
+
+    private void jFacultydeantxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFacultydeantxtKeyTyped
+        char c=evt.getKeyChar();
+       
+        if(!Character.isLetter(c))
+        {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFacultydeantxtKeyTyped
 
     /**
      * @param args the command line arguments

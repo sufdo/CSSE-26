@@ -8,6 +8,7 @@ package View;
 import Controller.EventController;
 import Controller.FacultyController;
 import Controller.StaffController;
+import Controller.Validation;
 import Model.StaffModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -213,32 +214,42 @@ public class Staff extends javax.swing.JFrame {
         String fname=jAddStafffnametxt.getText();
         String lname=jAddStafflnametxt.getText();
         String facultytxt=jAddStaffFacultycmb.getSelectedItem().toString();
+        int facultycmb=jAddStaffFacultycmb.getSelectedIndex();
         String position=jAddStaffpositioncmb.getSelectedItem().toString();
+        int positioncmb=jAddStaffpositioncmb.getSelectedIndex();
         String nic=jAddStaffnictxt.getText();
         
-        
-        int faculty;        
-        try {
-            int facultyID=StaffController.findFacultyID(facultytxt);
-            faculty=facultyID;
-            
-            StaffModel staffmodel=new StaffModel(fname,lname,faculty,position,nic);
-        
-            try
+        Boolean isempty=Validation.isEmpty(fname,lname,facultycmb,positioncmb,nic);
+        if(!isempty)
+        {
+            Boolean nicValid=Validation.checkNIC(nic);
+            if(nicValid)
             {
-                StaffController.AddStaff(staffmodel);
+                int faculty;        
+                try {
+                    int facultyID=StaffController.findFacultyID(facultytxt);
+                    faculty=facultyID;
 
-                ResultSet rs=StaffController.loadStafftable();
-                jStaffAddTable.setModel(DbUtils.resultSetToTableModel(rs));
+                    StaffModel staffmodel=new StaffModel(fname,lname,faculty,position,nic);
+
+                    try
+                    {
+                        StaffController.AddStaff(staffmodel);
+
+                        ResultSet rs=StaffController.loadStafftable();
+                        jStaffAddTable.setModel(DbUtils.resultSetToTableModel(rs));
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jAddStaffAddButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
