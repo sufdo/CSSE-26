@@ -153,6 +153,10 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_AdminExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminExamActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        marks m = new marks();
+        m.setVisible(true);
+        
     }//GEN-LAST:event_btn_AdminExamActionPerformed
 //Admin - student add delete update    
     private void btn_AdminStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminStudentsActionPerformed
@@ -200,6 +204,9 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_AdminCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminCourseActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        Courses c = new Courses();
+        c.setVisible(true);
     }//GEN-LAST:event_btn_AdminCourseActionPerformed
 
     /**
