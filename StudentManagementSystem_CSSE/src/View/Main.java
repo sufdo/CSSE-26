@@ -187,9 +187,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_StudentsFacultyActionPerformed
 //Student - View Course
     private void btn_StudentsCouerseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsCouerseActionPerformed
-        this.dispose();
-        Cou_Dep_Pro stu = new Cou_Dep_Pro();
-        stu.setVisible(true);
+        
         try{
         ResultSet resSet1=Controller.Controller_View_DPC.ViewCourse();
         Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
@@ -212,7 +210,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void btn_AdminCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminCourseActionPerformed
-        // TODO add your handling code here:
+        
+        this.dispose();
+        Courses stu = new Courses();
+        stu.setVisible(true);
     }//GEN-LAST:event_btn_AdminCourseActionPerformed
 
     /**
