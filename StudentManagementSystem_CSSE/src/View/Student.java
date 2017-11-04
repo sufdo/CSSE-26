@@ -657,7 +657,6 @@ public class Student extends javax.swing.JFrame {
             ResultSet resSet=Controller_Student.FillStuDt_Ser(filterType,filterValue );
             dt_Search.setModel(DbUtils.resultSetToTableModel(resSet)); 
         }catch(SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
-        
     }//GEN-LAST:event_btn_SearchActionPerformed
 //Update - edit button
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
@@ -723,7 +722,7 @@ public class Student extends javax.swing.JFrame {
                 tf_Ed_Name.setText("");
                 tf_Ed_lName.setText("");
                 tf_Ed_nic.setText("");
-                tf_Ed_phone.setText("");               
+                tf_Ed_phone.setText("");
             }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
         }
     }
