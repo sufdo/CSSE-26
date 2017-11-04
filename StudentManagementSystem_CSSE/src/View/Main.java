@@ -154,9 +154,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_AdminExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminExamActionPerformed
-        this.dispose();
-        marks marks = new marks();
-        marks.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btn_AdminExamActionPerformed
 //Admin - student add delete update    
     private void btn_AdminStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminStudentsActionPerformed
