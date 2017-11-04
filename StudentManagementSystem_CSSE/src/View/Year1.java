@@ -189,7 +189,9 @@ public  class Year1 extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+
                 .addContainerGap(57, Short.MAX_VALUE)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -201,7 +203,9 @@ public  class Year1 extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
+
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 40, Short.MAX_VALUE)
+
                                 .addComponent(sid1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,6 +277,7 @@ public  class Year1 extends javax.swing.JInternalFrame {
                             .addComponent(update)
                             .addComponent(delete))))
                 .addContainerGap(35, Short.MAX_VALUE))
+
         );
 
         pack();
@@ -358,10 +363,17 @@ public  class Year1 extends javax.swing.JInternalFrame {
             //get input values to variables
             String sid=sid1.getText();                                   
             String cid=cid1.getText();
+
             Calculations deletemark=new Calculations();
                     
             try {            
                 deletemark.deletemarks(sid, cid);
+
+            Calculations updatemark=new Calculations();
+                    
+            try {            
+                updatemark.deletemarks(sid, cid);
+
             } catch (SQLException ex) {
                 Logger.getLogger(Year1.class.getName()).log(Level.SEVERE, null, ex);
             }
