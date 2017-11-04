@@ -186,6 +186,26 @@ public class Main extends javax.swing.JFrame {
         }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_StudentsViewProfileActionPerformed
 
+//Student - View Faculty
+    private void btn_StudentsFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsFacultyActionPerformed
+        this.dispose();
+        Cou_Dep_Pro stu = new Cou_Dep_Pro();
+        stu.setVisible(true);
+        try{
+        ResultSet resSet1=Controller.Controller_View_DPC.ViewDepartment();
+        Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+    }//GEN-LAST:event_btn_StudentsFacultyActionPerformed
+//Student - View Course
+    private void btn_StudentsCouerseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentsCouerseActionPerformed
+        
+        try{
+        ResultSet resSet1=Controller.Controller_View_DPC.ViewCourse();
+        Cou_Dep_Pro.dt_View_C_D_P.setModel(DbUtils.resultSetToTableModel(resSet1)); 
+        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
+    }//GEN-LAST:event_btn_StudentsCouerseActionPerformed
+
+
 //Student - View Course
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         
@@ -201,7 +221,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void btn_AdminCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminCourseActionPerformed
-        // TODO add your handling code here:
+        
+        this.dispose();
+        Courses stu = new Courses();
+        stu.setVisible(true);
     }//GEN-LAST:event_btn_AdminCourseActionPerformed
 
     /**
