@@ -45,10 +45,10 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(btn_AdminFaculty);
         btn_AdminFaculty.setBounds(20, 370, 280, 80);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setText("Student Management System");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 60, 460, 30);
+        jLabel2.setBounds(20, 30, 660, 60);
 
         jButton1.setText("Logout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -50,13 +50,13 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
+          <Font name="Segoe UI" size="36" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Student Management System"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="60" width="460" height="30"/>
+          <AbsoluteConstraints x="20" y="30" width="660" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
