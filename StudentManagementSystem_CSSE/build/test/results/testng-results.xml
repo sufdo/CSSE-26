@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="StudentManagementSystem_CSSE" duration-ms="3670" started-at="2017-11-03T15:41:10Z" finished-at="2017-11-03T15:41:14Z">
+    <groups>
+    </groups>
+    <test name="TestNG tests" duration-ms="3670" started-at="2017-11-03T15:41:10Z" finished-at="2017-11-03T15:41:14Z">
+      <class name="Controller.Controller_StudentNGTest">
+        <test-method status="PASS" signature="testDelete()[pri:0, instance:Controller.Controller_StudentNGTest@77afea7d]" name="testDelete" duration-ms="1552" started-at="2017-11-03T21:11:10Z" finished-at="2017-11-03T21:11:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDelete -->
+        <test-method status="PASS" signature="testInsert()[pri:0, instance:Controller.Controller_StudentNGTest@77afea7d]" name="testInsert" duration-ms="1438" started-at="2017-11-03T21:11:11Z" finished-at="2017-11-03T21:11:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInsert -->
+        <test-method status="PASS" signature="testUpdate()[pri:0, instance:Controller.Controller_StudentNGTest@77afea7d]" name="testUpdate" duration-ms="655" started-at="2017-11-03T21:11:13Z" finished-at="2017-11-03T21:11:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdate -->
+      </class> <!-- Controller.Controller_StudentNGTest -->
+    </test> <!-- TestNG tests -->
+  </suite> <!-- StudentManagementSystem_CSSE -->
+</testng-results>

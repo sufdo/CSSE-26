@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [StudentManagementSystem_CSSE]">
+  <test name="TestNG tests(failed)">
+    <classes>
+      <class name="Controller.Controller_StudentNGTest">
+        <methods>
+          <include name="testInsert"/>
+          <include name="testDelete"/>
+        </methods>
+      </class> <!-- Controller.Controller_StudentNGTest -->
+    </classes>
+  </test> <!-- TestNG tests(failed) -->
+</suite> <!-- Failed suite [StudentManagementSystem_CSSE] -->
