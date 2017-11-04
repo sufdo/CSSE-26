@@ -20,6 +20,7 @@ public class Controller_Login {
         while(resSet.next()){
             passwo=resSet.getString(1);
         }
+        dbConn.close();
         if(Password.equals(passwo)){
             return true;
         }else{
@@ -29,17 +30,83 @@ public class Controller_Login {
 //login function for Admin
     public static boolean loginAdmin(String userName,String Password) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT pass FROM Admin where uName like '"+ userName +"'";
+        String query="SELECT pass FROM admin where uName like '"+ userName +"'";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         String passwo="";
         while(resSet.next()){
             passwo=resSet.getString(1);
         }
+        dbConn.close();
         if(Password.equals(passwo)){
             return true;
         }else{
             return false;
         }
+    }
+    public static boolean loginDean(String userName,String Password) throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="SELECT Position FROM Staff where FirstName = '"+ userName +"'";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery(); 
+        String position=null;
+        while(resSet.next())
+        {
+            position=resSet.getString("Position");
+        }
+        if(position.equals("Dean"))
+        {
+            String query2="SELECT NIC FROM Staff where FirstName = '"+ userName +"'";
+            preSt=dbConn.prepareStatement(query2);
+            resSet=preSt.executeQuery();
+            
+            String passwo="";
+            while(resSet.next()){
+                passwo=resSet.getString("NIC");
+            }
+            if(Password.equals(passwo)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    public static boolean loginLecturer(String userName,String Password) throws SQLException{
+        dbConn=DBConnect.connect();     
+        String query="SELECT Position FROM Staff where FirstName like '"+ userName +"'";
+        preSt=dbConn.prepareStatement(query);
+        resSet=preSt.executeQuery(); 
+        String position=null;
+        while(resSet.next())
+        {
+            position=resSet.getString("Position");
+        }
+        if(position.equals("Lecturer"))
+        {
+            String query3="SELECT NIC FROM Staff where FirstName like '"+ userName +"'";
+            preSt=dbConn.prepareStatement(query3);
+            resSet=preSt.executeQuery();
+            
+            String passwo="";
+            while(resSet.next()){
+                passwo=resSet.getString("NIC");
+            }
+            if(Password.equals(passwo)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 }

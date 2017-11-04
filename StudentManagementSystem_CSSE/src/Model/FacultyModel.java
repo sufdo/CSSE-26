@@ -32,6 +32,10 @@ public class FacultyModel {
         FacultyDean=facultydean;
     }
     
+    public FacultyModel(String facultyid)
+    {
+        FacultyID=facultyid;
+    }
     
     
     public String getFacultyID()
