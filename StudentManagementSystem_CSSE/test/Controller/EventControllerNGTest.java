@@ -21,7 +21,7 @@ import static Controller.StaffController.conn;
  */
 public class EventControllerNGTest {
     //values assigned to constants to be added to event table
-    public static final String EVENTID="28";
+    public static final String EVENTID="35";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";
@@ -29,9 +29,11 @@ public class EventControllerNGTest {
     public static final String DATE="14-03-2018";
     public static final String TIME="08.00am";
     
+    public static final String NEWVENUE="Malabe";
+    
     EventController eventcontroller;
     EventModel eventmodel;
-    //EventModel eventmodel1;
+    EventModel eventmodel1;
     //EventModel eventmodel2;
     public EventControllerNGTest() {
         //connecting to the database
@@ -40,7 +42,7 @@ public class EventControllerNGTest {
         eventcontroller=new EventController();
         //creating a new object from EventModel
         eventmodel=new EventModel(NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
-        //eventmodel1=new EventModel(EVENTID,NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
+        eventmodel1=new EventModel(NAME,ORGANIZEDBY,CATEGORY,NEWVENUE,DATE,TIME);
         //eventmodel2=new EventModel(EVENTID);
     }
 
@@ -76,7 +78,7 @@ public class EventControllerNGTest {
      */
     @Test(dependsOnMethods = {"testAddEvent"})
     public void testUpdateEvent() throws Exception {
-        Assert.assertTrue(eventcontroller.UpdateEvent(eventmodel,EVENTID));
+        Assert.assertTrue(eventcontroller.UpdateEvent(eventmodel1,EVENTID));
     }
 
     /**
