@@ -12,8 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import net.proteanit.sql.DbUtils;
 import Model.FacultyModel;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Rishni
