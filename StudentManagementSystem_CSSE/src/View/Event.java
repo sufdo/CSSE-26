@@ -714,11 +714,7 @@ public class Event extends javax.swing.JFrame {
                 Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //Boolean isempty=Validation.isEmpty(facultyname,facultydean);
-        //if(!isempty)
-        //{
-            
-        //}
+
         
     }//GEN-LAST:event_jAddEventAddButtonActionPerformed
 
