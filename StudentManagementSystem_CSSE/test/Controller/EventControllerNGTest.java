@@ -21,7 +21,7 @@ import static Controller.StaffController.conn;
  */
 public class EventControllerNGTest {
     //values assigned to constants to be added to event table
-    public static final String EVENTID="21";
+    public static final String EVENTID="28";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";
