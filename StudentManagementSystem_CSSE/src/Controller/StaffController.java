@@ -43,7 +43,7 @@ public class StaffController {
         
         try 
         {
-            String query="INSERT INTO Staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
+            String query="INSERT INTO staff(FirstName,LastName,Faculty,Position,NIC) VALUES ('"+staff.getFirstName()+"','"+staff.getLastName()+"','"+staff.getFaculty()+"','"+staff.getPosition()+"','"+staff.getNIC()+"')";
 
             Statement statement = conn.createStatement(); 
             int executeUpdate = statement.executeUpdate(query);
@@ -62,7 +62,7 @@ public class StaffController {
     public static ResultSet loadStafftable() throws SQLException{
         conn=DBConnect.connect();
         
-        String query="SELECT s.StaffID,s.FirstName,s.LastName,f.FacultyName,s.Position FROM Staff s,Faculty f WHERE f.FacultyID=s.Faculty";
+        String query="SELECT s.StaffID,s.FirstName,s.LastName,f.FacultyName,s.Position FROM staff s,faculty f WHERE f.FacultyID=s.Faculty";
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
@@ -73,7 +73,7 @@ public class StaffController {
     //method to find faculty id for a given faculty
     public static int findFacultyID(String facultytxt) throws SQLException
     {
-        String query="SELECT FacultyID FROM Faculty WHERE FacultyName='"+facultytxt+"'";
+        String query="SELECT FacultyID FROM faculty WHERE FacultyName='"+facultytxt+"'";
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         
