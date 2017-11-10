@@ -92,7 +92,7 @@ public class Controller_Student {
             resSet=preSt.executeQuery();
         }else if(typ=="FirstName"){
             String query="select s.sid,s.fName, s.lName, s.nic,s.phone,f.FacultyName,"
-                 + " c.CourseName from dtudents as s inner join course as c on s.course = c.CourseID"
+                 + " c.CourseName from students as s inner join course as c on s.course = c.CourseID"
                  + " inner join faculty as f  on s.department = f.FacultyID where s.fName like '"+ valu +"%';";
             //String query="SELECT * FROM Students where fName like '"+ valu +"%';";
             preSt=dbConn.prepareStatement(query);
