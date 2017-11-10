@@ -10,7 +10,7 @@ package Model;
  */
 public class Model_Student {
     public String FName, LName , Nic;
-    public int Phone, Course, Department;
+    public Integer Phone, Course, Department;
     
     public Model_Student(String fName,String lName ,String nic,int course,int department, int phone) {
         FName = fName;LName = lName;Nic = nic;Course = course;Department = department;Phone = phone;

@@ -707,7 +707,7 @@ public class Student extends javax.swing.JFrame {
             String fName = tf_Ed_Name.getText();
             String lName = tf_Ed_lName.getText();
             String Nic = tf_Ed_nic.getText();
-            int Phone =  Integer.parseInt(tf_Ed_phone.getText());
+            Integer Phone =  Integer.parseInt(tf_Ed_phone.getText());
             String course = cmb_Ed_course.getSelectedItem().toString();
             String Department = cmb_Ed_department.getSelectedItem().toString();
             try
@@ -750,7 +750,7 @@ public class Student extends javax.swing.JFrame {
             String fName = tf_fName.getText();
             String lName = tf_lName.getText();
             String Nic = tf_nic.getText();
-            int Phone =  Integer.parseInt(tf_phone.getText());
+            Integer Phone =  Integer.parseInt(tf_phone.getText());
             String course = cmb_course_add.getSelectedItem().toString();
             String Department = cmb_Add_department.getSelectedItem().toString();
             
