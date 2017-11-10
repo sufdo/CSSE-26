@@ -684,7 +684,7 @@ public class Student extends javax.swing.JFrame {
        }catch (SQLException exc){JOptionPane.showMessageDialog(null, "ERROR : " + exc);}
     }//GEN-LAST:event_btn_EditActionPerformed
 //Update - save button
-    private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ed_SaveActionPerformed
+    private void btn_Ed_SaveActionPerformed(java.awt.event.ActionEvent evt) {                                            
         boolean upd = true;
         if(tf_Ed_Name.getText().equals("")){
             upd=false;
@@ -810,7 +810,7 @@ public class Student extends javax.swing.JFrame {
                 String pat = resSet.getString("CourseName");
                 cmb_course_add.addItem(pat);
             }
-            String query2="SELECT FacultyName FROM Faculty;";
+            String query2="SELECT FacultyName FROM faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
@@ -832,7 +832,7 @@ public class Student extends javax.swing.JFrame {
                 String pat = resSet.getString("CourseName");
                 cmb_Ed_course.addItem(pat);
             }
-            String query2="SELECT FacultyName FROM Faculty;";
+            String query2="SELECT FacultyName FROM faculty;";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery(query2);
             while (resSet.next()) {
