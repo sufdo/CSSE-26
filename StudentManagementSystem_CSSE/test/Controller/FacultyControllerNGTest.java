@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
  * @author Rishni
  */
 public class FacultyControllerNGTest {
-    public static final String FACULTYID="30";
+    public static final String FACULTYID="39";
     public static final String FACULTYNAME="Tourism";
     public static final String FACULTYDEAN="Lasantha Vithanage";
     
