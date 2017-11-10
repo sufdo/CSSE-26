@@ -38,7 +38,7 @@ public class StaffControllerNGTest {
         conn=DBConnect.connect();
         staffcontroller=new StaffController();
         staffmodel=new StaffModel(FNAME,LNAME,FACULTY,POSITION,NIC);
-        System.out.println("a");
+        
     }
 
     @BeforeClass
@@ -62,43 +62,11 @@ public class StaffControllerNGTest {
      */
     @Test
     public void testAddStaff() throws Exception {
-//        System.out.println("AddStaff");
-//        StaffModel staff = null;
-//        int expResult = 0;
-//        int result = StaffController.AddStaff(staff);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-          System.out.println("b");
+
           Assert.assertTrue(staffcontroller.AddStaff(staffmodel));
-         System.out.println("c");
+         
     }
 
-//    /**
-//     * Test of loadStafftable method, of class StaffController.
-//     */
-//    @Test
-//    public void testLoadStafftable() throws Exception {
-////        System.out.println("loadStafftable");
-////        ResultSet expResult = null;
-////        ResultSet result = StaffController.loadStafftable();
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of findFacultyID method, of class StaffController.
-//     */
-//    @Test
-//    public void testFindFacultyID() throws Exception {
-////        System.out.println("findFacultyID");
-////        String facultytxt = "";
-////        int expResult = 0;
-////        int result = StaffController.findFacultyID(facultytxt);
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
+
     
 }
