@@ -11,19 +11,30 @@ package Constants;
  */
 public class MessageConsts {
     //messages for updates
-    public static String UPDATE_SUCCESS="Updated Successfully";
-    public static String NOT_UPDATED="Not updated";
     
+    //Message to be displayed when update is success.
+    public static String UPDATE_SUCCESS="Updated Successfully";
+    //Message to be displayed when not updated.
+    public static String NOT_UPDATED="Not updated";
+    //Message to be displayed to confirm update.
     public static String UPDATE_QUESTION= "Do you really want to update?";
     
-    //message for delete
-    public static String DELETION_SUCCESS="Deleted Successfully";
-    public static String NOT_DELETED="Not deleted";
     
+    //message for delete
+    
+    //Message to be displayed when delete is success.
+    public static String DELETION_SUCCESS="Deleted Successfully";
+    //Message to be displayed when not deleted.
+    public static String NOT_DELETED="Not deleted";
+    //Message to be displayed to confirm deletion.
     public static String DELETE_QUESTION= "Do you really want to delete?";
     
+    
     //message for insert
+    
+    //Message to be displayed when insertion is success.
     public static String INSERT_SUCCESS="Successfully added";
+    //Message to be displayed when insertion is not successfull.
     public static String INSERT_FAIL="Insertion failed";
     
     //message for nic invalid
