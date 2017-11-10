@@ -46,7 +46,7 @@ public class EventController {
         try 
         {
             //inserting event details to event table
-            String query="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
+            String query="INSERT INTO event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
 
             Statement statement = conn.createStatement();
 
@@ -67,7 +67,7 @@ public class EventController {
     public static ResultSet loadEventtable() throws SQLException{
         conn=DBConnect.connect();
         
-        String query="SELECT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy";
+        String query="SELECT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM event e,faculty f WHERE f.FacultyID=e.OrganizedBy";
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
@@ -84,7 +84,7 @@ public class EventController {
 
             if(option==0)
             {
-                String query="UPDATE Event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+id+"' ";
+                String query="UPDATE event SET Name='"+event.getName()+"', OrganizedBy='"+event.getOrganizedBy()+"', Category='"+event.getCategory()+"', Venue='"+event.getVenue()+"', Date='"+event.getDate()+"', Time='"+event.getTime()+"' WHERE EventID='"+id+"' ";
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query); 
                 JOptionPane.showMessageDialog(null, MessageConsts.UPDATE_SUCCESS);
@@ -115,7 +115,7 @@ public class EventController {
             if(option==0)
             {
                 conn=DBConnect.connect();
-                String query="DELETE FROM Event WHERE EventID='"+id+"' ";
+                String query="DELETE FROM event WHERE EventID='"+id+"' ";
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query); 
 
@@ -143,7 +143,7 @@ public class EventController {
     //method to search event details when search button is pressed
     public static ResultSet SearchEvent(String search) throws SQLException {
         //conn=DBConnect.connect();
-        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
+        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM event e,faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
@@ -153,7 +153,7 @@ public class EventController {
     //method to search event details when key typed
     public static ResultSet SearchEvent(char search) throws SQLException {
         //conn=DBConnect.connect();
-        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM Event e,Faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
+        String query="SELECT DISTINCT e.EventID,e.Name,f.FacultyName,e.Category,e.Venue,e.Date,e.Time FROM event e,faculty f WHERE f.FacultyID=e.OrganizedBy AND (e.EventID LIKE '%"+search+"%') OR (e.Name LIKE '%"+search+"%') OR (f.FacultyName LIKE '%"+search+"%') OR (e.Category LIKE '%"+search+"%') OR (e.Venue LIKE '%"+search+"%') OR (e.Date LIKE '%"+search+"%') OR (e.Time LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
@@ -163,7 +163,7 @@ public class EventController {
     //method to find the facultyid for a given faculty name
     public static int findFacultyID(String organizedby) throws SQLException
     {
-        String query="SELECT FacultyID FROM Faculty WHERE FacultyName='"+organizedby+"'";
+        String query="SELECT FacultyID FROM faculty WHERE FacultyName='"+organizedby+"'";
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
         
