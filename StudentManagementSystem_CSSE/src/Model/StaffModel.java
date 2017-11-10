@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class consists of
+ * constructors, getters
+ * and setters.
  */
 package Model;
 
@@ -10,106 +10,100 @@ package Model;
  * @author Rishni
  */
 public class StaffModel {
+
     public String StaffID;
     public String FirstName;
     public String LastName;
     public int Faculty;
     public String Position;
     public String NIC;
-  
-    
-    public StaffModel()
-    {
-        
+
+    //constructors
+    public StaffModel() {
+
     }
-    
-    public StaffModel(String staffid,String fname,String lname,int faculty,String position,String nic)
-    {
-        StaffID=staffid;
-        FirstName=fname;
-        LastName=lname;
-        Faculty=faculty;
-        Position=position;
-        NIC=nic;
+
+    public StaffModel(String staffid, String fname, String lname, int faculty, String position, String nic) {
+        StaffID = staffid;
+        FirstName = fname;
+        LastName = lname;
+        Faculty = faculty;
+        Position = position;
+        NIC = nic;
     }
-    
-    public StaffModel(String fname,String lname,int faculty,String position,String nic)
-    {
-        FirstName=fname;
-        LastName=lname;
-        Faculty=faculty;
-        Position=position;
-        NIC=nic;
+
+    public StaffModel(String fname, String lname, int faculty, String position, String nic) {
+        FirstName = fname;
+        LastName = lname;
+        Faculty = faculty;
+        Position = position;
+        NIC = nic;
     }
-    
-    public StaffModel(String staffid)
-    {
-        StaffID=staffid;
+
+    public StaffModel(String staffid) {
+        StaffID = staffid;
     }
-    
-  //getter  
-    public String getStaffID()
-    {
+
+    //getters  
+    //to get staff id
+    public String getStaffID() {
         return StaffID;
     }
-    
-    public String getFirstName()
-    {
+
+    //to get first name
+    public String getFirstName() {
         return FirstName;
     }
-    
-    public String getLastName()
-    {
+
+    //to get last name
+    public String getLastName() {
         return LastName;
     }
-    
-    public int getFaculty()
-    {
+
+    //to get faculty
+    public int getFaculty() {
         return Faculty;
     }
-    
-    public String getPosition()
-    {
+
+    //to get position
+    public String getPosition() {
         return Position;
     }
-    
-    public String getNIC()
-    {
+
+    //to get nic
+    public String getNIC() {
         return NIC;
     }
-   
-    
+
     //setters
-    public void setStaffID(String staffid)
-    {
-        StaffID=staffid;
+    //to set staff id
+    public void setStaffID(String staffid) {
+        StaffID = staffid;
     }
-    
-    public void setFirstName(String fname)
-    {
-        FirstName=fname;
+
+    //to set first name
+    public void setFirstName(String fname) {
+        FirstName = fname;
     }
-    
-    public void setLastName(String lname)
-    {
-        LastName=lname;
+
+    //to set last name
+    public void setLastName(String lname) {
+        LastName = lname;
     }
-    
-    public void setFaculty(int faculty)
-    {
-        Faculty=faculty;
+
+    //to set faculty
+    public void setFaculty(int faculty) {
+        Faculty = faculty;
     }
-    
-    public void setPosition(String position)
-    {
-        Position=position;
+
+    //to set position
+    public void setPosition(String position) {
+        Position = position;
     }
-    
-    public void setNIC(String nic)
-    {
-        NIC=nic;
+
+    //to set nic
+    public void setNIC(String nic) {
+        NIC = nic;
     }
-    
-    
-   
+
 }
