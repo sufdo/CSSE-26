@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
  * @author Rishni
  */
 public class EventControllerNGTest {
-    public static final String EVENTID="20";
+    public static final String EVENTID="22";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";
@@ -66,18 +66,7 @@ public class EventControllerNGTest {
           Assert.assertTrue(eventcontroller.AddEvent(eventmodel));
     }
 
-    /**
-     * Test of loadEventtable method, of class EventController.
-     */
-//    @Test
-//    public void testLoadEventtable() throws Exception {
-//        System.out.println("loadEventtable");
-//        ResultSet expResult = null;
-//        ResultSet result = EventController.loadEventtable();
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    
 
     /**
      * Test of UpdateEvent method, of class EventController.
@@ -95,46 +84,5 @@ public class EventControllerNGTest {
        Assert.assertTrue(eventcontroller.DeleteEvent(EVENTID));
     }
 
-    /**
-     * Test of SearchEvent method, of class EventController.
-     */
-//    @Test
-//    public void testSearchEvent_String() throws Exception {
-//        System.out.println("SearchEvent");
-//        String search = "";
-//        ResultSet expResult = null;
-//        ResultSet result = EventController.SearchEvent(search);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of SearchEvent method, of class EventController.
-//     */
-//    @Test
-//    public void testSearchEvent_char() throws Exception {
-//        System.out.println("SearchEvent");
-//        char search = ' ';
-//        ResultSet expResult = null;
-//        ResultSet result = EventController.SearchEvent(search);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of findFacultyID method, of class EventController.
-//     */
-//    @Test
-//    public void testFindFacultyID() throws Exception {
-//        System.out.println("findFacultyID");
-//        String organizedby = "";
-//        int expResult = 0;
-//        int result = EventController.findFacultyID(organizedby);
-//        assertEquals(result, expResult);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
     
 }
