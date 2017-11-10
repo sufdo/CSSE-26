@@ -1,13 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class add ,update, delete events
+ * and also load event table, search events
+ * and find faculty id.
+ * 
+ * @throws SQLException 
+ *          -Integer value identifying the 
+ *           error that caused SQLException
+ *           instance to be thrown.
  */
 package Controller;
 
 import Constants.MessageConsts;
 import DBConnection.DBConnect;
-import Model.EventModel;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Model.EventModel;
 
 /**
  *
@@ -28,11 +33,9 @@ public class EventController {
     
     Validation validation=new Validation();
     
-    public EventController() {
-        
+    public EventController() {        
         //connect to DB
-        conn=DBConnect.connect();
-        
+        conn=DBConnect.connect();        
     }
         
     //method to add event
@@ -42,6 +45,7 @@ public class EventController {
         
         try 
         {
+            //inserting event details to event table
             String query="INSERT INTO Event(Name,OrganizedBy,Category,Venue,Date,Time) VALUES ('"+event.getName()+"','"+event.getOrganizedBy()+"','"+event.getCategory()+"','"+event.getVenue()+"','"+event.getDate()+"','"+event.getTime()+"')";
 
             Statement statement = conn.createStatement();
