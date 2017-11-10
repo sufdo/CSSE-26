@@ -13,7 +13,7 @@ public class Controller_Login {
 //login function for student
     public static boolean loginStudent(String userName,String Password) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT nic FROM Students where fName like '"+ userName +"'";
+        String query="SELECT nic FROM students where fName like '"+ userName +"'";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery();      
         String passwo="";
@@ -46,7 +46,7 @@ public class Controller_Login {
     }
     public static boolean loginDean(String userName,String Password) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT Position FROM Staff where FirstName = '"+ userName +"'";
+        String query="SELECT Position FROM staff where FirstName = '"+ userName +"'";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery(); 
         String position=null;
@@ -56,7 +56,7 @@ public class Controller_Login {
         }
         if(position.equals("Dean"))
         {
-            String query2="SELECT NIC FROM Staff where FirstName = '"+ userName +"'";
+            String query2="SELECT NIC FROM staff where FirstName = '"+ userName +"'";
             preSt=dbConn.prepareStatement(query2);
             resSet=preSt.executeQuery();
             
@@ -79,7 +79,7 @@ public class Controller_Login {
     
     public static boolean loginLecturer(String userName,String Password) throws SQLException{
         dbConn=DBConnect.connect();     
-        String query="SELECT Position FROM Staff where FirstName like '"+ userName +"'";
+        String query="SELECT Position FROM staff where FirstName like '"+ userName +"'";
         preSt=dbConn.prepareStatement(query);
         resSet=preSt.executeQuery(); 
         String position=null;
@@ -89,7 +89,7 @@ public class Controller_Login {
         }
         if(position.equals("Lecturer"))
         {
-            String query3="SELECT NIC FROM Staff where FirstName like '"+ userName +"'";
+            String query3="SELECT NIC FROM staff where FirstName like '"+ userName +"'";
             preSt=dbConn.prepareStatement(query3);
             resSet=preSt.executeQuery();
             
