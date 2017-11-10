@@ -1,28 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *This is the test case class to test
+ *AddEvent method, UpdateEvent method and DeleteEvent method in EventController class
+ *which insert,update and delete an event.
  */
 package Controller;
 
-import static Controller.StaffController.conn;
 import DBConnection.DBConnect;
 import Model.EventModel;
-import java.sql.ResultSet;
-import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.Assert;
+import static Controller.StaffController.conn;
 
 /**
  *
  * @author Rishni
  */
 public class EventControllerNGTest {
-    public static final String EVENTID="22";
+    //values assigned to constants to be added to event table
+    public static final String EVENTID="21";
     public static final String NAME="Walk";
     public static final int ORGANIZEDBY=10;
     public static final String CATEGORY="charity";
@@ -35,8 +34,11 @@ public class EventControllerNGTest {
     //EventModel eventmodel1;
     //EventModel eventmodel2;
     public EventControllerNGTest() {
+        //connecting to the database
         conn=DBConnect.connect();
+        //creating a new object from EventController
         eventcontroller=new EventController();
+        //creating a new object from EventModel
         eventmodel=new EventModel(NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
         //eventmodel1=new EventModel(EVENTID,NAME,ORGANIZEDBY,CATEGORY,VENUE,DATE,TIME);
         //eventmodel2=new EventModel(EVENTID);
@@ -60,16 +62,17 @@ public class EventControllerNGTest {
 
     /**
      * Test of AddEvent method, of class EventController.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAddEvent() throws Exception {
           Assert.assertTrue(eventcontroller.AddEvent(eventmodel));
     }
-
-    
-
+   
     /**
-     * Test of UpdateEvent method, of class EventController.
+     * Test of UpdateEvent method, of class EventController
+     * after the event is added.
+     * @throws java.lang.Exception
      */
     @Test(dependsOnMethods = {"testAddEvent"})
     public void testUpdateEvent() throws Exception {
@@ -77,12 +80,12 @@ public class EventControllerNGTest {
     }
 
     /**
-     * Test of DeleteEvent method, of class EventController.
+     * Test of DeleteEvent method, of class EventController
+     * after the event is added and updated.
+     * @throws java.lang.Exception
      */
     @Test(dependsOnMethods = {"testAddEvent","testUpdateEvent"})
     public void testDeleteEvent() throws Exception {
        Assert.assertTrue(eventcontroller.DeleteEvent(EVENTID));
     }
-
-    
 }
