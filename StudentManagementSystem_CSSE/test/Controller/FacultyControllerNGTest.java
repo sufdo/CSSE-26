@@ -21,13 +21,15 @@ import static Controller.StaffController.conn;
  */
 public class FacultyControllerNGTest {
     //values assigned to constants to be added to faculty table
-    public static final String FACULTYID="44";
+    public static final String FACULTYID="49";
     public static final String FACULTYNAME="Tourism";
     public static final String FACULTYDEAN="Lasantha Vithanage";
     
+    public static final String NEWFACULTYDEAN="Nirmal Ranathunga";
+    
     FacultyController facultycontroller;
     FacultyModel facultymodel;
-    //FacultyModel facultymodel1;
+    FacultyModel facultymodel1;
     //FacultyModel facultymodel2;
     
     public FacultyControllerNGTest() {
@@ -37,7 +39,7 @@ public class FacultyControllerNGTest {
         facultycontroller=new FacultyController();
         //creating a new object from FacultyModel
         facultymodel=new FacultyModel(FACULTYNAME,FACULTYDEAN);
-        //facultymodel1=new FacultyModel(FACULTYID,FACULTYNAME,FACULTYDEAN);
+        facultymodel1=new FacultyModel(FACULTYID,FACULTYNAME,NEWFACULTYDEAN);
         //facultymodel2=new FacultyModel(FACULTYID);
     }
 
@@ -74,7 +76,7 @@ public class FacultyControllerNGTest {
      */
     @Test(dependsOnMethods = {"testAddFaculty"})
     public void testUpdateFaculty() throws Exception {
-        Assert.assertTrue(facultycontroller.UpdateFaculty(facultymodel,FACULTYID));
+        Assert.assertTrue(facultycontroller.UpdateFaculty(facultymodel1,FACULTYID));
     }
 
     /**
