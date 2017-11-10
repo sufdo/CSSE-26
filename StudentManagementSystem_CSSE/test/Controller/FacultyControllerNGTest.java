@@ -21,7 +21,7 @@ import static Controller.StaffController.conn;
  */
 public class FacultyControllerNGTest {
     //values assigned to constants to be added to faculty table
-    public static final String FACULTYID="39";
+    public static final String FACULTYID="44";
     public static final String FACULTYNAME="Tourism";
     public static final String FACULTYDEAN="Lasantha Vithanage";
     
