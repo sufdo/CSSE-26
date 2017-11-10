@@ -1,27 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *This is the test case class to test
+ *AddFaculty method, UpdateFaculty method and DeleteFaculty method in FacultyController class
+ *which insert,update and delete a faculty.
  */
 package Controller;
 
-import static Controller.StaffController.conn;
 import DBConnection.DBConnect;
 import Model.FacultyModel;
-import java.sql.ResultSet;
-import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.Assert;
+import static Controller.StaffController.conn;
 
 /**
  *
  * @author Rishni
  */
 public class FacultyControllerNGTest {
+    //values assigned to constants to be added to faculty table
     public static final String FACULTYID="39";
     public static final String FACULTYNAME="Tourism";
     public static final String FACULTYDEAN="Lasantha Vithanage";
@@ -32,8 +31,11 @@ public class FacultyControllerNGTest {
     //FacultyModel facultymodel2;
     
     public FacultyControllerNGTest() {
+        //connecting to the database
         conn=DBConnect.connect();
+        //creating a new object from FacultyController
         facultycontroller=new FacultyController();
+        //creating a new object from FacultyModel
         facultymodel=new FacultyModel(FACULTYNAME,FACULTYDEAN);
         //facultymodel1=new FacultyModel(FACULTYID,FACULTYNAME,FACULTYDEAN);
         //facultymodel2=new FacultyModel(FACULTYID);
@@ -57,6 +59,7 @@ public class FacultyControllerNGTest {
 
     /**
      * Test of AddFaculty method, of class FacultyController.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAddFaculty() throws Exception {
@@ -65,20 +68,9 @@ public class FacultyControllerNGTest {
     }
 
     /**
-     * Test of loadFacultytable method, of class FacultyController.
-     */
-//    @Test
-//    public void testLoadFacultytable() throws Exception {
-////        System.out.println("loadFacultytable");
-////        ResultSet expResult = null;
-////        ResultSet result = FacultyController.loadFacultytable();
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
-
-    /**
-     * Test of UpdateFaculty method, of class FacultyController.
+     * Test of UpdateFaculty method, of class FacultyController
+     * after the faculty is added.
+     * @throws java.lang.Exception
      */
     @Test(dependsOnMethods = {"testAddFaculty"})
     public void testUpdateFaculty() throws Exception {
@@ -86,52 +78,12 @@ public class FacultyControllerNGTest {
     }
 
     /**
-     * Test of DeleteFaculty method, of class FacultyController.
+     * Test of DeleteFaculty method, of class FacultyController
+     * after the faculty is added and updated.
+     * @throws java.lang.Exception
      */
     @Test(dependsOnMethods = {"testAddFaculty","testUpdateFaculty"})
     public void testDeleteFaculty() throws Exception {
         Assert.assertTrue(facultycontroller.DeleteFaculty(FACULTYID));
     }
-
-    /**
-     * Test of SearchFaculty method, of class FacultyController.
-     */
-//    @Test
-//    public void testSearchFaculty_String() throws Exception {
-////        System.out.println("SearchFaculty");
-////        String search = "";
-////        ResultSet expResult = null;
-////        ResultSet result = FacultyController.SearchFaculty(search);
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of SearchFaculty method, of class FacultyController.
-//     */
-//    @Test
-//    public void testSearchFaculty_char() throws Exception {
-////        System.out.println("SearchFaculty");
-////        char search = ' ';
-////        ResultSet expResult = null;
-////        ResultSet result = FacultyController.SearchFaculty(search);
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of fillOrganizedBy method, of class FacultyController.
-//     */
-//    @Test
-//    public void testFillOrganizedBy() throws Exception {
-////        System.out.println("fillOrganizedBy");
-////        ResultSet expResult = null;
-////        ResultSet result = FacultyController.fillOrganizedBy();
-////        assertEquals(result, expResult);
-////        // TODO review the generated test code and remove the default call to fail.
-////        fail("The test case is a prototype.");
-//    }
-    
 }
