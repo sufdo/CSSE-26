@@ -46,7 +46,7 @@ public class FacultyController {
         
         try 
         {
-            String query="INSERT INTO Faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
+            String query="INSERT INTO faculty(FacultyName,FacultyDean) VALUES ('"+faculty.getFacultyName()+"','"+faculty.getFacultyDean()+"')";
 
             Statement statement = conn.createStatement();
 
@@ -66,7 +66,7 @@ public class FacultyController {
     public static ResultSet loadFacultytable() throws SQLException{
         conn=DBConnect.connect();
         
-        String query="SELECT * FROM Faculty";
+        String query="SELECT * FROM faculty";
         
         pst=conn.prepareStatement(query);
         rs=pst.executeQuery();
@@ -84,7 +84,7 @@ public class FacultyController {
 
             if(option==0)
             {
-                String query="UPDATE Faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+id+"' ";
+                String query="UPDATE faculty SET FacultyName='"+faculty.getFacultyName()+"', FacultyDean='"+faculty.getFacultyDean()+"' WHERE FacultyID='"+id+"' ";
                 Statement statement = conn.createStatement();
                 statement.executeUpdate(query);   
                 conn.close();
@@ -116,7 +116,7 @@ public class FacultyController {
                 if(option==0)
                 {
                     conn=DBConnect.connect();
-                    String query="DELETE FROM Faculty WHERE FacultyID='"+faculty+"' ";
+                    String query="DELETE FROM faculty WHERE FacultyID='"+faculty+"' ";
                     Statement statement = conn.createStatement();
                     statement.executeUpdate(query); 
 
@@ -142,7 +142,7 @@ public class FacultyController {
     //method to search faculty details when search button is pressed
     public static ResultSet SearchFaculty(String search) throws SQLException {
         
-        String sql="SELECT DISTINCT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        String sql="SELECT DISTINCT * FROM faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
@@ -152,7 +152,7 @@ public class FacultyController {
     //method to search faculty details when key typed
     public static ResultSet SearchFaculty(char search) throws SQLException {
         
-        String sql="SELECT DISTINCT * FROM Faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
+        String sql="SELECT DISTINCT * FROM faculty WHERE (FacultyID LIKE '%"+search+"%') OR (FacultyName LIKE '%"+search+"%') OR (FacultyDean LIKE '%"+search+"%')";
         
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
@@ -164,7 +164,7 @@ public class FacultyController {
     {
         conn=DBConnect.connect();
         
-        String sql="SELECT FacultyName FROM Faculty";
+        String sql="SELECT FacultyName FROM faculty";
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
 
