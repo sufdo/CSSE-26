@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         cmb_userType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lectures", "Dean", " " }));
+        cmb_userType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Student", "Lecturer", "Dean" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
