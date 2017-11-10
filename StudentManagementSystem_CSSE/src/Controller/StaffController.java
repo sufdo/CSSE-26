@@ -1,12 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class add and search staff.
+ * 
+ * @throws SQLException 
+ *          -Integer value identifying the 
+ *           error that caused SQLException
+ *           instance to be thrown.
  */
 package Controller;
 
 import Constants.MessageConsts;
 import DBConnection.DBConnect;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Model.StaffModel;
-import java.awt.HeadlessException;
+
 
 /**
  *
