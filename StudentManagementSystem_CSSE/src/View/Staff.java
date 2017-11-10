@@ -5,15 +5,14 @@
  */
 package View;
 
-import Controller.EventController;
 import Controller.FacultyController;
 import Controller.StaffController;
 import Controller.Validation;
-import Model.StaffModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Model.StaffModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -21,23 +20,23 @@ import net.proteanit.sql.DbUtils;
  * @author Rishni
  */
 public class Staff extends javax.swing.JFrame {
+
     ResultSet rs;
+
     /**
      * Creates new form Staff
      */
     public Staff() throws SQLException {
         initComponents();
-        
-        rs=StaffController.loadStafftable();
+
+        rs = StaffController.loadStafftable();
         jStaffAddTable.setModel(DbUtils.resultSetToTableModel(rs));
-        
-        
-        rs=FacultyController.fillOrganizedBy();
-        while (rs.next())
-        {
-            String organizedby=rs.getString("FacultyName");
+
+        rs = FacultyController.fillOrganizedBy();
+        while (rs.next()) {
+            String organizedby = rs.getString("FacultyName");
             jAddStaffFacultycmb.addItem(organizedby);
-            
+
         }
     }
 
@@ -211,36 +210,31 @@ public class Staff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAddStaffAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddStaffAddButtonActionPerformed
-        String fname=jAddStafffnametxt.getText();
-        String lname=jAddStafflnametxt.getText();
-        String facultytxt=jAddStaffFacultycmb.getSelectedItem().toString();
-        int facultycmb=jAddStaffFacultycmb.getSelectedIndex();
-        String position=jAddStaffpositioncmb.getSelectedItem().toString();
-        int positioncmb=jAddStaffpositioncmb.getSelectedIndex();
-        String nic=jAddStaffnictxt.getText();
-        
-        Boolean isempty=Validation.isEmpty(fname,lname,facultycmb,positioncmb,nic);
-        if(!isempty)
-        {
-            Boolean nicValid=Validation.checkNIC(nic);
-            if(nicValid)
-            {
-                int faculty;        
+        String fname = jAddStafffnametxt.getText();
+        String lname = jAddStafflnametxt.getText();
+        String facultytxt = jAddStaffFacultycmb.getSelectedItem().toString();
+        int facultycmb = jAddStaffFacultycmb.getSelectedIndex();
+        String position = jAddStaffpositioncmb.getSelectedItem().toString();
+        int positioncmb = jAddStaffpositioncmb.getSelectedIndex();
+        String nic = jAddStaffnictxt.getText();
+
+        Boolean isempty = Validation.isEmpty(fname, lname, facultycmb, positioncmb, nic);
+        if (!isempty) {
+            Boolean nicValid = Validation.checkNIC(nic);
+            if (nicValid) {
+                int faculty;
                 try {
-                    int facultyID=StaffController.findFacultyID(facultytxt);
-                    faculty=facultyID;
+                    int facultyID = StaffController.findFacultyID(facultytxt);
+                    faculty = facultyID;
 
-                    StaffModel staffmodel=new StaffModel(fname,lname,faculty,position,nic);
+                    StaffModel staffmodel = new StaffModel(fname, lname, faculty, position, nic);
 
-                    try
-                    {
+                    try {
                         StaffController.AddStaff(staffmodel);
 
-                        ResultSet rs=StaffController.loadStafftable();
+                        ResultSet rs = StaffController.loadStafftable();
                         jStaffAddTable.setModel(DbUtils.resultSetToTableModel(rs));
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
@@ -249,7 +243,7 @@ public class Staff extends javax.swing.JFrame {
                 }
             }
         }
-        
+
     }//GEN-LAST:event_jAddStaffAddButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -260,20 +254,17 @@ public class Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(Constants.LoginUserType.userName .equals("Admin")){
+        if (Constants.LoginUserType.userName.equals("Admin")) {
             jAddStaffAddButton.setEnabled(true);
             jAddStaffClearButton.setEnabled(true);
-            
-            
-        }else if(Constants.LoginUserType.userName .equals("Dean")){
+
+        } else if (Constants.LoginUserType.userName.equals("Dean")) {
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
-        }
-        else if(Constants.LoginUserType.userName .equals("Lecturer")){
+        } else if (Constants.LoginUserType.userName.equals("Lecturer")) {
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
-        }
-        else if(Constants.LoginUserType.userName .equals("Student")){
+        } else if (Constants.LoginUserType.userName.equals("Student")) {
             jAddStaffAddButton.setEnabled(false);
             jAddStaffClearButton.setEnabled(false);
         }
